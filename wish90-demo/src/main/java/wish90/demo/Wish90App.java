@@ -14,7 +14,13 @@ import java.util.Date;
  * @author Raghu
  */
 public class Wish90App {
-    private static String incomingDate="08-06-1992";
+//    private static String incomingDate="06-08-1982"; // Siva
+//    private static String incomingDate="07-26-1982"; //Rrazata
+//    private static String incomingDate="06-29-1994"; //Deepthi
+//    private static String incomingDate="08-05-1993"; //Venky
+//    private static String incomingDate="02-10-1993"; //Irani
+    private static String incomingDate="04-09-1984"; //Raghu
+//    
     public static void main(String[] args) throws ParseException {
         
         Date dateOfBirth=new SimpleDateFormat("MM-dd-yyyy").parse(incomingDate);
