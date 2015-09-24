@@ -11,6 +11,14 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    signingConfigs {
+        release {
+            storeFile file("debug.keystore")
+            storePassword "wish90password"
+            keyAlias "wish90alias"
+            keyPassword "wish90password"
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -18,10 +26,15 @@ android {
         }
     }
 }
+repositories {
+    mavenCentral()
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     wearApp project(':wear')
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.google.android.gms:play-services:7.5.0'
+    compile project(':libraries:facebook')
+
 }

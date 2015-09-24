@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Wish90</string>
-
+    <string name="title_facebook_login">Facebook Login</string>
+    <string name="facebook_app_id">900075136727545</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 </resources>
