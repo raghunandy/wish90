@@ -13,14 +13,14 @@
   <TextView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="@string/url"
+      android:text="@string/cap"
       android:gravity="center"
       />
 
   <ImageView
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:src="@drawable/logo"
+      android:layout_height="290dp"
+      android:src="@drawable/bgthreehands"
       android:contentDescription="@string/string_content_description"
       />
 
