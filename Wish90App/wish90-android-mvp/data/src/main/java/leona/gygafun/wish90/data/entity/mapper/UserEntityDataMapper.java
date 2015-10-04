@@ -15,8 +15,10 @@
  */
 package leona.gygafun.wish90.data.entity.mapper;
 
+import leona.gygafun.wish90.data.entity.UserMomentEntity;
 import leona.gygafun.wish90.data.entity.UserEntity;
 import leona.gygafun.wish90.domain.User;
+import leona.gygafun.wish90.domain.UserMoment;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -69,6 +71,41 @@ public class UserEntityDataMapper {
             user = transform(userEntity);
             if (user != null) {
                 userList.add(user);
+            }
+        }
+
+        return userList;
+    }
+
+
+    public UserMoment transform(UserMomentEntity dateTimeEntity) {
+        UserMoment userMoment = null;
+        if (dateTimeEntity != null) {
+            userMoment=dateTimeEntity;
+//            userMoment = new UserMoment(dateTimeEntity.getMomentId());
+//            user.setCoverUrl(userEntity.getCoverUrl());
+//            user.setFullName(userEntity.getFullname());
+//            user.setDescription(userEntity.getDescription());
+//            user.setFollowers(userEntity.getFollowers());
+//            user.setEmail(userEntity.getEmail());
+        }
+
+        return userMoment;
+    }
+
+    /**
+     * Transform a List of {@link UserEntity} into a Collection of {@link User}.
+     *
+     * @param userEntityCollection Object Collection to be transformed.
+     * @return {@link User} if valid {@link UserEntity} otherwise null.
+     */
+    public List<UserMoment> transformMoments(Collection<UserMomentEntity> userEntityCollection) {
+        List<UserMoment> userList = new ArrayList<>(20);
+        UserMoment userMoment;
+        for (UserMomentEntity userMomentEntity : userEntityCollection) {
+            userMoment = transform(userMomentEntity);
+            if (userMoment != null) {
+                userList.add(userMoment);
             }
         }
 

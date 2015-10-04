@@ -16,6 +16,8 @@
 package leona.gygafun.wish90.data.entity.mapper;
 
 import leona.gygafun.wish90.data.entity.UserEntity;
+import leona.gygafun.wish90.data.entity.UserMomentEntity;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
@@ -73,6 +75,50 @@ public class UserEntityJsonMapper {
             userEntityCollection = this.gson.fromJson(userListJsonResponse, listOfUserEntityType);
 
             return userEntityCollection;
+        } catch (JsonSyntaxException jsonException) {
+            throw jsonException;
+        }
+    }
+
+
+
+
+    /**
+     * Transform from valid json string to {@link UserEntity}.
+     *
+     * @param userJsonResponse A json representing a user profile.
+     * @return {@link UserEntity}.
+     * @throws com.google.gson.JsonSyntaxException if the json string is not a valid json structure.
+     */
+    public UserMomentEntity transformUserMomentEntity(String userJsonResponse) throws JsonSyntaxException {
+        try {
+            Type UserMomentEntityType = new TypeToken<UserMomentEntity>() {
+            }.getType();
+            UserMomentEntity UserMomentEntity = this.gson.fromJson(userJsonResponse, UserMomentEntityType);
+
+            return UserMomentEntity;
+        } catch (JsonSyntaxException jsonException) {
+            throw jsonException;
+        }
+    }
+
+    /**
+     * Transform from valid json string to List of {@link UserMomentEntity}.
+     *
+     * @param userListJsonResponse A json representing a collection of users.
+     * @return List of {@link UserMomentEntity}.
+     * @throws com.google.gson.JsonSyntaxException if the json string is not a valid json structure.
+     */
+    public List<UserMomentEntity> transformUserMomentEntityCollection(String userListJsonResponse)
+            throws JsonSyntaxException {
+
+        List<UserMomentEntity> UserMomentEntityCollection;
+        try {
+            Type listOfUserMomentEntityType = new TypeToken<List<UserMomentEntity>>() {
+            }.getType();
+            UserMomentEntityCollection = this.gson.fromJson(userListJsonResponse, listOfUserMomentEntityType);
+
+            return UserMomentEntityCollection;
         } catch (JsonSyntaxException jsonException) {
             throw jsonException;
         }
