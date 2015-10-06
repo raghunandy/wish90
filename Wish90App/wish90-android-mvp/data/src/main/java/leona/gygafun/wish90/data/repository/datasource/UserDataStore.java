@@ -36,4 +36,5 @@ public interface UserDataStore {
      * @param userId The id to retrieve user data.
      */
     Observable<UserEntity> userEntityDetails(final int userId);
+
 }

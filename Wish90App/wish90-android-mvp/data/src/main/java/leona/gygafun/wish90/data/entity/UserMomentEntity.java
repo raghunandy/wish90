@@ -23,7 +23,83 @@ import leona.gygafun.wish90.domain.UserMoment;
 /**
  * User Entity used in the data layer.
  */
-public class UserMomentEntity extends UserMoment{
+public class UserMomentEntity {
 
+
+    private String momentId;
+
+
+    private Date momentDateTime;
+
+
+    private String title;
+
+    private String type;
+
+
+    private List<String> tags;
+
+    private String userId;
+
+
+    private String configurations;
+
+
+
+    public String getMomentId() {
+        return momentId;
+    }
+
+    public void setMomentId(String momentId) {
+        this.momentId = momentId;
+    }
+
+    public Date getMomentDateTime() {
+        return momentDateTime;
+    }
+
+    public void setMomentDateTime(Date momentDateTime) {
+        this.momentDateTime = momentDateTime;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getConfigurations() {
+        return configurations;
+    }
+
+    public void setConfigurations(String configurations) {
+        this.configurations = configurations;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
 }
