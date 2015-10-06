@@ -104,7 +104,7 @@ public class UserDetailsPresenter implements Presenter {
 
   private void showUserDetailsInView(User user) {
     final UserModel userModel = this.userModelDataMapper.transform(user);
-    this.viewDetailsView.renderUser(userModel);
+    //this.viewDetailsView.renderUser(userModel);
   }
 
   private void getUserDetails() {

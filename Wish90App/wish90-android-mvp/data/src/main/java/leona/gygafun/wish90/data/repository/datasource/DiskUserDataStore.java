@@ -17,6 +17,7 @@ package leona.gygafun.wish90.data.repository.datasource;
 
 import leona.gygafun.wish90.data.cache.UserCache;
 import leona.gygafun.wish90.data.entity.UserEntity;
+import leona.gygafun.wish90.data.entity.UserMomentEntity;
 
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class DiskUserDataStore implements UserDataStore {
     }
 
     @Override
-    public Observable<UserEntity> userEntityDetails(final int userId) {
-        return this.userCache.get(userId);
+    public Observable<UserEntity> userEntityDetails(final int user_id) {
+        return this.userCache.get(user_id);
     }
 }

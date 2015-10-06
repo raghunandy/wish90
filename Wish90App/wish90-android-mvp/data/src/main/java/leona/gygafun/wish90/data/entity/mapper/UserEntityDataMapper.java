@@ -47,12 +47,14 @@ public class UserEntityDataMapper {
     public User transform(UserEntity userEntity) {
         User user = null;
         if (userEntity != null) {
-            user = new User(userEntity.getUserId());
-            user.setCoverUrl(userEntity.getCoverUrl());
-            user.setFullName(userEntity.getFullname());
-            user.setDescription(userEntity.getDescription());
-            user.setFollowers(userEntity.getFollowers());
-            user.setEmail(userEntity.getEmail());
+            user = new User(userEntity.getUserID());
+            user.setUsername(userEntity.getUsername());
+            user.setPassword(userEntity.getPassword());
+            user.setUserEmailAddress(userEntity.getUserEmailAddress());
+            user.setoAuthToken(userEntity.getoAuthToken());
+            user.setCurrentSignInDate(userEntity.getCurrentSignInDate());
+            user.setLastSignInDate(userEntity.getLastSignInDate());
+            user.setUserAccessCount(userEntity.getUserAccessCount());
         }
 
         return user;
@@ -73,7 +75,6 @@ public class UserEntityDataMapper {
                 userList.add(user);
             }
         }
-
         return userList;
     }
 
@@ -81,34 +82,32 @@ public class UserEntityDataMapper {
     public UserMoment transform(UserMomentEntity dateTimeEntity) {
         UserMoment userMoment = null;
         if (dateTimeEntity != null) {
-            userMoment=dateTimeEntity;
-//            userMoment = new UserMoment(dateTimeEntity.getMomentId());
-//            user.setCoverUrl(userEntity.getCoverUrl());
-//            user.setFullName(userEntity.getFullname());
-//            user.setDescription(userEntity.getDescription());
-//            user.setFollowers(userEntity.getFollowers());
-//            user.setEmail(userEntity.getEmail());
+            userMoment = new UserMoment(dateTimeEntity.getMomentID());
+            userMoment.setUserID(dateTimeEntity.getUserID());
+            userMoment.setMommentType(dateTimeEntity.getMommentType());
+            userMoment.setMomentDateTime(dateTimeEntity.getMomentDateTime());
+            userMoment.setIsCustomizable(dateTimeEntity.getIsCustomizable());
+            userMoment.setRefContacts(dateTimeEntity.getRefContacts());
         }
-
         return userMoment;
     }
 
     /**
-     * Transform a List of {@link UserEntity} into a Collection of {@link User}.
+     * Transform a List of {@link UserMomentEntity} into a Collection of {@link UserMoment}.
      *
      * @param userEntityCollection Object Collection to be transformed.
-     * @return {@link User} if valid {@link UserEntity} otherwise null.
+     * @return {@link UserMoment} if valid {@link UserMomentEntity} otherwise null.
      */
     public List<UserMoment> transformMoments(Collection<UserMomentEntity> userEntityCollection) {
-        List<UserMoment> userList = new ArrayList<>(20);
+        List<UserMoment> userMomentList = new ArrayList<>(20);
         UserMoment userMoment;
         for (UserMomentEntity userMomentEntity : userEntityCollection) {
             userMoment = transform(userMomentEntity);
             if (userMoment != null) {
-                userList.add(userMoment);
+                userMomentList.add(userMoment);
             }
         }
 
-        return userList;
+        return userMomentList;
     }
 }

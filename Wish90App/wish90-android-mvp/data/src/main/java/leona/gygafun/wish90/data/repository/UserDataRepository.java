@@ -15,6 +15,7 @@
  */
 package leona.gygafun.wish90.data.repository;
 
+import leona.gygafun.wish90.data.entity.UserEntity;
 import leona.gygafun.wish90.data.entity.mapper.UserEntityDataMapper;
 import leona.gygafun.wish90.data.repository.datasource.UserDataStore;
 import leona.gygafun.wish90.data.repository.datasource.UserDataStoreFactory;
@@ -66,5 +67,7 @@ public class UserDataRepository implements UserRepository {
         final UserDataStore userDataStore = this.userDataStoreFactory.create(userId);
         return userDataStore.userEntityDetails(userId)
                 .map(userEntity -> this.userEntityDataMapper.transform(userEntity));
+
     }
+
 }

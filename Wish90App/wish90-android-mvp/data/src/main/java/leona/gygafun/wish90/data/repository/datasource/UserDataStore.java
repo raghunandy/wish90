@@ -37,4 +37,16 @@ public interface UserDataStore {
      */
     Observable<UserEntity> userEntityDetails(final int userId);
 
+    /**
+     * Get an {@link rx.Observable} which will emit a List of {@link UserMomentEntity}.
+     */
+   // Observable<List<UserMomentEntity>> userMomentEntityList();
+
+    /**
+     * Get an {@link rx.Observable} which will emit a {@link UserMomentEntity} by its id.
+     *
+     * @param momentID The id to retrieve user data.
+     */
+
+   // Observable<UserMomentEntity> userMomentEntityDetails(final int momentID);
 }

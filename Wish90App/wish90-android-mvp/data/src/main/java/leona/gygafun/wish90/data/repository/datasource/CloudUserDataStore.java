@@ -50,12 +50,13 @@ public class CloudUserDataStore implements UserDataStore {
         this.userCache = userCache;
     }
 
+
     @Override
     public Observable<List<UserEntity>> userEntityList() {
         return this.restApi.userEntityList();
     }
 
-    @Override
+
     public Observable<UserEntity> userEntityDetails(final int userId) {
         return this.restApi.userEntityById(userId)
                 .doOnNext(saveToCacheAction);

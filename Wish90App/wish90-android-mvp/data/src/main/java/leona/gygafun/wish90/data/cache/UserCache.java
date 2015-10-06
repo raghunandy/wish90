@@ -16,6 +16,7 @@
 package leona.gygafun.wish90.data.cache;
 
 import leona.gygafun.wish90.data.entity.UserEntity;
+import leona.gygafun.wish90.data.entity.UserMomentEntity;
 
 import rx.Observable;
 
@@ -28,7 +29,7 @@ public interface UserCache {
      *
      * @param userId The user id to retrieve data.
      */
-    Observable<UserEntity> get(final int userId);
+     Observable<UserEntity> get(final int userId);
 
     /**
      * Puts and element into the cache.
@@ -44,6 +45,23 @@ public interface UserCache {
      * @return true if the element is cached, otherwise false.
      */
     boolean isCached(final int userId);
+
+
+
+    /**
+     * Gets an {@link rx.Observable} which will emit a {@link UserEntity}.
+     *
+     * @param userId The user id to retrieve data.
+     */
+   // Observable<UserMomentEntity> getMoment(final int userId);
+
+    /**
+     * Puts and element into the cache.
+     *
+     * @param userEntity Element to insert in the cache.
+     */
+  //  void put(UserMomentEntity userEntity);
+
 
     /**
      * Checks if the cache is expired.

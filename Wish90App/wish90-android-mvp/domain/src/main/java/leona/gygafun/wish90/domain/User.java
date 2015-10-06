@@ -15,79 +15,140 @@
  */
 package leona.gygafun.wish90.domain;
 
+import java.util.Date;
+
+
 /**
  * Class that represents a User in the domain layer.
  */
 public class User {
 
-  private final int userId;
 
-  public User(int userId) {
-    this.userId = userId;
+  private int userID = 0;
+  private String username = null;
+  private String password = null;
+  private String userEmailAddress = null;
+  private String oAuthToken = null;
+  private Date currentSignInDate;
+  private Date lastSignInDate;
+  private int userAccessCount = 0;
+
+  public User(int userId) {}
+
+  public int getUserID() {
+    return userID;
   }
 
-  private String coverUrl;
-  private String fullName;
-  private String email;
-  private String description;
-  private int followers;
-
-  public int getUserId() {
-    return userId;
+  public void setUserID(int userID) {
+    this.userID = userID;
   }
 
-  public String getCoverUrl() {
-    return coverUrl;
+  public String getUsername() {
+    return username;
   }
 
-  public void setCoverUrl(String coverUrl) {
-    this.coverUrl = coverUrl;
+  public void setUsername(String username) {
+    this.username = username;
   }
 
-  public String getFullName() {
-    return fullName;
+  public String getPassword() {
+    return password;
   }
 
-  public void setFullName(String fullName) {
-    this.fullName = fullName;
+  public void setPassword(String password) {
+    this.password = password;
   }
 
-  public String getEmail() {
-    return email;
+  public String getUserEmailAddress() {
+    return userEmailAddress;
   }
 
-  public void setEmail(String email) {
-    this.email = email;
+  public void setUserEmailAddress(String userEmailAddress) {
+    this.userEmailAddress = userEmailAddress;
   }
 
-  public String getDescription() {
-    return description;
+  public String getoAuthToken() {
+    return oAuthToken;
   }
 
-  public void setDescription(String description) {
-    this.description = description;
+  public void setoAuthToken(String oAuthToken) {
+    this.oAuthToken = oAuthToken;
   }
 
-  public int getFollowers() {
-    return followers;
+  public Date getCurrentSignInDate() {
+    return currentSignInDate;
   }
 
-  public void setFollowers(int followers) {
-    this.followers = followers;
+  public void setCurrentSignInDate(Date currentSignInDate) {
+    this.currentSignInDate = currentSignInDate;
   }
 
-  @Override public String toString() {
-    StringBuilder stringBuilder = new StringBuilder();
-
-    stringBuilder.append("***** User Details *****\n");
-    stringBuilder.append("id=" + this.getUserId() + "\n");
-    stringBuilder.append("cover url=" + this.getCoverUrl() + "\n");
-    stringBuilder.append("fullname=" + this.getFullName() + "\n");
-    stringBuilder.append("email=" + this.getEmail() + "\n");
-    stringBuilder.append("description=" + this.getDescription() + "\n");
-    stringBuilder.append("followers=" + this.getFollowers() + "\n");
-    stringBuilder.append("*******************************");
-
-    return stringBuilder.toString();
+  public Date getLastSignInDate() {
+    return lastSignInDate;
   }
+
+  public void setLastSignInDate(Date lastSignInDate) {
+    this.lastSignInDate = lastSignInDate;
+  }
+
+  public int getUserAccessCount() {
+    return userAccessCount;
+  }
+
+  public void setUserAccessCount(int userAccessCount) {
+    this.userAccessCount = userAccessCount;
+  }
+
+  @Override
+  public String toString() {
+    return "User{" +
+            "userID=" + userID +
+            ", username='" + username + '\'' +
+            ", password='" + password + '\'' +
+            ", userEmailAddress='" + userEmailAddress + '\'' +
+            ", oAuthToken='" + oAuthToken + '\'' +
+            ", currentSignInDate=" + currentSignInDate +
+            ", lastSignInDate=" + lastSignInDate +
+            ", userAccessCount=" + userAccessCount +
+            '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    User that = (User) o;
+
+    if (userID != that.userID) return false;
+    if (userAccessCount != that.userAccessCount) return false;
+    if (username != null ? !username.equals(that.username) : that.username != null)
+      return false;
+    if (password != null ? !password.equals(that.password) : that.password != null)
+      return false;
+    if (userEmailAddress != null ? !userEmailAddress.equals(that.userEmailAddress) : that.userEmailAddress != null)
+      return false;
+    if (oAuthToken != null ? !oAuthToken.equals(that.oAuthToken) : that.oAuthToken != null)
+      return false;
+    if (currentSignInDate != null ? !currentSignInDate.equals(that.currentSignInDate) : that.currentSignInDate != null)
+      return false;
+    return !(lastSignInDate != null ? !lastSignInDate.equals(that.lastSignInDate) : that.lastSignInDate != null);
+
+  }
+
+  @Override
+  public int hashCode() {
+    int result = userID;
+    result = 31 * result + (username != null ? username.hashCode() : 0);
+    result = 31 * result + (password != null ? password.hashCode() : 0);
+    result = 31 * result + (userEmailAddress != null ? userEmailAddress.hashCode() : 0);
+    result = 31 * result + (oAuthToken != null ? oAuthToken.hashCode() : 0);
+    result = 31 * result + (currentSignInDate != null ? currentSignInDate.hashCode() : 0);
+    result = 31 * result + (lastSignInDate != null ? lastSignInDate.hashCode() : 0);
+    result = 31 * result + userAccessCount;
+    return result;
+  }
+
+
+
 }

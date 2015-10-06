@@ -45,8 +45,8 @@ public class UserModelDataMapperTest extends TestCase {
     UserModel userModel = userModelDataMapper.transform(user);
 
     assertThat(userModel, is(instanceOf(UserModel.class)));
-    assertThat(userModel.getUserId(), is(FAKE_USER_ID));
-    assertThat(userModel.getFullName(), is(FAKE_FULLNAME));
+    assertThat(userModel.getUserID(), is(FAKE_USER_ID));
+    assertThat(userModel.getUsername(), is(FAKE_FULLNAME));
   }
 
   public void testTransformUserCollection() {
@@ -66,7 +66,7 @@ public class UserModelDataMapperTest extends TestCase {
 
   private User createFakeUser() {
     User user = new User(FAKE_USER_ID);
-    user.setFullName(FAKE_FULLNAME);
+    user.setUsername(FAKE_FULLNAME);
 
     return user;
   }

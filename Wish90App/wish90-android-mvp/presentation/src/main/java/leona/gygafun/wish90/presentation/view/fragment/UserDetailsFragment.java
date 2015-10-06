@@ -95,7 +95,7 @@ public class UserDetailsFragment extends BaseFragment implements UserDetailsView
     this.userId = getArguments().getInt(ARGUMENT_KEY_USER_ID);
     this.userDetailsPresenter.initialize(this.userId);
   }
-
+/*
   @Override public void renderUser(UserModel user) {
     if (user != null) {
       this.iv_cover.setImageUrl(user.getCoverUrl());
@@ -105,7 +105,7 @@ public class UserDetailsFragment extends BaseFragment implements UserDetailsView
       this.tv_description.setText(user.getDescription());
     }
   }
-
+*/
   @Override public void showLoading() {
     this.rl_progress.setVisibility(View.VISIBLE);
     this.getActivity().setProgressBarIndeterminateVisibility(true);

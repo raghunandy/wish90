@@ -16,95 +16,155 @@
 package leona.gygafun.wish90.data.entity;
 
 import com.google.gson.annotations.SerializedName;
+import java.util.Date;
 
 /**
- * User Entity used in the data layer.
+ * Created by rkrasniqi on 10/6/15.
  */
+
+
 public class UserEntity {
 
-    @SerializedName("id")
-    private int userId;
+    @SerializedName("user_id")
+    private int userID = 0;
 
-    @SerializedName("cover_url")
-    private String coverUrl;
+    @SerializedName("username")
+    private String username = null;
 
-    @SerializedName("full_name")
-    private String fullname;
+    @SerializedName("paswword")
+    private String password = null;
 
-    @SerializedName("description")
-    private String description;
+    @SerializedName("user_email_address")
+    private String userEmailAddress = null;
 
-    @SerializedName("followers")
-    private int followers;
+    @SerializedName("o_auth_token")
+    private String oAuthToken = null;
 
-    @SerializedName("email")
-    private String email;
+    @SerializedName("current_sign_in_date")
+    private Date currentSignInDate;
 
-    public UserEntity() {
-        //empty
+    @SerializedName("last_sign_in_date")
+    private Date lastSignInDate;
+
+    @SerializedName("user_access_count")
+    private int userAccessCount = 0;
+
+
+    public UserEntity() {}
+
+    public int getUserID() {
+        return userID;
     }
 
-    public int getUserId() {
-        return userId;
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public String getUsername() {
+        return username;
     }
 
-    public String getCoverUrl() {
-        return coverUrl;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setCoverUrl(String coverUrl) {
-        this.coverUrl = coverUrl;
+    public String getPassword() {
+        return password;
     }
 
-    public String getFullname() {
-        return fullname;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public String getUserEmailAddress() {
+        return userEmailAddress;
     }
 
-    public String getDescription() {
-        return description;
+    public void setUserEmailAddress(String userEmailAddress) {
+        this.userEmailAddress = userEmailAddress;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public String getoAuthToken() {
+        return oAuthToken;
     }
 
-    public int getFollowers() {
-        return followers;
+    public void setoAuthToken(String oAuthToken) {
+        this.oAuthToken = oAuthToken;
     }
 
-    public void setFollowers(int followers) {
-        this.followers = followers;
+    public Date getCurrentSignInDate() {
+        return currentSignInDate;
     }
 
-    public String getEmail() {
-        return email;
+    public void setCurrentSignInDate(Date currentSignInDate) {
+        this.currentSignInDate = currentSignInDate;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public Date getLastSignInDate() {
+        return lastSignInDate;
+    }
+
+    public void setLastSignInDate(Date lastSignInDate) {
+        this.lastSignInDate = lastSignInDate;
+    }
+
+    public int getUserAccessCount() {
+        return userAccessCount;
+    }
+
+    public void setUserAccessCount(int userAccessCount) {
+        this.userAccessCount = userAccessCount;
     }
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        stringBuilder.append("***** User Entity Details *****\n");
-        stringBuilder.append("id=" + this.getUserId() + "\n");
-        stringBuilder.append("cover url=" + this.getCoverUrl() + "\n");
-        stringBuilder.append("fullname=" + this.getFullname() + "\n");
-        stringBuilder.append("email=" + this.getEmail() + "\n");
-        stringBuilder.append("description=" + this.getDescription() + "\n");
-        stringBuilder.append("followers=" + this.getFollowers() + "\n");
-        stringBuilder.append("*******************************");
-
-        return stringBuilder.toString();
+        return "UserEntity{" +
+                "userID=" + userID +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", userEmailAddress='" + userEmailAddress + '\'' +
+                ", oAuthToken='" + oAuthToken + '\'' +
+                ", currentSignInDate=" + currentSignInDate +
+                ", lastSignInDate=" + lastSignInDate +
+                ", userAccessCount=" + userAccessCount +
+                '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserEntity that = (UserEntity) o;
+
+        if (userID != that.userID) return false;
+        if (userAccessCount != that.userAccessCount) return false;
+        if (username != null ? !username.equals(that.username) : that.username != null)
+            return false;
+        if (password != null ? !password.equals(that.password) : that.password != null)
+            return false;
+        if (userEmailAddress != null ? !userEmailAddress.equals(that.userEmailAddress) : that.userEmailAddress != null)
+            return false;
+        if (oAuthToken != null ? !oAuthToken.equals(that.oAuthToken) : that.oAuthToken != null)
+            return false;
+        if (currentSignInDate != null ? !currentSignInDate.equals(that.currentSignInDate) : that.currentSignInDate != null)
+            return false;
+        return !(lastSignInDate != null ? !lastSignInDate.equals(that.lastSignInDate) : that.lastSignInDate != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = userID;
+        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (userEmailAddress != null ? userEmailAddress.hashCode() : 0);
+        result = 31 * result + (oAuthToken != null ? oAuthToken.hashCode() : 0);
+        result = 31 * result + (currentSignInDate != null ? currentSignInDate.hashCode() : 0);
+        result = 31 * result + (lastSignInDate != null ? lastSignInDate.hashCode() : 0);
+        result = 31 * result + userAccessCount;
+        return result;
+    }
+
+
 }
