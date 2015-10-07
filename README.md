@@ -8,4 +8,15 @@ Branches To Check:
 + Authors: Rrazarta & Raghu
 + Executable Project Location: https://github.com/visumagic/wish90/tree/master/Wish90App/wish90-android-mvp
 + 
+#### Branch: convey a wish:  
++ Author: Deepti
++ Executable Project Location: https://github.com/visumagic/wish90/tree/convey-a-wish-module/Wish90App/android
++ Description:
+The module is built using a driver which accepts friend name and composes a dynamic image when "Convey wish" is selected. After integration with UI timer and other modules, this module will be fully functional. 
+
+#### Branch: notification:  
++ Author: Deepti
++ Executable Project Location: https://github.com/visumagic/wish90/tree/notifications-module/Wish90App/android
++ Description:
+The module generates a notification when "Click for notification" button is clicked. Upon clicking the notification, the app comes back to its initial stage.
 
