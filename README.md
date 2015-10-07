@@ -28,3 +28,10 @@ The module generates a notification when "Click for notification" button is clic
 This module gathers information from phone contacts and displays contact name and Date of birth.
 
 
+#### Branch: AgeCalculatorApp
++ Author: Siva Kiran
++ [Executable Project Location]()
++ Description:
+This module takes the date of birth as the input and calculates the current age. (Tutorial Link : http://freeprojectscode.com/android-projects/age-calculator/814/ )
+
+
