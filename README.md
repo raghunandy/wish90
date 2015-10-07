@@ -14,19 +14,13 @@ Branches To Check:
 + Author: Deepti
 + [Executable Project Location] (https://github.com/visumagic/wish90/tree/convey-a-wish-module/Wish90App/android)
 + Description: 
-The module is built using a driver which accepts friend name and composes a dynamic image when "Convey wish" is selected. After integration with UI timer and other modules, this module will be fully functional. 
+The module is built using a driver which accepts friend name and displays a notification showing that friend has a birthday. When user clicks the notification a dynamic image is composed. After integration with UI timer and other modules (when it gets actual event name, friend name, time etc.), this module will be fully functional. 
 
-#### Branch: notification:  
-+ Author: Deepti
-+ [Executable Project Location](https://github.com/visumagic/wish90/tree/notifications-module/Wish90App/android)
-+ Description:
-The module generates a notification when "Click for notification" button is clicked. Upon clicking the notification, the app comes back to its initial stage.
 #### Branch: Contacts Gathering
 + Author: Venkatesh 
 + [Executable Project Location]()
 + Description:
 This module gathers information from phone contacts and displays contact name and Date of birth.
-
 
 #### Branch: ui-timer-module
 + Author: Siva Kiran
