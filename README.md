@@ -7,7 +7,7 @@ Branches To Check:
 #### Branch: master: skeleton and data module 
 + Authors: Rrazarta & Raghu
 + Executable Project Location: https://github.com/visumagic/wish90/tree/master/Wish90App/wish90-android-mvp
-+ 
+
 #### Branch: convey a wish:  
 + Author: Deepti
 + Executable Project Location: https://github.com/visumagic/wish90/tree/convey-a-wish-module/Wish90App/android
