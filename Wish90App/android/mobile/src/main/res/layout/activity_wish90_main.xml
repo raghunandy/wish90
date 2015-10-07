@@ -11,20 +11,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Convey a Wish"
-        android:id="@+id/btnConveyWish"
+        android:text="Notify"
+        android:id="@+id/btnNotify"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="buttonClick" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:id="@+id/imgIconWithWish"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true" />
 
     <TextView
         android:layout_width="wrap_content"
