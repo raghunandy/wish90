@@ -28,7 +28,7 @@ The module generates a notification when "Click for notification" button is clic
 This module gathers information from phone contacts and displays contact name and Date of birth.
 
 
-#### Branch: AgeCalculatorApp
+#### Branch: ui-timer-module
 + Author: Siva Kiran
 + [Executable Project Location]()
 + Description:
