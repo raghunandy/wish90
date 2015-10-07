@@ -4,7 +4,7 @@ Wish90 project devided into 4 modules. Each module's work is delivered under var
 Evenentually all the code will be mearged into one branch after interation 2. 
 
 Branches To Check:
-#### master: skeleton and data module 
+#### Branch: master: skeleton and data module 
 + Authors: Rrazarta & Raghu
 + Executable Project Location: https://github.com/visumagic/wish90/tree/master/Wish90App/wish90-android-mvp
 + 
