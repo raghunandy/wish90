@@ -21,4 +21,10 @@ The module is built using a driver which accepts friend name and composes a dyna
 + [Executable Project Location](https://github.com/visumagic/wish90/tree/notifications-module/Wish90App/android)
 + Description:
 The module generates a notification when "Click for notification" button is clicked. Upon clicking the notification, the app comes back to its initial stage.
+#### Branch: Contacts Gathering
++ Author: Venkatesh 
++ [Executable Project Location]()
++ Description:
+This module gathers information from phone contacts and displays contact name and Date of birth.
+
 
