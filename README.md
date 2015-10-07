@@ -6,6 +6,8 @@ Evenentually all the code will be mearged into one branch after interation 2.
 Branches To Check:
 #### Branch: master: skeleton and data module 
 + Authors: Rrazarta & Raghu
++ Rrezarta: The integral part of the Wish90 app is to divide the schema of entire application into 4 different layers. I'm specifically responsible handling the data layer of the Wish90 app. Technically my role is to ensure that the the flow of data is coordinated correctly from other layers and vice-versa. You will see in the code that a data mappers is needed in order to accomplish data transformation and the creation of objects to allow the integration of data visible to the application entire design 
++ 
 + Description - App Skeleton : App Skeleton is the project refered [Architecting Android The Clean Way](http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/). 
 + [Executable Project Location] (https://github.com/visumagic/wish90/tree/master/Wish90App/wish90-android-mvp)
 
