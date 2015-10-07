@@ -18,7 +18,7 @@ The module is built using a driver which accepts friend name and displays a noti
 
 #### Branch: Contacts Gathering
 + Author: Venkatesh 
-+ [Executable Project Location]()
++ [Executable Project Location](https://github.com/visumagic/wish90/tree/contacts-module/Wish90App/android-contacts-app-module/mobile)
 + Description:
 This module gathers information from phone contacts and displays contact name and Date of birth.
 
