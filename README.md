@@ -29,10 +29,10 @@ This module gathers information from phone contacts and displays contact name an
 This module takes the date of birth as the input and calculates and displays the current age. 
 
 References:
-[Architecting Android The Clean Way](http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/)
-[Material Page Viewer](https://github.com/florent37/MaterialViewPager)
-[Age Calculator Reference](http://freeprojectscode.com/android-projects/age-calculator/814/)
-[Facebook Connectivity](http://stackoverflow.com/questions/6236251/android-get-facebook-friends-list)
-[Compose Dynamic Image](https://gist.github.com/andrei-mak/8573359)
++ [Architecting Android The Clean Way](http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/)
++ [Material Page Viewer](https://github.com/florent37/MaterialViewPager)
++ [Age Calculator Reference](http://freeprojectscode.com/android-projects/age-calculator/814/)
++ [Facebook Connectivity](http://stackoverflow.com/questions/6236251/android-get-facebook-friends-list)
++ [Compose Dynamic Image](https://gist.github.com/andrei-mak/8573359)
 
 
