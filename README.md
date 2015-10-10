@@ -34,6 +34,6 @@ References:
 + [Age Calculator Reference](http://freeprojectscode.com/android-projects/age-calculator/814/)
 + [Facebook Connectivity](http://stackoverflow.com/questions/6236251/android-get-facebook-friends-list)
 + [Compose Dynamic Image](https://gist.github.com/andrei-mak/8573359)
-+ [Icon Image] (http://phenomena.nationalgeographic.com/2015/08/19/whos-the-first-person-in-history-whose-name-we-know/)
++ [Icon Images (Purchases are pending)] (http://phenomena.nationalgeographic.com/2015/08/19/whos-the-first-person-in-history-whose-name-we-know/)
 
 
