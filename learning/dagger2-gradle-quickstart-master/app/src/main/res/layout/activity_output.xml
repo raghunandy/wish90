@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InputActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:layout_marginTop="?attr/actionBarSize"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:id="@+id/input0"
+            android:editable="false"
+            android:gravity="right"
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
+        <EditText
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:id="@+id/input1"
+            android:editable="false"
+            android:gravity="right"
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
+        <EditText
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:id="@+id/input2"
+            android:editable="false"
+            android:gravity="right"
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
+        <EditText
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:id="@+id/input3"
+            android:editable="false"
+            android:gravity="right"
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
+        <EditText
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:id="@+id/input4"
+            android:editable="false"
+            android:gravity="right"
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

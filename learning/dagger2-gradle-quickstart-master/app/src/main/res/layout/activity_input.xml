@@ -1,0 +1,70 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InputActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:layout_marginTop="?attr/actionBarSize"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:id="@+id/input0"
+            android:text="0"
+            android:gravity="right"
+            android:inputType="number"
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
+        <EditText
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:id="@+id/input1"
+            android:text="4"
+            android:gravity="right"
+            android:inputType="number"
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
+        <EditText
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:id="@+id/input2"
+            android:text="2"
+            android:gravity="right"
+            android:inputType="number"
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
+        <EditText
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:id="@+id/input3"
+            android:text="1"
+            android:gravity="right"
+            android:inputType="number"
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
+        <EditText
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:id="@+id/input4"
+            android:text="3"
+            android:gravity="right"
+            android:inputType="number"
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/sortButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="center_vertical"
+        android:text="@string/sort"
+        android:layout_margin="16dp"
+        />
+
+</FrameLayout>
