@@ -6,32 +6,40 @@ import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class Wish90MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
 
+public class Wish90MainActivity extends AppCompatActivity {
+        String name,displayBirthday;
+        Wish90MainActivity abc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wish90_main);
-        TextView contactView = (TextView) findViewById(R.id.ContactView);
+        RecyclerView rc;
+        rc=(RecyclerView)findViewById(R.id.rv);
+        rc.setHasFixedSize(true);
+        LinearLayoutManager llm=new LinearLayoutManager(this);
+        rc.setLayoutManager(llm);
+         List<Personsinfo> persons;
+        persons=new ArrayList<>();
 
         Cursor cursor = getContacts();
         while (cursor.moveToNext()) {
-            String name=cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-            String displayBirthday = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Event.START_DATE));
-
-            contactView.append(name);
-            contactView.append("\n");
-
-            contactView.append(displayBirthday);
-            contactView.append("\n");
+             name=cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+            displayBirthday = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Event.START_DATE));
+            persons.add(new Personsinfo(name,displayBirthday));
 
 
         }
-
+        MyAdapter adapter = new MyAdapter(persons);
+        rc.setAdapter(adapter);
     }
 
     private Cursor getContacts() {
