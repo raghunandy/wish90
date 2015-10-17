@@ -17,6 +17,7 @@ import java.util.List;
 
 public class Wish90MainActivity extends AppCompatActivity {
         String name,displayBirthday;
+        public static List<Personsinfo> persons;
         Wish90MainActivity abc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

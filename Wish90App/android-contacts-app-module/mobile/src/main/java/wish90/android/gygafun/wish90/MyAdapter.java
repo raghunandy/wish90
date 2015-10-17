@@ -2,6 +2,7 @@ package wish90.android.gygafun.wish90;
 
 import android.content.Context;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,7 +15,11 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
-    List<Personsinfo> persons;
+    public static List<Personsinfo> persons;
+    String nameofperson;
+    String dateofbirth;
+    MyAdapter()
+    {}
     MyAdapter(List<Personsinfo> persons){
         this.persons=persons;
     }
@@ -34,22 +39,37 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         holder.DOB.setText(persons.get(position).dateofbirth);
     }
 
+
+
     @Override
     public int getItemCount() {
         return persons.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-
+        public View view;
         ImageView image;
         TextView name;
         TextView DOB;
-
+        Intent intent;
+        MyAdapter adapter1=new MyAdapter();
         public ViewHolder(View v) {
             super(v);
-
+            view=v;
             image=(ImageView)v.findViewById(R.id.person_photo);
             name=(TextView)v.findViewById(R.id.person_name);
+            name.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int x=getPosition();
+
+                    intent=new Intent(view.getContext(),Dispalyinfo.class);
+
+                    intent.putExtra("Name",persons.get(x).name);
+                    intent.putExtra("dateofbirth",persons.get(x).dateofbirth);
+                    view.getContext().startActivity(intent);
+                }
+            });
             DOB=(TextView)v.findViewById(R.id.person_age);
 
         }
