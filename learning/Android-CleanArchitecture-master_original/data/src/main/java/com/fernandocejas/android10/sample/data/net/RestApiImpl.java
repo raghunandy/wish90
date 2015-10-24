@@ -21,6 +21,9 @@ import android.net.NetworkInfo;
 import com.fernandocejas.android10.sample.data.entity.UserEntity;
 import com.fernandocejas.android10.sample.data.entity.mapper.UserEntityJsonMapper;
 import com.fernandocejas.android10.sample.data.exception.NetworkConnectionException;
+
+import org.json.JSONException;
+
 import java.net.MalformedURLException;
 import java.util.List;
 import rx.Observable;
@@ -52,7 +55,6 @@ public class RestApiImpl implements RestApi {
     return Observable.create(new Observable.OnSubscribe<List<UserEntity>>() {
       @Override public void call(Subscriber<? super List<UserEntity>> subscriber) {
 
-        if (isThereInternetConnection()) {
           try {
             String responseUserEntities = getUserEntitiesFromApi();
             if (responseUserEntities != null) {
@@ -65,9 +67,7 @@ public class RestApiImpl implements RestApi {
           } catch (Exception e) {
             subscriber.onError(new NetworkConnectionException(e.getCause()));
           }
-        } else {
-          subscriber.onError(new NetworkConnectionException());
-        }
+
       }
     });
   }
@@ -76,7 +76,6 @@ public class RestApiImpl implements RestApi {
     return Observable.create(new Observable.OnSubscribe<UserEntity>() {
       @Override public void call(Subscriber<? super UserEntity> subscriber) {
 
-        if (isThereInternetConnection()) {
           try {
             String responseUserDetails = getUserDetailsFromApi(userId);
             if (responseUserDetails != null) {
@@ -88,20 +87,18 @@ public class RestApiImpl implements RestApi {
           } catch (Exception e) {
             subscriber.onError(new NetworkConnectionException(e.getCause()));
           }
-        } else {
-          subscriber.onError(new NetworkConnectionException());
-        }
+
       }
     });
   }
 
-  private String getUserEntitiesFromApi() throws MalformedURLException {
-    return ApiConnection.createGET(RestApi.API_URL_GET_USER_LIST).requestSyncCall();
+  private String getUserEntitiesFromApi() throws MalformedURLException, JSONException {
+    return new ApiConnection(context).requestSyncCall();
   }
 
-  private String getUserDetailsFromApi(int userId) throws MalformedURLException {
+  private String getUserDetailsFromApi(int userId) throws MalformedURLException, JSONException {
     String apiUrl = RestApi.API_URL_GET_USER_DETAILS + userId + ".json";
-    return ApiConnection.createGET(apiUrl).requestSyncCall();
+    return new ApiConnection(context).requestSyncCall();
   }
 
   /**
@@ -109,14 +106,5 @@ public class RestApiImpl implements RestApi {
    *
    * @return true device with internet connection, otherwise false.
    */
-  private boolean isThereInternetConnection() {
-    boolean isConnected;
 
-    ConnectivityManager connectivityManager =
-        (ConnectivityManager) this.context.getSystemService(Context.CONNECTIVITY_SERVICE);
-    NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-    isConnected = (networkInfo != null && networkInfo.isConnectedOrConnecting());
-
-    return isConnected;
-  }
 }
