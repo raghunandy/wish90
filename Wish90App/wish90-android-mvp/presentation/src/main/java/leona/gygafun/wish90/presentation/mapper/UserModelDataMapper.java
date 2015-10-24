@@ -1,23 +1,18 @@
-/**
- * Copyright (C) 2015 Fernando Cejas Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+/* Wish90 */
+
+//Created by: rkrasniqi
+
 package leona.gygafun.wish90.presentation.mapper;
 
 import leona.gygafun.wish90.domain.User;
+import leona.gygafun.wish90.domain.UserMoment;
+import leona.gygafun.wish90.domain.ConveySchedule;
+
 import leona.gygafun.wish90.presentation.di.PerActivity;
 import leona.gygafun.wish90.presentation.model.UserModel;
+import leona.gygafun.wish90.presentation.model.UserMomentModel;
+import leona.gygafun.wish90.presentation.model.ConveyScheduleModel;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -74,5 +69,90 @@ public class UserModelDataMapper {
     }
 
     return userModelsCollection;
+  }
+
+  /**
+   * Transform a {@link UserMoment} into an {@link UserMomentModel}.
+   *
+   * @param userMoment Object to be transformed.
+   * @return {@link UserMomentModel}.
+   */
+  public UserMomentModel transformMoment(UserMoment userMoment) {
+    if (userMoment == null) {
+      throw new IllegalArgumentException("Cannot transform a null value");
+    }
+    UserMomentModel userMomentModel = new UserMomentModel(userMoment.getMomentID());
+    userMomentModel.setMomentID(userMoment.getMomentID());
+    userMomentModel.setUserID(userMoment.getUserID());
+    userMomentModel.setMommentType(userMoment.getMommentType());
+    userMomentModel.setMomentDateTime(userMoment.getMomentDateTime());
+    userMomentModel.setIsCustomizable(userMoment.getIsCustomizable());
+    userMomentModel.setConfigurations(userMoment.getConfigurations());
+    userMomentModel.setRefContacts(userMoment.getRefContacts());
+
+    return userMomentModel;
+  }
+
+  /**
+   * Transform a Collection of {@link UserMoment} into a Collection of {@link UserMomentModel}.
+   *
+   * @param usersMomentCollection Objects to be transformed.
+   * @return List of {@link UserMomentModel}.
+   */
+  public Collection<UserMomentModel> transformMoment(Collection<UserMoment> userMomentCollection) {
+    Collection<UserMomentModel> userMomentModelsCollection;
+
+    if (userMomentCollection != null && !userMomentCollection.isEmpty()) {
+      userMomentModelsCollection = new ArrayList<>();
+      for (UserMoment userMoment : userMomentCollection) {
+        userMomentModelsCollection.add(transformMoment(userMoment));
+      }
+    } else {
+      userMomentModelsCollection = Collections.emptyList();
+    }
+
+    return userMomentModelsCollection;
+  }
+
+
+
+  /**
+   * Transform a {@link conveySchedule} into an {@link ConveyScheduleModel}.
+   *
+   * @param conveySchedule Object to be transformed.
+   * @return {@link ConveyScheduleModel}.
+   */
+  public ConveyScheduleModel transformSchedule(ConveySchedule conveySchedule) {
+    if (conveySchedule == null) {
+      throw new IllegalArgumentException("Cannot transform a null value");
+    }
+    ConveyScheduleModel conveyScheduleModel = new ConveyScheduleModel(conveySchedule.getScheduleID());
+    conveyScheduleModel.setMomentID(conveySchedule.getMomentID());
+    conveyScheduleModel.setScheduleInstrument(conveySchedule.getScheduleInstrument());
+    conveyScheduleModel.setTemplate(conveySchedule.getTemplate());
+    conveyScheduleModel.setDeliverInstrument(conveySchedule.getDeliverInstrument());
+
+    return conveyScheduleModel;
+  }
+
+  /**
+   * Transform a Collection of {@link ConveySchedule} into a Collection of {@link ConveyScheduleModel}.
+   *
+   * @param conveyScheduleCollection Objects to be transformed.
+   * @return List of {@link ConveyScheduleModel}.
+   */
+  public Collection<ConveyScheduleModel> transformSchedule(Collection<ConveySchedule> conveyScheduleCollection) {
+    Collection<ConveyScheduleModel> conveyScheduleModelCollection;
+
+    if (conveyScheduleCollection != null && !conveyScheduleCollection.isEmpty()) {
+      conveyScheduleModelCollection = new ArrayList<>();
+      for (ConveySchedule conveySchedule : conveyScheduleCollection) {
+        conveyScheduleModelCollection.add(transformSchedule(conveySchedule));
+      }
+    } else {
+      conveyScheduleModelCollection = Collections.emptyList();
+    }
+
+    return conveyScheduleModelCollection;
   }
 }
