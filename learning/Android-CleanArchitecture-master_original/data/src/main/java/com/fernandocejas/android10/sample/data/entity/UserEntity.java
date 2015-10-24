@@ -40,8 +40,9 @@ public class UserEntity {
   @SerializedName("email")
   private String email;
 
-  public UserEntity() {
-    //empty
+  public UserEntity(String x, String y) {
+    this.fullname=x;
+    this.description=y;
   }
 
   public int getUserId() {

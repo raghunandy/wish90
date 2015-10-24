@@ -22,6 +22,10 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
+
+import com.fernandocejas.android10.sample.data.entity.UserEntity;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 
@@ -49,7 +53,7 @@ public class ApiConnection implements Callable<String> {
 
     private static final String CONTENT_TYPE_LABEL = "Content-Type";
     private static final String CONTENT_TYPE_VALUE_JSON = "application/json; charset=utf-8";
-    public static List<ContactDetailsTemplate> persons;
+    public static List<UserEntity> persons;
     String name,displayBirthday;
     private URL url;
     private String response;
@@ -63,20 +67,10 @@ public class ApiConnection implements Callable<String> {
         return new ApiConnection(url);
     }*/
 
-    public static JSONObject getJsonFromMyFormObject(List<ContactDetailsTemplate> persons) throws JSONException
+    public static JsonArray getJsonFromMyFormObject(List<UserEntity> persons) throws JSONException
     {
-        JSONObject responseDetailsJson = new JSONObject();
-        JSONArray jsonArray = new JSONArray();
 
-        for (int i = 0; i < persons.size(); i++)
-        {
-            JSONObject formDetailsJson = new JSONObject();
-            formDetailsJson.put("person_name", persons.get(i).getName());
-            formDetailsJson.put("person_dob", persons.get(i).getDateofbirth());
-            jsonArray.put(formDetailsJson);
-        }
-        responseDetailsJson.put("forms", jsonArray);
-        return responseDetailsJson;
+        return new Gson().toJsonTree(persons).getAsJsonArray();
     }
 
     /**
@@ -115,16 +109,16 @@ public class ApiConnection implements Callable<String> {
     private void connectToApi() throws JSONException{
 
 
-        List<ContactDetailsTemplate> persons;
+        List<UserEntity> persons;
         persons=new ArrayList<>();
 
         Cursor cursor = getContacts(context);
         while (cursor.moveToNext()) {
             name=cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
             displayBirthday = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Event.START_DATE));
-            persons.add(new ContactDetailsTemplate(name,displayBirthday));
+            persons.add(new UserEntity(name,displayBirthday));
         }
-        JSONObject personJson=ApiConnection.getJsonFromMyFormObject(persons);
+        JsonArray personJson=ApiConnection.getJsonFromMyFormObject(persons);
         this.response=personJson.toString();
         //MyAdapter adapter = new MyAdapter(persons);
         //rc.setAdapter(adapter);
