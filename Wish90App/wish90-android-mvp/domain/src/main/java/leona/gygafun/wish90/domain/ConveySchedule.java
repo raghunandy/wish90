@@ -13,7 +13,7 @@ private String template;
 private String deliverInstrument;
 
 
-public ConveySchedule() {}
+public ConveySchedule(int scheduleID) {}
 
 public int getScheduleID() {
 

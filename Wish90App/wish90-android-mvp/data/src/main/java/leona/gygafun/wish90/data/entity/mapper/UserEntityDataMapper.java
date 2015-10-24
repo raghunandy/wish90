@@ -1,24 +1,18 @@
 /**
- * Copyright (C) 2015 Fernando Cejas Open Source Project
- * <p/>
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * <p/>
- * http://www.apache.org/licenses/LICENSE-2.0
- * <p/>
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Wish90
  */
+
+//Created by: rkrasniqi
+
 package leona.gygafun.wish90.data.entity.mapper;
 
 import leona.gygafun.wish90.data.entity.UserMomentEntity;
 import leona.gygafun.wish90.data.entity.UserEntity;
+import leona.gygafun.wish90.data.entity.ConveyScheduleEntity;
+
 import leona.gygafun.wish90.domain.User;
 import leona.gygafun.wish90.domain.UserMoment;
+import leona.gygafun.wish90.domain.ConveySchedule;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -60,6 +54,8 @@ public class UserEntityDataMapper {
         return user;
     }
 
+
+
     /**
      * Transform a List of {@link UserEntity} into a Collection of {@link User}.
      *
@@ -79,18 +75,24 @@ public class UserEntityDataMapper {
     }
 
 
-    public UserMoment transform(UserMomentEntity dateTimeEntity) {
+
+
+    public UserMoment transformMoment(UserMomentEntity userMomentEntity) {
         UserMoment userMoment = null;
-        if (dateTimeEntity != null) {
-            userMoment = new UserMoment(dateTimeEntity.getMomentID());
-            userMoment.setUserID(dateTimeEntity.getUserID());
-            userMoment.setMommentType(dateTimeEntity.getMommentType());
-            userMoment.setMomentDateTime(dateTimeEntity.getMomentDateTime());
-            userMoment.setIsCustomizable(dateTimeEntity.getIsCustomizable());
-            userMoment.setRefContacts(dateTimeEntity.getRefContacts());
+        if (userMomentEntity != null) {
+            userMoment = new UserMoment(userMomentEntity.getUserID());
+            userMoment.setMomentID(userMomentEntity.getMomentID());
+            userMoment.setUserID(userMomentEntity.getUserID());
+            userMoment.setMommentType(userMomentEntity.getMommentType());
+            userMoment.setMomentDateTime(userMomentEntity.getMomentDateTime());
+            userMoment.setIsCustomizable(userMomentEntity.getIsCustomizable());
+            userMoment.setConfigurations(userMomentEntity.getConfigurations());
+            userMoment.setRefContacts(userMomentEntity.getRefContacts());
         }
+
         return userMoment;
     }
+
 
     /**
      * Transform a List of {@link UserMomentEntity} into a Collection of {@link UserMoment}.
@@ -98,16 +100,50 @@ public class UserEntityDataMapper {
      * @param userEntityCollection Object Collection to be transformed.
      * @return {@link UserMoment} if valid {@link UserMomentEntity} otherwise null.
      */
-    public List<UserMoment> transformMoments(Collection<UserMomentEntity> userEntityCollection) {
+    public List<UserMoment> transformMoment(Collection<UserMomentEntity> userEntityCollection) {
         List<UserMoment> userMomentList = new ArrayList<>(20);
         UserMoment userMoment;
         for (UserMomentEntity userMomentEntity : userEntityCollection) {
-            userMoment = transform(userMomentEntity);
+            userMoment = transformMoment(userMomentEntity);
             if (userMoment != null) {
                 userMomentList.add(userMoment);
             }
         }
 
         return userMomentList;
+    }
+
+
+
+    public ConveySchedule transformSchedule(ConveyScheduleEntity scheduleEntity) {
+        ConveySchedule conveySchedule = null;
+        if (scheduleEntity != null) {
+            conveySchedule = new ConveySchedule(scheduleEntity.getScheduleID());
+            conveySchedule.setScheduleID(scheduleEntity.getScheduleID());
+            conveySchedule.setMomentID(scheduleEntity.getMomentID());
+            conveySchedule.setScheduleInstrument(scheduleEntity.getScheduleInstrument());
+            conveySchedule.setTemplate(scheduleEntity.getTemplate());
+            conveySchedule.setDeliverInstrument(scheduleEntity.getDeliverInstrument());
+        }
+        return conveySchedule;
+    }
+
+    /**
+     * Transform a List of {@link ConveyScheduleEntity} into a Collection of {@link ConveySchedule}.
+     *
+     * @param conveyScheduleEntityCollection Object Collection to be transformed.
+     * @return {@link ConveySchedule} if valid {@link ConveyScheduleEntity} otherwise null.
+     */
+    public List<ConveySchedule> transformSchedule(Collection<ConveyScheduleEntity> conveyScheduleEntityCollection) {
+        List<ConveySchedule> conveyScheduleList = new ArrayList<>(20);
+        ConveySchedule conveySchedule;
+        for (ConveyScheduleEntity conveyScheduleEntity : conveyScheduleEntityCollection) {
+            conveySchedule = transformSchedule(conveyScheduleEntity);
+            if (conveySchedule != null) {
+                conveyScheduleList.add(conveySchedule);
+            }
+        }
+
+        return conveyScheduleList;
     }
 }
