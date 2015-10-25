@@ -5,6 +5,7 @@ import leona.gygafun.wish90.data.entity.UserEntity;
 
 import java.util.List;
 
+import leona.gygafun.wish90.data.entity.UserMomentEntity;
 import rx.Observable;
 
 /**
@@ -26,7 +27,7 @@ public interface UserDataStore {
     /**
      * Get an {@link rx.Observable} which will emit a List of {@link UserMomentEntity}.
      */
-   // Observable<List<UserMomentEntity>> userMomentEntityList();
+    Observable<List<UserMomentEntity>> userMomentEntityList();
 
     /**
      * Get an {@link rx.Observable} which will emit a {@link UserMomentEntity} by its id.
@@ -34,5 +35,5 @@ public interface UserDataStore {
      * @param momentID The id to retrieve user data.
      */
 
-   // Observable<UserMomentEntity> userMomentEntityDetails(final int momentID);
+    Observable<UserMomentEntity> userMomentEntityDetails(final int momentID);
 }

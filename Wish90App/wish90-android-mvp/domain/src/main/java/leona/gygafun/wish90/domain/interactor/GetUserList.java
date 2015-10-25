@@ -25,6 +25,6 @@ public class GetUserList extends UseCase {
   }
 
   @Override public Observable buildUseCaseObservable() {
-    return this.userRepository.users();
+    return this.userRepository.userMoments();
   }
 }

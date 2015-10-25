@@ -19,6 +19,7 @@ import leona.gygafun.wish90.data.entity.UserEntity;
 
 import java.util.List;
 
+import leona.gygafun.wish90.data.entity.UserMomentEntity;
 import rx.Observable;
 
 /**
@@ -35,12 +36,12 @@ public interface RestApi {
   /**
    * Retrieves an {@link Observable} which will emit a List of {@link UserEntity}.
    */
-  Observable<List<UserEntity>> userEntityList();
+  Observable<List<UserMomentEntity>> userMomentEntityList();
 
   /**
    * Retrieves an {@link Observable} which will emit a {@link UserEntity}.
    *
    * @param userId The user id used to get user data.
    */
-  Observable<UserEntity> userEntityById(final int userId);
+  Observable<UserMomentEntity> userEntityById(final int userId);
 }

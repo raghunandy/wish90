@@ -35,4 +35,14 @@ public class DiskUserDataStore implements UserDataStore {
     public Observable<UserEntity> userEntityDetails(final int user_id) {
         return this.userCache.get(user_id);
     }
+
+    @Override
+    public Observable<List<UserMomentEntity>> userMomentEntityList() {
+        return null;
+    }
+
+    @Override
+    public Observable<UserMomentEntity> userMomentEntityDetails(int momentID) {
+        return null;
+    }
 }

@@ -13,6 +13,7 @@ import leona.gygafun.wish90.presentation.di.HasComponent;
 import leona.gygafun.wish90.presentation.di.components.DaggerUserComponent;
 import leona.gygafun.wish90.presentation.di.components.UserComponent;
 import leona.gygafun.wish90.presentation.model.UserModel;
+import leona.gygafun.wish90.presentation.model.UserMomentModel;
 import leona.gygafun.wish90.presentation.view.fragment.UserListFragment;
 
 /**
@@ -47,7 +48,7 @@ public class UserListActivity extends BaseActivity implements HasComponent<UserC
   }
 
 
-  @Override public void onUserClicked(UserModel userModel) {
+  @Override public void onUserClicked(UserMomentModel userModel) {
     this.navigator.navigateToUserDetails(this, userModel.getUserID());
   }
 

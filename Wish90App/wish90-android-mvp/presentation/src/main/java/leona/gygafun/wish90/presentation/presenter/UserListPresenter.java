@@ -2,7 +2,10 @@
 package leona.gygafun.wish90.presentation.presenter;
 
 import android.support.annotation.NonNull;
+
+import leona.gygafun.wish90.data.entity.UserMomentEntity;
 import leona.gygafun.wish90.domain.User;
+import leona.gygafun.wish90.domain.UserMoment;
 import leona.gygafun.wish90.domain.exception.DefaultErrorBundle;
 import leona.gygafun.wish90.domain.exception.ErrorBundle;
 import leona.gygafun.wish90.domain.interactor.DefaultSubscriber;
@@ -11,6 +14,7 @@ import leona.gygafun.wish90.presentation.exception.ErrorMessageFactory;
 import leona.gygafun.wish90.presentation.di.PerActivity;
 import leona.gygafun.wish90.presentation.mapper.UserModelDataMapper;
 import leona.gygafun.wish90.presentation.model.UserModel;
+import leona.gygafun.wish90.presentation.model.UserMomentModel;
 import leona.gygafun.wish90.presentation.view.UserListView;
 import java.util.Collection;
 import java.util.List;
@@ -22,7 +26,7 @@ import javax.inject.Named;
  * layer.
  */
 @PerActivity
-public class UserListPresenter extends DefaultSubscriber<List<User>> implements Presenter {
+public class UserListPresenter extends DefaultSubscriber<List<UserMomentEntity>> implements Presenter {
 
   private UserListView viewListView;
 
@@ -63,7 +67,7 @@ public class UserListPresenter extends DefaultSubscriber<List<User>> implements 
     this.getUserList();
   }
 
-  public void onUserClicked(UserModel userModel) {
+  public void onUserClicked(UserMomentModel userModel) {
     this.viewListView.viewUser(userModel);
   }
 
@@ -89,9 +93,9 @@ public class UserListPresenter extends DefaultSubscriber<List<User>> implements 
     this.viewListView.showError(errorMessage);
   }
 
-  private void showUsersCollectionInView(Collection<User> usersCollection) {
-    final Collection<UserModel> userModelsCollection =
-        this.userModelDataMapper.transform(usersCollection);
+  private void showUsersCollectionInView(Collection<UserMoment> usersCollection) {
+    final Collection<UserMomentModel> userModelsCollection =
+        this.userModelDataMapper.transformMoment(usersCollection);
     this.viewListView.renderUserList(userModelsCollection);
   }
 
@@ -99,7 +103,7 @@ public class UserListPresenter extends DefaultSubscriber<List<User>> implements 
     this.getUserListUseCase.execute(new UserListSubscriber());
   }
 
-  private final class UserListSubscriber extends DefaultSubscriber<List<User>> {
+  private final class UserListSubscriber extends DefaultSubscriber<List<UserMoment>> {
 
     @Override public void onCompleted() {
       UserListPresenter.this.hideViewLoading();
@@ -111,7 +115,7 @@ public class UserListPresenter extends DefaultSubscriber<List<User>> implements 
       UserListPresenter.this.showViewRetry();
     }
 
-    @Override public void onNext(List<User> users) {
+    @Override public void onNext(List<UserMoment> users) {
       UserListPresenter.this.showUsersCollectionInView(users);
     }
   }

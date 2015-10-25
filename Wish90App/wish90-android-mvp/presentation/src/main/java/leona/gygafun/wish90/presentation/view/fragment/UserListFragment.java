@@ -20,6 +20,7 @@ import leona.gygafun.wish90.presentation.R;
 
 import leona.gygafun.wish90.presentation.di.components.UserComponent;
 import leona.gygafun.wish90.presentation.model.UserModel;
+import leona.gygafun.wish90.presentation.model.UserMomentModel;
 import leona.gygafun.wish90.presentation.presenter.UserListPresenter;
 import leona.gygafun.wish90.presentation.view.UserListView;
 import leona.gygafun.wish90.presentation.view.adapter.UsersAdapter;
@@ -37,7 +38,7 @@ public class UserListFragment extends BaseFragment implements UserListView {
    * Interface for listening user list events.
    */
   public interface UserListListener {
-    void onUserClicked(final UserModel userModel);
+    void onUserClicked(final UserMomentModel userModel);
   }
 
   @Inject UserListPresenter userListPresenter;
@@ -106,7 +107,7 @@ public class UserListFragment extends BaseFragment implements UserListView {
     this.usersLayoutManager = new UsersLayoutManager(getActivity());
     this.rv_users.setLayoutManager(usersLayoutManager);
 
-    this.usersAdapter = new UsersAdapter(getActivity(), new ArrayList<UserModel>());
+    this.usersAdapter = new UsersAdapter(getActivity(), new ArrayList<UserMomentModel>());
     this.usersAdapter.setOnItemClickListener(onItemClickListener);
     this.rv_users.setAdapter(usersAdapter);
   }
@@ -129,13 +130,13 @@ public class UserListFragment extends BaseFragment implements UserListView {
     this.rl_retry.setVisibility(View.GONE);
   }
 
-  @Override public void renderUserList(Collection<UserModel> userModelCollection) {
+  @Override public void renderUserList(Collection<UserMomentModel> userModelCollection) {
     if (userModelCollection != null) {
         this.usersAdapter.setUsersCollection(userModelCollection);
     }
   }
 
-  @Override public void viewUser(UserModel userModel) {
+  @Override public void viewUser(UserMomentModel userModel) {
     if (this.userListListener != null) {
       this.userListListener.onUserClicked(userModel);
     }
@@ -162,7 +163,7 @@ public class UserListFragment extends BaseFragment implements UserListView {
 
   private UsersAdapter.OnItemClickListener onItemClickListener =
       new UsersAdapter.OnItemClickListener() {
-        @Override public void onUserItemClicked(UserModel userModel) {
+        @Override public void onUserItemClicked(UserMomentModel userModel) {
             if (UserListFragment.this.userListPresenter != null && userModel != null) {
               UserListFragment.this.userListPresenter.onUserClicked(userModel);
             }

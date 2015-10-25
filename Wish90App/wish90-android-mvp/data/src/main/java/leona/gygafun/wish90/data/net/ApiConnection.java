@@ -52,7 +52,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ApiConnection implements Callable<String> {
     private final Context context;
-
+    public static final String[] DATE_FORMAT_STRINGS=new String[]{ "MMMM d, yyyy","yyyy-mm-dd"};
     private static final String CONTENT_TYPE_LABEL = "Content-Type";
     private static final String CONTENT_TYPE_VALUE_JSON = "application/json; charset=utf-8";
     public static List<UserMomentEntity> contact;
@@ -112,13 +112,31 @@ public class ApiConnection implements Callable<String> {
         Converting date from String->Date->Calendar. Day,Month and Year can be obtained using cal.get(Calendar.DAY_OF_MONTH, etc.)
         see http://docs.oracle.com/javase/7/docs/api/java/util/Date.html for details
     */
-    private Date convertStringToDate(String dateString) throws ParseException{
-        DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
-        Date date = format.parse(dateString);
-        Calendar cal=Calendar.getInstance();
-        cal.setTime(date);
+
+    private Date convertStringToDate(String dateString,String formatString)  {
+        DateFormat format = new SimpleDateFormat(formatString, Locale.ENGLISH);
+        Date date = null;
+        try {
+            date = format.parse(dateString);
+            Calendar cal=Calendar.getInstance();
+            cal.setTime(date);
+
+        } catch (ParseException e) {
+
+        }
 
         return date;
+    }
+        private Date convertStringToDate(String dateString) throws ParseException{
+            for (String format:DATE_FORMAT_STRINGS
+                 ) {
+                Date d=convertStringToDate(dateString,format);
+                if(d!=null){
+                    return d;
+                }
+            }
+        return null;
+
     }
     private void connectToApi() throws JSONException, ParseException{
 
@@ -128,7 +146,9 @@ public class ApiConnection implements Callable<String> {
         while (cursor.moveToNext()) {
             name=cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
             momentDate = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Event.START_DATE));
-            contact.add( new UserMomentEntity(convertStringToDate(momentDate),name));
+            Date d=convertStringToDate(momentDate);
+            if(d!=null)
+                contact.add(new UserMomentEntity(d, name));
 
         }
         JsonArray personJson=ApiConnection.getJsonFromMyObject(contact);

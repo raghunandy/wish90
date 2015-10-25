@@ -3,6 +3,7 @@ package leona.gygafun.wish90.data.repository.datasource;
 
 import leona.gygafun.wish90.data.cache.UserCache;
 import leona.gygafun.wish90.data.entity.UserEntity;
+import leona.gygafun.wish90.data.entity.UserMomentEntity;
 import leona.gygafun.wish90.data.net.RestApi;
 
 import java.util.List;
@@ -39,12 +40,26 @@ public class CloudUserDataStore implements UserDataStore {
 
     @Override
     public Observable<List<UserEntity>> userEntityList() {
-        return this.restApi.userEntityList();
+        return null;
+//        return this.restApi.userMomentEntityList();
     }
 
 
     public Observable<UserEntity> userEntityDetails(final int userId) {
-        return this.restApi.userEntityById(userId)
-                .doOnNext(saveToCacheAction);
+        return null;
+//        return this.restApi.userEntityById(userId)
+//                .doOnNext(saveToCacheAction);
     }
+
+    @Override
+    public Observable<List<UserMomentEntity>> userMomentEntityList() {
+        return this.restApi.userMomentEntityList();
+    }
+
+    @Override
+    public Observable<UserMomentEntity> userMomentEntityDetails(int momentID) {
+        return null;
+    }
+
+
 }

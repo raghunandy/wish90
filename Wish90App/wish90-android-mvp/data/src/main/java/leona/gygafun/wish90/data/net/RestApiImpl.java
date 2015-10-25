@@ -18,6 +18,7 @@ package leona.gygafun.wish90.data.net;
 import android.content.Context;
 
 import leona.gygafun.wish90.data.entity.UserEntity;
+import leona.gygafun.wish90.data.entity.UserMomentEntity;
 import leona.gygafun.wish90.data.entity.mapper.UserEntityJsonMapper;
 import leona.gygafun.wish90.data.exception.NetworkConnectionException;
 
@@ -54,21 +55,21 @@ public class RestApiImpl implements RestApi {
   }
 
   @Override
-  public Observable<List<UserEntity>> userEntityList() {
-    return Observable.create(new Observable.OnSubscribe<List<UserEntity>>() {
+  public Observable<List<UserMomentEntity>> userMomentEntityList() {
+    return Observable.create(new Observable.OnSubscribe<List<UserMomentEntity>>() {
       @Override
-      public void call(Subscriber<? super List<UserEntity>> subscriber) {
+      public void call(Subscriber<? super List<UserMomentEntity>> subscriber) {
 
-          try {
-            String responseUserEntities = getUserEntitiesFromApi();
-            if (responseUserEntities != null) {
-              subscriber.onNext(userEntityJsonMapper.transformUserEntityCollection(
-                  responseUserEntities));
-              subscriber.onCompleted();
-            } else {
-              subscriber.onError(new NetworkConnectionException());
-            }
-          } catch (Exception e) {
+        try {
+          String responseUserEntities = getUserEntitiesFromApi();
+          if (responseUserEntities != null) {
+            subscriber.onNext(userEntityJsonMapper.transformUserMomentEntityCollection(
+                    responseUserEntities));
+            subscriber.onCompleted();
+          } else {
+            subscriber.onError(new NetworkConnectionException());
+          }
+        } catch (Exception e) {
             subscriber.onError(new NetworkConnectionException(e.getCause()));
           }
 
@@ -77,15 +78,15 @@ public class RestApiImpl implements RestApi {
   }
 
   @Override
-  public Observable<UserEntity> userEntityById(final int userId) {
-    return Observable.create(new Observable.OnSubscribe<UserEntity>() {
+  public Observable<UserMomentEntity> userEntityById(final int userId) {
+    return Observable.create(new Observable.OnSubscribe<UserMomentEntity>() {
       @Override
-      public void call(Subscriber<? super UserEntity> subscriber) {
+      public void call(Subscriber<? super UserMomentEntity> subscriber) {
 
           try {
             String responseUserDetails = getUserDetailsFromApi(userId);
             if (responseUserDetails != null) {
-              subscriber.onNext(userEntityJsonMapper.transformUserEntity(responseUserDetails));
+              subscriber.onNext(userEntityJsonMapper.transformUserMomentEntity(responseUserDetails));
               subscriber.onCompleted();
             } else {
               subscriber.onError(new NetworkConnectionException());

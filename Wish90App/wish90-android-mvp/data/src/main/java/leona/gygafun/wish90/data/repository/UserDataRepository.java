@@ -8,6 +8,7 @@ import leona.gygafun.wish90.data.entity.mapper.UserEntityDataMapper;
 import leona.gygafun.wish90.data.repository.datasource.UserDataStore;
 import leona.gygafun.wish90.data.repository.datasource.UserDataStoreFactory;
 import leona.gygafun.wish90.domain.User;
+import leona.gygafun.wish90.domain.UserMoment;
 import leona.gygafun.wish90.domain.repository.UserRepository;
 
 import java.util.List;
@@ -47,11 +48,16 @@ public class UserDataRepository implements UserRepository {
 
     @SuppressWarnings("Convert2MethodRef")
     @Override
-    public Observable<List<User>> users() {
+    public Observable<List<UserMoment>> userMoments() {
         //we always get all users from the cloud
         final UserDataStore userDataStore = this.userDataStoreFactory.createCloudDataStore();
-        return userDataStore.userEntityList()
-                .map(userEntities -> this.userEntityDataMapper.transform(userEntities));
+        return userDataStore.userMomentEntityList()
+                .map(userEntities -> this.userEntityDataMapper.transformMoment(userEntities));
+    }
+
+    @Override
+    public Observable<UserMoment> userMoment(int userId) {
+        return null;
     }
 
     @SuppressWarnings("Convert2MethodRef")

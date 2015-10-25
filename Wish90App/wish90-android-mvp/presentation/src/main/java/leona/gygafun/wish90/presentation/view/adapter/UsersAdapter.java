@@ -14,6 +14,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import leona.gygafun.wish90.presentation.R;
 import leona.gygafun.wish90.presentation.model.UserModel;
+import leona.gygafun.wish90.presentation.model.UserMomentModel;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -23,19 +25,19 @@ import java.util.List;
 public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHolder> {
 
   public interface OnItemClickListener {
-    void onUserItemClicked(UserModel userModel);
+    void onUserItemClicked(UserMomentModel userModel);
   }
 
-  private List<UserModel> usersCollection;
+  private List<UserMomentModel> usersCollection;
   private final LayoutInflater layoutInflater;
 
   private OnItemClickListener onItemClickListener;
 
-  public UsersAdapter(Context context, Collection<UserModel> usersCollection) {
+  public UsersAdapter(Context context, Collection<UserMomentModel> usersCollection) {
     this.validateUsersCollection(usersCollection);
     this.layoutInflater =
         (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    this.usersCollection = (List<UserModel>) usersCollection;
+    this.usersCollection = (List<UserMomentModel>) usersCollection;
   }
 
   @Override public int getItemCount() {
@@ -50,8 +52,8 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
   }
 
   @Override public void onBindViewHolder(UserViewHolder holder, final int position) {
-    final UserModel userModel = this.usersCollection.get(position);
-    holder.textViewTitle.setText(userModel.getUsername());
+    final UserMomentModel userModel = this.usersCollection.get(position);
+    holder.textViewTitle.setText(userModel.getRefContacts());
     holder.itemView.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
         if (UsersAdapter.this.onItemClickListener != null) {
@@ -65,9 +67,9 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
     return position;
   }
 
-  public void setUsersCollection(Collection<UserModel> usersCollection) {
+  public void setUsersCollection(Collection<UserMomentModel> usersCollection) {
     this.validateUsersCollection(usersCollection);
-    this.usersCollection = (List<UserModel>) usersCollection;
+    this.usersCollection = (List<UserMomentModel>) usersCollection;
     this.notifyDataSetChanged();
   }
 
@@ -75,7 +77,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
     this.onItemClickListener = onItemClickListener;
   }
 
-  private void validateUsersCollection(Collection<UserModel> usersCollection) {
+  private void validateUsersCollection(Collection<UserMomentModel> usersCollection) {
     if (usersCollection == null) {
       throw new IllegalArgumentException("The list cannot be null");
     }

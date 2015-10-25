@@ -5,6 +5,8 @@
 package leona.gygafun.wish90.presentation.view;
 
 import leona.gygafun.wish90.presentation.model.UserModel;
+import leona.gygafun.wish90.presentation.model.UserMomentModel;
+
 import java.util.Collection;
 
 /**
@@ -17,12 +19,12 @@ public interface UserListView extends LoadDataView {
    *
    * @param userModelCollection The collection of {@link UserModel} that will be shown.
    */
-  void renderUserList(Collection<UserModel> userModelCollection);
+  void renderUserList(Collection<UserMomentModel> userModelCollection);
 
   /**
    * View a {@link UserModel} profile/details.
    *
    * @param userModel The user that will be shown.
    */
-  void viewUser(UserModel userModel);
+  void viewUser(UserMomentModel userModel);
 }
