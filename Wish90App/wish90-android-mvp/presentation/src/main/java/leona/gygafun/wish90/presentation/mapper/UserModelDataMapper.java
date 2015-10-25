@@ -86,7 +86,7 @@ public class UserModelDataMapper {
     userMomentModel.setUserID(userMoment.getUserID());
     userMomentModel.setMommentType(userMoment.getMommentType());
     userMomentModel.setMomentDateTime(userMoment.getMomentDateTime());
-    userMomentModel.setIsCustomizable(userMoment.getIsCustomizable());
+    userMomentModel.setCustomized(userMoment.isCustomized());
     userMomentModel.setConfigurations(userMoment.getConfigurations());
     userMomentModel.setRefContacts(userMoment.getRefContacts());
 

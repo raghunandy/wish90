@@ -12,7 +12,7 @@ public class ConveyScheduleEntity {
     @SerializedName("schedule_id")
     private int scheduleID;
 
-    @SerializedName("moment)id")
+    @SerializedName("moment_id")
     private int momentID;
 
     @SerializedName("schedule_instrument")

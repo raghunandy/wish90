@@ -1,18 +1,4 @@
-/**
- * Copyright (C) 2015 Fernando Cejas Open Source Project
- * <p/>
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * <p/>
- * http://www.apache.org/licenses/LICENSE-2.0
- * <p/>
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
 package leona.gygafun.wish90.data.entity;
 
 import com.google.gson.annotations.SerializedName;
@@ -31,7 +17,7 @@ public class UserEntity {
     @SerializedName("username")
     private String username = null;
 
-    @SerializedName("paswword")
+    @SerializedName("password")
     private String password = null;
 
     @SerializedName("user_email_address")
@@ -50,7 +36,10 @@ public class UserEntity {
     private int userAccessCount = 0;
 
 
-    public UserEntity() {}
+    public UserEntity(int userID, String username) {
+        this.userID=userID;
+        this.username=username;
+    }
 
     public int getUserID() {
         return userID;
@@ -116,55 +105,6 @@ public class UserEntity {
         this.userAccessCount = userAccessCount;
     }
 
-    @Override
-    public String toString() {
-        return "UserEntity{" +
-                "userID=" + userID +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", userEmailAddress='" + userEmailAddress + '\'' +
-                ", oAuthToken='" + oAuthToken + '\'' +
-                ", currentSignInDate=" + currentSignInDate +
-                ", lastSignInDate=" + lastSignInDate +
-                ", userAccessCount=" + userAccessCount +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        UserEntity that = (UserEntity) o;
-
-        if (userID != that.userID) return false;
-        if (userAccessCount != that.userAccessCount) return false;
-        if (username != null ? !username.equals(that.username) : that.username != null)
-            return false;
-        if (password != null ? !password.equals(that.password) : that.password != null)
-            return false;
-        if (userEmailAddress != null ? !userEmailAddress.equals(that.userEmailAddress) : that.userEmailAddress != null)
-            return false;
-        if (oAuthToken != null ? !oAuthToken.equals(that.oAuthToken) : that.oAuthToken != null)
-            return false;
-        if (currentSignInDate != null ? !currentSignInDate.equals(that.currentSignInDate) : that.currentSignInDate != null)
-            return false;
-        return !(lastSignInDate != null ? !lastSignInDate.equals(that.lastSignInDate) : that.lastSignInDate != null);
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = userID;
-        result = 31 * result + (username != null ? username.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (userEmailAddress != null ? userEmailAddress.hashCode() : 0);
-        result = 31 * result + (oAuthToken != null ? oAuthToken.hashCode() : 0);
-        result = 31 * result + (currentSignInDate != null ? currentSignInDate.hashCode() : 0);
-        result = 31 * result + (lastSignInDate != null ? lastSignInDate.hashCode() : 0);
-        result = 31 * result + userAccessCount;
-        return result;
-    }
 
 
 }

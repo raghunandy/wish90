@@ -85,7 +85,7 @@ public class UserEntityDataMapper {
             userMoment.setUserID(userMomentEntity.getUserID());
             userMoment.setMommentType(userMomentEntity.getMommentType());
             userMoment.setMomentDateTime(userMomentEntity.getMomentDateTime());
-            userMoment.setIsCustomizable(userMomentEntity.getIsCustomizable());
+            userMoment.setCustomized(userMomentEntity.isCustomized());
             userMoment.setConfigurations(userMomentEntity.getConfigurations());
             userMoment.setRefContacts(userMomentEntity.getRefContacts());
         }
