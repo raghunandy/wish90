@@ -4,7 +4,7 @@ package leona.gygafun.wish90.presentation.navigation;
 import android.content.Context;
 import android.content.Intent;
 import leona.gygafun.wish90.presentation.view.activity.UserDetailsActivity;
-import leona.gygafun.wish90.presentation.view.activity.UserListActivity;
+import leona.gygafun.wish90.presentation.view.activity.UserMomentListActivity;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -26,7 +26,7 @@ public class Navigator {
    */
   public void navigateToUserList(Context context) {
     if (context != null) {
-      Intent intentToLaunch = UserListActivity.getCallingIntent(context);
+      Intent intentToLaunch = UserMomentListActivity.getCallingIntent(context);
       context.startActivity(intentToLaunch);
     }
   }

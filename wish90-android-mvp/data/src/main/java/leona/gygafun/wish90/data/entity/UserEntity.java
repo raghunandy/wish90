@@ -11,28 +11,28 @@ import java.util.Date;
 
 public class UserEntity {
 
-    @SerializedName("user_id")
+
     private int userID = 0;
 
-    @SerializedName("username")
+
     private String username = null;
 
-    @SerializedName("password")
+
     private String password = null;
 
-    @SerializedName("user_email_address")
+
     private String userEmailAddress = null;
 
-    @SerializedName("o_auth_token")
+
     private String oAuthToken = null;
 
-    @SerializedName("current_sign_in_date")
+
     private Date currentSignInDate;
 
-    @SerializedName("last_sign_in_date")
+
     private Date lastSignInDate;
 
-    @SerializedName("user_access_count")
+
     private int userAccessCount = 0;
 
 

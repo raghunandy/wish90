@@ -4,7 +4,6 @@ package leona.gygafun.wish90.presentation.presenter;
 import android.support.annotation.NonNull;
 
 import leona.gygafun.wish90.data.entity.UserMomentEntity;
-import leona.gygafun.wish90.domain.User;
 import leona.gygafun.wish90.domain.UserMoment;
 import leona.gygafun.wish90.domain.exception.DefaultErrorBundle;
 import leona.gygafun.wish90.domain.exception.ErrorBundle;
@@ -13,9 +12,8 @@ import leona.gygafun.wish90.domain.interactor.UseCase;
 import leona.gygafun.wish90.presentation.exception.ErrorMessageFactory;
 import leona.gygafun.wish90.presentation.di.PerActivity;
 import leona.gygafun.wish90.presentation.mapper.UserModelDataMapper;
-import leona.gygafun.wish90.presentation.model.UserModel;
 import leona.gygafun.wish90.presentation.model.UserMomentModel;
-import leona.gygafun.wish90.presentation.view.UserListView;
+import leona.gygafun.wish90.presentation.view.UserMomentListView;
 import java.util.Collection;
 import java.util.List;
 import javax.inject.Inject;
@@ -26,20 +24,20 @@ import javax.inject.Named;
  * layer.
  */
 @PerActivity
-public class UserListPresenter extends DefaultSubscriber<List<UserMomentEntity>> implements Presenter {
+public class UserMomentListPresenter extends DefaultSubscriber<List<UserMomentEntity>> implements Presenter {
 
-  private UserListView viewListView;
+  private UserMomentListView viewListView;
 
   private final UseCase getUserListUseCase;
   private final UserModelDataMapper userModelDataMapper;
 
   @Inject
-  public UserListPresenter(@Named("userList") UseCase getUserListUserCase, UserModelDataMapper userModelDataMapper) {
+  public UserMomentListPresenter(@Named("userMomentList") UseCase getUserListUserCase, UserModelDataMapper userModelDataMapper) {
     this.getUserListUseCase = getUserListUserCase;
     this.userModelDataMapper = userModelDataMapper;
   }
 
-  public void setView(@NonNull UserListView view) {
+  public void setView(@NonNull UserMomentListView view) {
     this.viewListView = view;
   }
 
@@ -106,17 +104,17 @@ public class UserListPresenter extends DefaultSubscriber<List<UserMomentEntity>>
   private final class UserListSubscriber extends DefaultSubscriber<List<UserMoment>> {
 
     @Override public void onCompleted() {
-      UserListPresenter.this.hideViewLoading();
+      UserMomentListPresenter.this.hideViewLoading();
     }
 
     @Override public void onError(Throwable e) {
-      UserListPresenter.this.hideViewLoading();
-      UserListPresenter.this.showErrorMessage(new DefaultErrorBundle((Exception) e));
-      UserListPresenter.this.showViewRetry();
+      UserMomentListPresenter.this.hideViewLoading();
+      UserMomentListPresenter.this.showErrorMessage(new DefaultErrorBundle((Exception) e));
+      UserMomentListPresenter.this.showViewRetry();
     }
 
     @Override public void onNext(List<UserMoment> users) {
-      UserListPresenter.this.showUsersCollectionInView(users);
+      UserMomentListPresenter.this.showUsersCollectionInView(users);
     }
   }
 }

@@ -19,12 +19,12 @@ import butterknife.OnClick;
 import leona.gygafun.wish90.presentation.R;
 
 import leona.gygafun.wish90.presentation.di.components.UserComponent;
-import leona.gygafun.wish90.presentation.model.UserModel;
 import leona.gygafun.wish90.presentation.model.UserMomentModel;
-import leona.gygafun.wish90.presentation.presenter.UserListPresenter;
-import leona.gygafun.wish90.presentation.view.UserListView;
-import leona.gygafun.wish90.presentation.view.adapter.UsersAdapter;
-import leona.gygafun.wish90.presentation.view.adapter.UsersLayoutManager;
+import leona.gygafun.wish90.presentation.presenter.UserMomentListPresenter;
+import leona.gygafun.wish90.presentation.view.UserMomentListView;
+import leona.gygafun.wish90.presentation.view.adapter.UsersMomentAdapter;
+import leona.gygafun.wish90.presentation.view.adapter.UserMomentsLayoutManager;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.inject.Inject;
@@ -32,7 +32,7 @@ import javax.inject.Inject;
 /**
  * Fragment that shows a list of Users.
  */
-public class UserListFragment extends BaseFragment implements UserListView {
+public class UserMomentListFragment extends BaseFragment implements UserMomentListView {
 
   /**
    * Interface for listening user list events.
@@ -41,19 +41,20 @@ public class UserListFragment extends BaseFragment implements UserListView {
     void onUserClicked(final UserMomentModel userModel);
   }
 
-  @Inject UserListPresenter userListPresenter;
+  @Inject
+  UserMomentListPresenter userMomentListPresenter;
 
   @Bind(R.id.rv_users) RecyclerView rv_users;
   @Bind(R.id.rl_progress) RelativeLayout rl_progress;
   @Bind(R.id.rl_retry) RelativeLayout rl_retry;
   @Bind(R.id.bt_retry) Button bt_retry;
 
-  private UsersAdapter usersAdapter;
-  private UsersLayoutManager usersLayoutManager;
+  private UsersMomentAdapter usersAdapter;
+  private UserMomentsLayoutManager usersLayoutManager;
 
   private UserListListener userListListener;
 
-  public UserListFragment() { super(); }
+  public UserMomentListFragment() { super(); }
 
   @Override public void onAttach(Activity activity) {
     super.onAttach(activity);
@@ -80,17 +81,17 @@ public class UserListFragment extends BaseFragment implements UserListView {
 
   @Override public void onResume() {
     super.onResume();
-    this.userListPresenter.resume();
+    this.userMomentListPresenter.resume();
   }
 
   @Override public void onPause() {
     super.onPause();
-    this.userListPresenter.pause();
+    this.userMomentListPresenter.pause();
   }
 
   @Override public void onDestroy() {
     super.onDestroy();
-    this.userListPresenter.destroy();
+    this.userMomentListPresenter.destroy();
   }
 
   @Override public void onDestroyView() {
@@ -100,14 +101,14 @@ public class UserListFragment extends BaseFragment implements UserListView {
 
   private void initialize() {
     this.getComponent(UserComponent.class).inject(this);
-    this.userListPresenter.setView(this);
+    this.userMomentListPresenter.setView(this);
   }
 
   private void setupUI() {
-    this.usersLayoutManager = new UsersLayoutManager(getActivity());
+    this.usersLayoutManager = new UserMomentsLayoutManager(getActivity());
     this.rv_users.setLayoutManager(usersLayoutManager);
 
-    this.usersAdapter = new UsersAdapter(getActivity(), new ArrayList<UserMomentModel>());
+    this.usersAdapter = new UsersMomentAdapter(getActivity(), new ArrayList<UserMomentModel>());
     this.usersAdapter.setOnItemClickListener(onItemClickListener);
     this.rv_users.setAdapter(usersAdapter);
   }
@@ -154,18 +155,18 @@ public class UserListFragment extends BaseFragment implements UserListView {
    * Loads all users.
    */
   private void loadUserList() {
-    this.userListPresenter.initialize();
+    this.userMomentListPresenter.initialize();
   }
 
   @OnClick(R.id.bt_retry) void onButtonRetryClick() {
-    UserListFragment.this.loadUserList();
+    UserMomentListFragment.this.loadUserList();
   }
 
-  private UsersAdapter.OnItemClickListener onItemClickListener =
-      new UsersAdapter.OnItemClickListener() {
+  private UsersMomentAdapter.OnItemClickListener onItemClickListener =
+      new UsersMomentAdapter.OnItemClickListener() {
         @Override public void onUserItemClicked(UserMomentModel userModel) {
-            if (UserListFragment.this.userListPresenter != null && userModel != null) {
-              UserListFragment.this.userListPresenter.onUserClicked(userModel);
+            if (UserMomentListFragment.this.userMomentListPresenter != null && userModel != null) {
+              UserMomentListFragment.this.userMomentListPresenter.onUserClicked(userModel);
             }
         }
       };

@@ -5,18 +5,18 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 import leona.gygafun.wish90.presentation.R;
-import leona.gygafun.wish90.presentation.view.activity.UserListActivity;
+import leona.gygafun.wish90.presentation.view.activity.UserMomentListActivity;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class UserListActivityTest extends ActivityInstrumentationTestCase2<UserListActivity> {
+public class UserMomentListActivityTest extends ActivityInstrumentationTestCase2<UserMomentListActivity> {
 
-  private UserListActivity userListActivity;
+  private UserMomentListActivity userListActivity;
 
-  public UserListActivityTest() {
-    super(UserListActivity.class);
+  public UserMomentListActivityTest() {
+    super(UserMomentListActivity.class);
   }
 
   @Override protected void setUp() throws Exception {
@@ -43,7 +43,7 @@ public class UserListActivityTest extends ActivityInstrumentationTestCase2<UserL
 
   private Intent createTargetIntent() {
     Intent intentLaunchActivity =
-        UserListActivity.getCallingIntent(getInstrumentation().getTargetContext());
+        UserMomentListActivity.getCallingIntent(getInstrumentation().getTargetContext());
 
     return intentLaunchActivity;
   }

@@ -5,7 +5,7 @@ import leona.gygafun.wish90.presentation.di.PerActivity;
 import leona.gygafun.wish90.presentation.di.modules.ActivityModule;
 import leona.gygafun.wish90.presentation.di.modules.UserModule;
 import leona.gygafun.wish90.presentation.view.fragment.UserDetailsFragment;
-import leona.gygafun.wish90.presentation.view.fragment.UserListFragment;
+import leona.gygafun.wish90.presentation.view.fragment.UserMomentListFragment;
 import dagger.Component;
 
 /**
@@ -15,6 +15,6 @@ import dagger.Component;
 @PerActivity
 @Component(dependencies = ApplicationComponent.class, modules = {ActivityModule.class, UserModule.class})
 public interface UserComponent extends ActivityComponent {
-  void inject(UserListFragment userListFragment);
+  void inject(UserMomentListFragment userListFragment);
   void inject(UserDetailsFragment userDetailsFragment);
 }

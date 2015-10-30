@@ -23,7 +23,7 @@
     </activity>
 
     <activity
-        android:name="leona.gygafun.wish90.presentation.view.activity.UserListActivity"
+        android:name=".view.activity.UserMomentListActivity"
         android:label="@string/activity_title_user_list">
     </activity>
 

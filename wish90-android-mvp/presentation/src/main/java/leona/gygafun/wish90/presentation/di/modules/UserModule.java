@@ -4,7 +4,7 @@ package leona.gygafun.wish90.presentation.di.modules;
 import leona.gygafun.wish90.domain.executor.PostExecutionThread;
 import leona.gygafun.wish90.domain.executor.ThreadExecutor;
 import leona.gygafun.wish90.domain.interactor.GetUserDetails;
-import leona.gygafun.wish90.domain.interactor.GetUserList;
+import leona.gygafun.wish90.domain.interactor.GetUserMomentList;
 import leona.gygafun.wish90.domain.interactor.UseCase;
 import leona.gygafun.wish90.domain.repository.UserRepository;
 import leona.gygafun.wish90.presentation.di.PerActivity;
@@ -26,9 +26,9 @@ public class UserModule {
     this.userId = userId;
   }
 
-  @Provides @PerActivity @Named("userList") UseCase provideGetUserListUseCase(
-      GetUserList getUserList) {
-    return getUserList;
+  @Provides @PerActivity @Named("userMomentList") UseCase provideGetUserListUseCase(
+      GetUserMomentList getUserMomentList) {
+    return getUserMomentList;
   }
 
   @Provides @PerActivity @Named("userDetails") UseCase provideGetUserDetailsUseCase(

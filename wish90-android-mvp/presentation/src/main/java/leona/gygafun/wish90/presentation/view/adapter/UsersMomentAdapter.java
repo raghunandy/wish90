@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * Adaptar that manages a collection of {@link UserModel}.
  */
-public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHolder> {
+public class UsersMomentAdapter extends RecyclerView.Adapter<UsersMomentAdapter.UserViewHolder> {
 
   public interface OnItemClickListener {
     void onUserItemClicked(UserMomentModel userModel);
@@ -33,7 +33,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
 
   private OnItemClickListener onItemClickListener;
 
-  public UsersAdapter(Context context, Collection<UserMomentModel> usersCollection) {
+  public UsersMomentAdapter(Context context, Collection<UserMomentModel> usersCollection) {
     this.validateUsersCollection(usersCollection);
     this.layoutInflater =
         (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -56,8 +56,8 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
     holder.textViewTitle.setText(userModel.getRefContacts());
     holder.itemView.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
-        if (UsersAdapter.this.onItemClickListener != null) {
-          UsersAdapter.this.onItemClickListener.onUserItemClicked(userModel);
+        if (UsersMomentAdapter.this.onItemClickListener != null) {
+          UsersMomentAdapter.this.onItemClickListener.onUserItemClicked(userModel);
         }
       }
     });

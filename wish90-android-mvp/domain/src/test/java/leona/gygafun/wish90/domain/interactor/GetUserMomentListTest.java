@@ -14,9 +14,9 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.verifyZeroInteractions;
 
-public class GetUserListTest {
+public class GetUserMomentListTest {
 
-  private leona.gygafun.wish90.domain.interactor.GetUserList getUserList;
+  private GetUserMomentList getUserMomentList;
 
   @Mock private ThreadExecutor mockThreadExecutor;
   @Mock private PostExecutionThread mockPostExecutionThread;
@@ -25,13 +25,13 @@ public class GetUserListTest {
   @Before
   public void setUp() {
     MockitoAnnotations.initMocks(this);
-    getUserList = new leona.gygafun.wish90.domain.interactor.GetUserList(mockUserRepository, mockThreadExecutor,
+    getUserMomentList = new GetUserMomentList(mockUserRepository, mockThreadExecutor,
         mockPostExecutionThread);
   }
 
   @Test
   public void testGetUserListUseCaseObservableHappyCase() {
-    getUserList.buildUseCaseObservable();
+    getUserMomentList.buildUseCaseObservable();
 
     verify(mockUserRepository).users();
     verifyNoMoreInteractions(mockUserRepository);

@@ -4,7 +4,7 @@
     >
 
   <fragment
-      android:name="leona.gygafun.wish90.presentation.view.fragment.UserListFragment"
+      android:name="leona.gygafun.wish90.presentation.view.fragment.UserMomentListFragment"
       android:id="@+id/fragmentUserList"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
