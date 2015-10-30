@@ -30,7 +30,10 @@ import java.util.Collection;
 import javax.inject.Inject;
 
 /**
- * Fragment that shows a list of Users.
+ * Fragment that shows a moment list of Users.
+ *
+ * Place-folder 1: Venky & Irene
+ *
  */
 public class UserMomentListFragment extends BaseFragment implements UserMomentListView {
 
@@ -66,7 +69,7 @@ public class UserMomentListFragment extends BaseFragment implements UserMomentLi
   @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
 
-    View fragmentView = inflater.inflate(R.layout.fragment_user_list, container, true);
+    View fragmentView = inflater.inflate(R.layout.fragment_user_moment_list, container, true);
     ButterKnife.bind(this, fragmentView);
     setupUI();
 
