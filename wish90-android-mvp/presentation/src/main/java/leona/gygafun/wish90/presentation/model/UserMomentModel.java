@@ -21,7 +21,15 @@ public class UserMomentModel{
     private Date momentDateTime;
     private boolean customized;
     private String configurations ;
-    private String refContacts ;
+    public ContactModel getRefContact() {
+        return refContact;
+    }
+
+    public void setRefContact(ContactModel refContact) {
+        this.refContact = refContact;
+    }
+
+    private ContactModel refContact ;
 
     public UserMomentModel(int userMoment) {
     }
@@ -72,14 +80,6 @@ public class UserMomentModel{
 
     public void setConfigurations(String configurations) {
         this.configurations = configurations;
-    }
-
-    public String getRefContacts() {
-        return refContacts;
-    }
-
-    public void setRefContacts(String refContacts) {
-        this.refContacts = refContacts;
     }
 
 

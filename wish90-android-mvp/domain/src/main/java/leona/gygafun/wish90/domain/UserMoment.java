@@ -15,7 +15,15 @@ public class UserMoment{
     private List<String> mommentType =new ArrayList<>();
     private Date momentDateTime;
     private String configurations ;
-    private String refContacts ;
+    private Contact refContact ;
+
+    public Contact getRefContact() {
+        return refContact;
+    }
+
+    public void setRefContact(Contact refContact) {
+        this.refContact = refContact;
+    }
 
     private boolean customized;
 
@@ -69,16 +77,6 @@ public class UserMoment{
     public void setConfigurations(String configurations) {
       this.configurations = configurations;
     }
-
-    public String getRefContacts() {
-      return refContacts;
-    }
-
-    public void setRefContacts(String refContacts) {
-      this.refContacts = refContacts;
-    }
-
-
 
 
   }

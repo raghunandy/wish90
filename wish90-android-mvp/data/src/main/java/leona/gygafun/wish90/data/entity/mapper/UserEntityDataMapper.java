@@ -6,10 +6,12 @@
 
 package leona.gygafun.wish90.data.entity.mapper;
 
+import leona.gygafun.wish90.data.entity.ContactEntity;
 import leona.gygafun.wish90.data.entity.UserMomentEntity;
 import leona.gygafun.wish90.data.entity.UserEntity;
 import leona.gygafun.wish90.data.entity.ConveyScheduleEntity;
 
+import leona.gygafun.wish90.domain.Contact;
 import leona.gygafun.wish90.domain.User;
 import leona.gygafun.wish90.domain.UserMoment;
 import leona.gygafun.wish90.domain.ConveySchedule;
@@ -87,7 +89,8 @@ public class UserEntityDataMapper {
             userMoment.setMomentDateTime(userMomentEntity.getMomentDateTime());
             userMoment.setCustomized(userMomentEntity.isCustomized());
             userMoment.setConfigurations(userMomentEntity.getConfigurations());
-            userMoment.setRefContacts(userMomentEntity.getRefContacts());
+            ContactEntity c=userMomentEntity.getRefContact();
+            userMoment.setRefContact(new Contact(c.getContactName(), c.getContactImage()));
         }
 
         return userMoment;

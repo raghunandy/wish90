@@ -9,6 +9,7 @@ import leona.gygafun.wish90.domain.UserMoment;
 import leona.gygafun.wish90.domain.ConveySchedule;
 
 import leona.gygafun.wish90.presentation.di.PerActivity;
+import leona.gygafun.wish90.presentation.model.ContactModel;
 import leona.gygafun.wish90.presentation.model.UserModel;
 import leona.gygafun.wish90.presentation.model.UserMomentModel;
 import leona.gygafun.wish90.presentation.model.ConveyScheduleModel;
@@ -88,17 +89,11 @@ public class UserModelDataMapper {
     userMomentModel.setMomentDateTime(userMoment.getMomentDateTime());
     userMomentModel.setCustomized(userMoment.isCustomized());
     userMomentModel.setConfigurations(userMoment.getConfigurations());
-    userMomentModel.setRefContacts(userMoment.getRefContacts());
+    userMomentModel.setRefContact(new ContactModel(userMoment.getRefContact().getContactName(),userMoment.getRefContact().getContactImage()));
 
     return userMomentModel;
   }
 
-  /**
-   * Transform a Collection of {@link UserMoment} into a Collection of {@link UserMomentModel}.
-   *
-   * @param usersMomentCollection Objects to be transformed.
-   * @return List of {@link UserMomentModel}.
-   */
   public Collection<UserMomentModel> transformMoment(Collection<UserMoment> userMomentCollection) {
     Collection<UserMomentModel> userMomentModelsCollection;
 
@@ -116,12 +111,7 @@ public class UserModelDataMapper {
 
 
 
-  /**
-   * Transform a {@link conveySchedule} into an {@link ConveyScheduleModel}.
-   *
-   * @param conveySchedule Object to be transformed.
-   * @return {@link ConveyScheduleModel}.
-   */
+
   public ConveyScheduleModel transformSchedule(ConveySchedule conveySchedule) {
     if (conveySchedule == null) {
       throw new IllegalArgumentException("Cannot transform a null value");

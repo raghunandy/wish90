@@ -1,7 +1,5 @@
 package leona.gygafun.wish90.data.entity;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,17 +17,25 @@ public class UserMomentEntity {
 
     private List<String> mommentType = new ArrayList<>();
 
+    public ContactEntity getRefContact() {
+        return refContact;
+    }
+
+    public void setRefContact(ContactEntity refContact) {
+        this.refContact = refContact;
+    }
+
     private Date momentDateTime;
 
     private boolean customized;
 
     private String configurations ;
 
-    private String refContacts ;
+    private ContactEntity refContact ;
 
-    public UserMomentEntity(Date momentDateTime, String refContacts) {
+    public UserMomentEntity(Date momentDateTime, ContactEntity refContact) {
         this.momentDateTime = momentDateTime;
-        this.refContacts = refContacts;
+        this.refContact = refContact;
     }
 
     public int getMomentID() {
@@ -80,13 +86,7 @@ public class UserMomentEntity {
         this.configurations = configurations;
     }
 
-    public String getRefContacts() {
-        return refContacts;
-    }
 
-    public void setRefContacts(String refContacts) {
-        this.refContacts = refContacts;
-    }
 
 
 }

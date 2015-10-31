@@ -22,6 +22,7 @@ import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 
+import leona.gygafun.wish90.data.entity.ContactEntity;
 import leona.gygafun.wish90.data.entity.UserMomentEntity;
 
 import com.google.gson.Gson;
@@ -56,7 +57,7 @@ public class ApiConnection implements Callable<String> {
     private static final String CONTENT_TYPE_LABEL = "Content-Type";
     private static final String CONTENT_TYPE_VALUE_JSON = "application/json; charset=utf-8";
     public static List<UserMomentEntity> contact;
-    String name,momentDate;
+    String name,momentDate,contactImage;
     private URL url;
     private String response;
 
@@ -69,9 +70,9 @@ public class ApiConnection implements Callable<String> {
         return new ApiConnection(url);
     }*/
 
-    public static JsonArray getJsonFromMyObject(List<UserMomentEntity> contact) throws JSONException
+    public static JsonArray getJsonFromMyObject(List<UserMomentEntity> moment) throws JSONException
     {
-        return new Gson().toJsonTree(contact).getAsJsonArray();
+        return new Gson().toJsonTree(moment).getAsJsonArray();
     }
 
     /**
@@ -95,7 +96,9 @@ public class ApiConnection implements Callable<String> {
         String[] projection = new String[] {
                 ContactsContract.Contacts.DISPLAY_NAME,
                 ContactsContract.CommonDataKinds.Event.CONTACT_ID,
-                ContactsContract.CommonDataKinds.Event.START_DATE
+                ContactsContract.CommonDataKinds.Event.START_DATE,
+                ContactsContract.CommonDataKinds.Phone.PHOTO_URI
+
         };
 
         String where =
@@ -141,17 +144,20 @@ public class ApiConnection implements Callable<String> {
     private void connectToApi() throws JSONException, ParseException{
 
 
-        List<UserMomentEntity> contact=new ArrayList<>();
+        List<UserMomentEntity> moments=new ArrayList<>();
         Cursor cursor = getContacts(context);
         while (cursor.moveToNext()) {
             name=cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
             momentDate = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Event.START_DATE));
+            contactImage=cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_URI));
             Date d=convertStringToDate(momentDate);
-            if(d!=null)
-                contact.add(new UserMomentEntity(d, name));
+            if(d!=null) {
+                ContactEntity contact=new ContactEntity(name,contactImage);
+                moments.add(new UserMomentEntity(d, contact));
+            }
 
         }
-        JsonArray personJson=ApiConnection.getJsonFromMyObject(contact);
+        JsonArray personJson=ApiConnection.getJsonFromMyObject(moments);
         this.response=personJson.toString();
         //MyAdapter adapter = new MyAdapter(contact);
         //rc.setAdapter(adapter);

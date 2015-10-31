@@ -53,7 +53,7 @@ public class UsersMomentAdapter extends RecyclerView.Adapter<UsersMomentAdapter.
 
   @Override public void onBindViewHolder(UserViewHolder holder, final int position) {
     final UserMomentModel userModel = this.usersCollection.get(position);
-    holder.textViewTitle.setText(userModel.getRefContacts());
+    holder.textViewTitle.setText(userModel.getRefContact().getContactName());
     holder.itemView.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
         if (UsersMomentAdapter.this.onItemClickListener != null) {
@@ -84,7 +84,7 @@ public class UsersMomentAdapter extends RecyclerView.Adapter<UsersMomentAdapter.
   }
 
   static class UserViewHolder extends RecyclerView.ViewHolder {
-    @Bind(R.id.title) TextView textViewTitle;
+    @Bind(R.id.person_name) TextView textViewTitle;
 
     public UserViewHolder(View itemView) {
       super(itemView);
