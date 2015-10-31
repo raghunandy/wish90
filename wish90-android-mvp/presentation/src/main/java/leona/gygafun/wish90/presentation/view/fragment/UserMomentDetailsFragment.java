@@ -17,7 +17,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import leona.gygafun.wish90.presentation.R;
 import leona.gygafun.wish90.presentation.di.components.UserComponent;
-import leona.gygafun.wish90.presentation.model.UserModel;
 import leona.gygafun.wish90.presentation.presenter.UserDetailsPresenter;
 import leona.gygafun.wish90.presentation.view.UserDetailsView;
 import leona.gygafun.wish90.presentation.view.component.AutoLoadImageView;
@@ -26,7 +25,7 @@ import javax.inject.Inject;
 /**
  * Fragment that shows details of a certain user.
  */
-public class UserDetailsFragment extends BaseFragment implements UserDetailsView {
+public class UserMomentDetailsFragment extends BaseFragment implements UserDetailsView {
 
   private static final String ARGUMENT_KEY_USER_ID = "org.android10.ARGUMENT_USER_ID";
 
@@ -43,22 +42,22 @@ public class UserDetailsFragment extends BaseFragment implements UserDetailsView
   @Bind(R.id.rl_retry) RelativeLayout rl_retry;
   @Bind(R.id.bt_retry) Button bt_retry;
 
-  public UserDetailsFragment() { super(); }
+  public UserMomentDetailsFragment() { super(); }
 
-  public static UserDetailsFragment newInstance(int userId) {
-    UserDetailsFragment userDetailsFragment = new UserDetailsFragment();
+  public static UserMomentDetailsFragment newInstance(int userId) {
+    UserMomentDetailsFragment userMomentDetailsFragment = new UserMomentDetailsFragment();
 
     Bundle argumentsBundle = new Bundle();
     argumentsBundle.putInt(ARGUMENT_KEY_USER_ID, userId);
-    userDetailsFragment.setArguments(argumentsBundle);
+    userMomentDetailsFragment.setArguments(argumentsBundle);
 
-    return userDetailsFragment;
+    return userMomentDetailsFragment;
   }
 
   @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
 
-    View fragmentView = inflater.inflate(R.layout.fragment_user_details, container, false);
+    View fragmentView = inflater.inflate(R.layout.fragment_user_moment_details, container, false);
     ButterKnife.bind(this, fragmentView);
 
     return fragmentView;
@@ -143,6 +142,6 @@ public class UserDetailsFragment extends BaseFragment implements UserDetailsView
 
   @OnClick(R.id.bt_retry)
   void onButtonRetryClick() {
-    UserDetailsFragment.this.loadUserDetails();
+    UserMomentDetailsFragment.this.loadUserDetails();
   }
 }

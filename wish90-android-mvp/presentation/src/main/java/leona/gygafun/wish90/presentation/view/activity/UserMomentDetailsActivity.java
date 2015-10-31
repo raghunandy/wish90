@@ -14,12 +14,12 @@ import leona.gygafun.wish90.presentation.di.HasComponent;
 import leona.gygafun.wish90.presentation.di.components.DaggerUserComponent;
 import leona.gygafun.wish90.presentation.di.components.UserComponent;
 import leona.gygafun.wish90.presentation.di.modules.UserModule;
-import leona.gygafun.wish90.presentation.view.fragment.UserDetailsFragment;
+import leona.gygafun.wish90.presentation.view.fragment.UserMomentDetailsFragment;
 
 /**
  * Activity that shows details of a certain user.
  */
-public class UserDetailsActivity extends BaseActivity implements HasComponent<UserComponent> {
+public class UserMomentDetailsActivity extends BaseActivity implements HasComponent<UserComponent> {
 
   private static final String INTENT_EXTRA_PARAM_USER_ID = "org.android10.INTENT_PARAM_USER_ID";
   private static final String INSTANCE_STATE_PARAM_USER_ID = "org.android10.STATE_PARAM_USER_ID";
@@ -28,7 +28,7 @@ public class UserDetailsActivity extends BaseActivity implements HasComponent<Us
   private UserComponent userComponent;
 
   public static Intent getCallingIntent(Context context, int userId) {
-    Intent callingIntent = new Intent(context, UserDetailsActivity.class);
+    Intent callingIntent = new Intent(context, UserMomentDetailsActivity.class);
     callingIntent.putExtra(INTENT_EXTRA_PARAM_USER_ID, userId);
 
     return callingIntent;
@@ -56,7 +56,7 @@ public class UserDetailsActivity extends BaseActivity implements HasComponent<Us
   private void initializeActivity(Bundle savedInstanceState) {
     if (savedInstanceState == null) {
       this.userId = getIntent().getIntExtra(INTENT_EXTRA_PARAM_USER_ID, -1);
-      addFragment(R.id.fl_fragment, UserDetailsFragment.newInstance(this.userId));
+      addFragment(R.id.fl_fragment, UserMomentDetailsFragment.newInstance(this.userId));
     } else {
       this.userId = savedInstanceState.getInt(INSTANCE_STATE_PARAM_USER_ID);
     }

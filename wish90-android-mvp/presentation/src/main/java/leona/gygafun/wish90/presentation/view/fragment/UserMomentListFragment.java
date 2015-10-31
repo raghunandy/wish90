@@ -22,7 +22,7 @@ import leona.gygafun.wish90.presentation.di.components.UserComponent;
 import leona.gygafun.wish90.presentation.model.UserMomentModel;
 import leona.gygafun.wish90.presentation.presenter.UserMomentListPresenter;
 import leona.gygafun.wish90.presentation.view.UserMomentListView;
-import leona.gygafun.wish90.presentation.view.adapter.UsersMomentAdapter;
+import leona.gygafun.wish90.presentation.view.adapter.UserMomentsAdapter;
 import leona.gygafun.wish90.presentation.view.adapter.UserMomentsLayoutManager;
 
 import java.util.ArrayList;
@@ -47,12 +47,12 @@ public class UserMomentListFragment extends BaseFragment implements UserMomentLi
   @Inject
   UserMomentListPresenter userMomentListPresenter;
 
-  @Bind(R.id.rv_users) RecyclerView rv_users;
+  @Bind(R.id.user_moments) RecyclerView user_moments;
   @Bind(R.id.rl_progress) RelativeLayout rl_progress;
   @Bind(R.id.rl_retry) RelativeLayout rl_retry;
   @Bind(R.id.bt_retry) Button bt_retry;
 
-  private UsersMomentAdapter usersAdapter;
+  private UserMomentsAdapter usersAdapter;
   private UserMomentsLayoutManager usersLayoutManager;
 
   private UserListListener userListListener;
@@ -109,11 +109,11 @@ public class UserMomentListFragment extends BaseFragment implements UserMomentLi
 
   private void setupUI() {
     this.usersLayoutManager = new UserMomentsLayoutManager(getActivity());
-    this.rv_users.setLayoutManager(usersLayoutManager);
+    this.user_moments.setLayoutManager(usersLayoutManager);
 
-    this.usersAdapter = new UsersMomentAdapter(getActivity(), new ArrayList<UserMomentModel>());
+    this.usersAdapter = new UserMomentsAdapter(getActivity(), new ArrayList<UserMomentModel>());
     this.usersAdapter.setOnItemClickListener(onItemClickListener);
-    this.rv_users.setAdapter(usersAdapter);
+    this.user_moments.setAdapter(usersAdapter);
   }
 
   @Override public void showLoading() {
@@ -165,8 +165,8 @@ public class UserMomentListFragment extends BaseFragment implements UserMomentLi
     UserMomentListFragment.this.loadUserList();
   }
 
-  private UsersMomentAdapter.OnItemClickListener onItemClickListener =
-      new UsersMomentAdapter.OnItemClickListener() {
+  private UserMomentsAdapter.OnItemClickListener onItemClickListener =
+      new UserMomentsAdapter.OnItemClickListener() {
         @Override public void onUserItemClicked(UserMomentModel userModel) {
             if (UserMomentListFragment.this.userMomentListPresenter != null && userModel != null) {
               UserMomentListFragment.this.userMomentListPresenter.onUserClicked(userModel);

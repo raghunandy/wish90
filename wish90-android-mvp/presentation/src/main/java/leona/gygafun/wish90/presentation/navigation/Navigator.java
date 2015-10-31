@@ -3,7 +3,7 @@ package leona.gygafun.wish90.presentation.navigation;
 
 import android.content.Context;
 import android.content.Intent;
-import leona.gygafun.wish90.presentation.view.activity.UserDetailsActivity;
+import leona.gygafun.wish90.presentation.view.activity.UserMomentDetailsActivity;
 import leona.gygafun.wish90.presentation.view.activity.UserMomentListActivity;
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -38,7 +38,7 @@ public class Navigator {
    */
   public void navigateToUserDetails(Context context, int userId) {
     if (context != null) {
-      Intent intentToLaunch = UserDetailsActivity.getCallingIntent(context, userId);
+      Intent intentToLaunch = UserMomentDetailsActivity.getCallingIntent(context, userId);
       context.startActivity(intentToLaunch);
     }
   }

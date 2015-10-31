@@ -5,7 +5,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 import leona.gygafun.wish90.presentation.R;
-import leona.gygafun.wish90.presentation.view.activity.UserDetailsActivity;
+import leona.gygafun.wish90.presentation.view.activity.UserMomentDetailsActivity;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
@@ -17,20 +17,20 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.not;
 
-public class UserDetailsActivityTest extends ActivityInstrumentationTestCase2<UserDetailsActivity> {
+public class UserMomentDetailsActivityTest extends ActivityInstrumentationTestCase2<UserMomentDetailsActivity> {
 
   private static final int FAKE_USER_ID = 10;
 
-  private UserDetailsActivity userDetailsActivity;
+  private UserMomentDetailsActivity userMomentDetailsActivity;
 
-  public UserDetailsActivityTest() {
-    super(UserDetailsActivity.class);
+  public UserMomentDetailsActivityTest() {
+    super(UserMomentDetailsActivity.class);
   }
 
   @Override protected void setUp() throws Exception {
     super.setUp();
     this.setActivityIntent(createTargetIntent());
-    this.userDetailsActivity = getActivity();
+    this.userMomentDetailsActivity = getActivity();
   }
 
   @Override protected void tearDown() throws Exception {
@@ -39,12 +39,12 @@ public class UserDetailsActivityTest extends ActivityInstrumentationTestCase2<Us
 
   public void testContainsUserDetailsFragment() {
     Fragment userDetailsFragment =
-        userDetailsActivity.getFragmentManager().findFragmentById(R.id.fl_fragment);
+        userMomentDetailsActivity.getFragmentManager().findFragmentById(R.id.fl_fragment);
     assertThat(userDetailsFragment, is(notNullValue()));
   }
 
   public void testContainsProperTitle() {
-    String actualTitle = this.userDetailsActivity.getTitle().toString().trim();
+    String actualTitle = this.userMomentDetailsActivity.getTitle().toString().trim();
 
     assertThat(actualTitle, is("User Details"));
   }
@@ -66,7 +66,7 @@ public class UserDetailsActivityTest extends ActivityInstrumentationTestCase2<Us
 
   private Intent createTargetIntent() {
     Intent intentLaunchActivity =
-        UserDetailsActivity.getCallingIntent(getInstrumentation().getTargetContext(), FAKE_USER_ID);
+        UserMomentDetailsActivity.getCallingIntent(getInstrumentation().getTargetContext(), FAKE_USER_ID);
 
     return intentLaunchActivity;
   }

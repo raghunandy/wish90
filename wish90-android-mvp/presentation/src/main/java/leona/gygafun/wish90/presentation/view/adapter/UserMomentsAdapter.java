@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * Adaptar that manages a collection of {@link UserModel}.
  */
-public class UsersMomentAdapter extends RecyclerView.Adapter<UsersMomentAdapter.UserViewHolder> {
+public class UserMomentsAdapter extends RecyclerView.Adapter<UserMomentsAdapter.UserMomentViewHolder> {
 
   public interface OnItemClickListener {
     void onUserItemClicked(UserMomentModel userModel);
@@ -33,7 +33,7 @@ public class UsersMomentAdapter extends RecyclerView.Adapter<UsersMomentAdapter.
 
   private OnItemClickListener onItemClickListener;
 
-  public UsersMomentAdapter(Context context, Collection<UserMomentModel> usersCollection) {
+  public UserMomentsAdapter(Context context, Collection<UserMomentModel> usersCollection) {
     this.validateUsersCollection(usersCollection);
     this.layoutInflater =
         (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -44,20 +44,20 @@ public class UsersMomentAdapter extends RecyclerView.Adapter<UsersMomentAdapter.
     return (this.usersCollection != null) ? this.usersCollection.size() : 0;
   }
 
-  @Override public UserViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = this.layoutInflater.inflate(R.layout.row_user, parent, false);
-    UserViewHolder userViewHolder = new UserViewHolder(view);
+  @Override public UserMomentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    View view = this.layoutInflater.inflate(R.layout.row_moment, parent, false);
+    UserMomentViewHolder userMomentViewHolder = new UserMomentViewHolder(view);
 
-    return userViewHolder;
+    return userMomentViewHolder;
   }
 
-  @Override public void onBindViewHolder(UserViewHolder holder, final int position) {
+  @Override public void onBindViewHolder(UserMomentViewHolder holder, final int position) {
     final UserMomentModel userModel = this.usersCollection.get(position);
-    holder.textViewTitle.setText(userModel.getRefContact().getContactName());
+    holder.contactName.setText(userModel.getRefContact().getContactName());
     holder.itemView.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
-        if (UsersMomentAdapter.this.onItemClickListener != null) {
-          UsersMomentAdapter.this.onItemClickListener.onUserItemClicked(userModel);
+        if (UserMomentsAdapter.this.onItemClickListener != null) {
+          UserMomentsAdapter.this.onItemClickListener.onUserItemClicked(userModel);
         }
       }
     });
@@ -83,10 +83,11 @@ public class UsersMomentAdapter extends RecyclerView.Adapter<UsersMomentAdapter.
     }
   }
 
-  static class UserViewHolder extends RecyclerView.ViewHolder {
-    @Bind(R.id.person_name) TextView textViewTitle;
+  static class UserMomentViewHolder extends RecyclerView.ViewHolder {
+    @Bind(R.id.contact_name) TextView contactName;
+    //
 
-    public UserViewHolder(View itemView) {
+    public UserMomentViewHolder(View itemView) {
       super(itemView);
       ButterKnife.bind(this, itemView);
     }
