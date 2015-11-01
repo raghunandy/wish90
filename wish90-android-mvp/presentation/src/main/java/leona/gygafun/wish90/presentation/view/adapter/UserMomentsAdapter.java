@@ -16,8 +16,10 @@ import butterknife.ButterKnife;
 import leona.gygafun.wish90.presentation.R;
 import leona.gygafun.wish90.presentation.model.UserModel;
 import leona.gygafun.wish90.presentation.model.UserMomentModel;
+import leona.gygafun.wish90.presentation.util.TextUtil;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,7 +31,7 @@ public class UserMomentsAdapter extends RecyclerView.Adapter<UserMomentsAdapter.
     void onUserItemClicked(UserMomentModel userModel);
   }
 
-  private List<UserMomentModel> usersCollection;
+  private List<UserMomentModel> userMomentCollection;
   private final LayoutInflater layoutInflater;
 
   private OnItemClickListener onItemClickListener;
@@ -38,11 +40,11 @@ public class UserMomentsAdapter extends RecyclerView.Adapter<UserMomentsAdapter.
     this.validateUsersCollection(usersCollection);
     this.layoutInflater =
         (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    this.usersCollection = (List<UserMomentModel>) usersCollection;
+    this.userMomentCollection = (List<UserMomentModel>) usersCollection;
   }
 
   @Override public int getItemCount() {
-    return (this.usersCollection != null) ? this.usersCollection.size() : 0;
+    return (this.userMomentCollection != null) ? this.userMomentCollection.size() : 0;
   }
 
   @Override public UserMomentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -53,12 +55,14 @@ public class UserMomentsAdapter extends RecyclerView.Adapter<UserMomentsAdapter.
   }
 
   @Override public void onBindViewHolder(UserMomentViewHolder holder, final int position) {
-    final UserMomentModel userModel = this.usersCollection.get(position);
-    holder.contactName.setText(userModel.getRefContact().getContactName());
-    holder.itemView.setOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(View v) {
+    final UserMomentModel userMomentModel = this.userMomentCollection.get(position);
+    holder.contactName.setText(userMomentModel.getRefContact().getContactName());
+    String mDate= TextUtil.makeSimpleDatString(userMomentModel.getMomentDateTime());
+    holder.momentDateTime.setText(mDate);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+          @Override public void onClick(View v) {
         if (UserMomentsAdapter.this.onItemClickListener != null) {
-          UserMomentsAdapter.this.onItemClickListener.onUserItemClicked(userModel);
+          UserMomentsAdapter.this.onItemClickListener.onUserItemClicked(userMomentModel);
         }
       }
     });
@@ -68,9 +72,9 @@ public class UserMomentsAdapter extends RecyclerView.Adapter<UserMomentsAdapter.
     return position;
   }
 
-  public void setUsersCollection(Collection<UserMomentModel> usersCollection) {
+  public void setUserMomentCollection(Collection<UserMomentModel> usersCollection) {
     this.validateUsersCollection(usersCollection);
-    this.usersCollection = (List<UserMomentModel>) usersCollection;
+    this.userMomentCollection = (List<UserMomentModel>) usersCollection;
     this.notifyDataSetChanged();
   }
 
@@ -87,6 +91,7 @@ public class UserMomentsAdapter extends RecyclerView.Adapter<UserMomentsAdapter.
   static class UserMomentViewHolder extends RecyclerView.ViewHolder {
     @Bind(R.id.contact_name) TextView contactName;
     //
+    @Bind(R.id.moment_date_time) TextView momentDateTime;
 
     public UserMomentViewHolder(View itemView) {
       super(itemView);

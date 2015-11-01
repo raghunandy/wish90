@@ -137,7 +137,7 @@ public class UserMomentListFragment extends BaseFragment implements UserMomentLi
 
   @Override public void renderUserList(Collection<UserMomentModel> userModelCollection) {
     if (userModelCollection != null) {
-        this.usersAdapter.setUsersCollection(userModelCollection);
+        this.usersAdapter.setUserMomentCollection(userModelCollection);
     }
   }
 
