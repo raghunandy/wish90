@@ -2,7 +2,8 @@
 <resources>
   <string name="app_name">Wish90</string>
   <string name="url">http://www.gygafun.com/</string>
-  <string name="cap">Wish 90 - New Age Wishing</string>
+  <string name="cap">Wish 90: The new age wishing app
+ Skeleton Credit: http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/ - New Age Wishing</string>
 
   <string name="activity_title_user_list">Birthday List</string>
   <string name="activity_title_user_details">User Details</string>

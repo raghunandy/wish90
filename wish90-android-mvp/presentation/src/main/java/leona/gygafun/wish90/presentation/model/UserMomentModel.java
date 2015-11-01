@@ -1,5 +1,6 @@
 package leona.gygafun.wish90.presentation.model;
-/* Wish90 */
+/* Wish 90: The new age wishing app
+ Skeleton Credit: http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/ */
 /**
  * Created by rkrasniqi on 10/23/15.
  */

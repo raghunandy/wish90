@@ -5,8 +5,8 @@ import android.content.Context;
 
 import leona.gygafun.wish90.data.cache.UserCache;
 import leona.gygafun.wish90.data.entity.mapper.UserEntityJsonMapper;
-import leona.gygafun.wish90.data.net.RestApi;
-import leona.gygafun.wish90.data.net.RestApiImpl;
+import leona.gygafun.wish90.data.MomentApi;
+import leona.gygafun.wish90.data.external.MomentMobileApiImpl;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -49,8 +49,8 @@ public class UserDataStoreFactory {
      */
     public UserDataStore createCloudDataStore() {
         UserEntityJsonMapper userEntityJsonMapper = new UserEntityJsonMapper();
-        RestApi restApi = new RestApiImpl(this.context, userEntityJsonMapper);
+        MomentApi momentApi = new MomentMobileApiImpl(this.context, userEntityJsonMapper);
 
-        return new CloudUserDataStore(restApi, this.userCache);
+        return new CloudUserDataStore(momentApi, this.userCache);
     }
 }

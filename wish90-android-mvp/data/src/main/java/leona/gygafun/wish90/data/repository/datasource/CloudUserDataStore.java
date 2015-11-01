@@ -4,7 +4,7 @@ package leona.gygafun.wish90.data.repository.datasource;
 import leona.gygafun.wish90.data.cache.UserCache;
 import leona.gygafun.wish90.data.entity.UserEntity;
 import leona.gygafun.wish90.data.entity.UserMomentEntity;
-import leona.gygafun.wish90.data.net.RestApi;
+import leona.gygafun.wish90.data.MomentApi;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import rx.functions.Action1;
  */
 public class CloudUserDataStore implements UserDataStore {
 
-    private final RestApi restApi;
+    private final MomentApi momentApi;
     private final UserCache userCache;
 
     private final Action1<UserEntity> saveToCacheAction =
@@ -29,11 +29,11 @@ public class CloudUserDataStore implements UserDataStore {
     /**
      * Construct a {@link UserDataStore} based on connections to the api (Cloud).
      *
-     * @param restApi The {@link RestApi} implementation to use.
+     * @param momentApi The {@link MomentApi} implementation to use.
      * @param userCache A {@link UserCache} to cache data retrieved from the api.
      */
-    public CloudUserDataStore(RestApi restApi, UserCache userCache) {
-        this.restApi = restApi;
+    public CloudUserDataStore(MomentApi momentApi, UserCache userCache) {
+        this.momentApi = momentApi;
         this.userCache = userCache;
     }
 
@@ -41,19 +41,19 @@ public class CloudUserDataStore implements UserDataStore {
     @Override
     public Observable<List<UserEntity>> userEntityList() {
         return null;
-//        return this.restApi.userMomentEntityList();
+//        return this.momentApi.userMomentEntityList();
     }
 
 
     public Observable<UserEntity> userEntityDetails(final int userId) {
         return null;
-//        return this.restApi.userEntityById(userId)
+//        return this.momentApi.userEntityById(userId)
 //                .doOnNext(saveToCacheAction);
     }
 
     @Override
     public Observable<List<UserMomentEntity>> userMomentEntityList() {
-        return this.restApi.userMomentEntityList();
+        return this.momentApi.userMomentEntityList();
     }
 
     @Override

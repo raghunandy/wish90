@@ -2,7 +2,7 @@
  Wish 90: The new age wishing app
  Skeleton Credit: http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/
  */
-package leona.gygafun.wish90.data.net;
+package leona.gygafun.wish90.data.external;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -35,21 +35,23 @@ import java.util.concurrent.TimeUnit;
 //import android.support.v7.widget.RecyclerView;
 
 
-public class ApiConnection implements Callable<String> {
+
+public class MobileApiConnection implements Callable<String> {
     private final Context context;
     public static final String[] DATE_FORMAT_STRINGS=new String[]{ "MMMM d, yyyy","yyyy-MM-dd"};
     String name,momentDate,contactImage;
-    private URL url;
     private String response;
 
-    public ApiConnection(Context context) throws MalformedURLException {
+    public MobileApiConnection(Context context) throws MalformedURLException {
         this.context=context;
     }
+
 
     public static JsonArray getJsonFromMyObject(List<UserMomentEntity> moment) throws JSONException
     {
         return new Gson().toJsonTree(moment).getAsJsonArray();
     }
+
 
     @Nullable
     public String requestSyncCall() throws JSONException, ParseException {
@@ -81,10 +83,11 @@ public class ApiConnection implements Callable<String> {
 
 
     private Date convertStringToDate(String dateString,String formatString)  {
-        DateFormat format = new SimpleDateFormat(formatString, Locale.ENGLISH);
+        SimpleDateFormat format = new SimpleDateFormat(formatString);
         Date date = null;
         try {
             date = format.parse(dateString);
+
 
         } catch (ParseException e) {
 
@@ -119,11 +122,10 @@ public class ApiConnection implements Callable<String> {
             }
 
         }
-        JsonArray personJson= ApiConnection.getJsonFromMyObject(moments);
+        JsonArray personJson= MobileApiConnection.getJsonFromMyObject(moments);
         this.response=personJson.toString();
 
     }
-
 
     @Override
     public String call() throws Exception {
