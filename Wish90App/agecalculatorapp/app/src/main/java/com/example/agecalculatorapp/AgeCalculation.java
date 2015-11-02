@@ -1,5 +1,7 @@
 package com.example.agecalculatorapp;
 
+//This accepts an input date and calculates the age
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -15,6 +17,9 @@ public class AgeCalculation {
     private int resDay;
     private Calendar start;
     private Calendar end;
+    
+    //this gets current date and assignes it to end variables.
+    
     public String getCurrentDate()
 	{
 		  end=Calendar.getInstance();
@@ -24,6 +29,9 @@ public class AgeCalculation {
 		  endDay=end.get(Calendar.DAY_OF_MONTH);
 		  return endDay+":"+endMonth+":"+endYear;
 	}
+	
+	//this takes in the date as input and assigns it to start variables.
+	
 	public void setDateOfBirth(int sYear, int sMonth, int sDay)
     {
 	 startYear=sYear;
@@ -75,6 +83,8 @@ public class AgeCalculation {
 			 
 		}
 	}
+	 
+	 //this calculates the time difference.
 	 
 	public String getResult()
 	{
