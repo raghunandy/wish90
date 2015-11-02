@@ -6,7 +6,7 @@ Iteration 3:
 
 Steps To Configure Project:
 
-1) This project need JDK 1.7 and 1.8. Install JDK 1.7 and JDK 1.8 and onfigure system environment variables.
+1) This project need JDK 1.7 and 1.8. Install JDK 1.7 and JDK 1.8 and onfigure system environment variables. <br>
 JAVA_HOME=[JDK installetion Directory 1.7]<br>
 JAVA7_HOME=[JDK installetion Directory 1.7]<br>
 JAVA8_HOME=[JDK installetion Directory 1.8]<br>
