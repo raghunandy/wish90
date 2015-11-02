@@ -39,7 +39,7 @@ import javax.inject.Inject;
 public class UserMomentMomentDetailsFragment extends BaseFragment implements UserMomentDetailsView {
 
     private static final String ARGUMENT_KEY_USER_MOMENT = "org.android10.ARGUMENT_USER_MOMENT";
-    private static final int COUNTER_THREAD_DELAY = 200;
+    private static final int COUNTER_THREAD_DELAY = 1;
 
     private UserMomentModel userMomentModel;
 
@@ -57,14 +57,23 @@ public class UserMomentMomentDetailsFragment extends BaseFragment implements Use
     TextView mins;
     @Bind(R.id.moment_date_time)
     TextView momentDateTime;
-    @Bind(R.id.milliSecs)
-    TextView milliSecs;
+//    @Bind(R.id.milliSecs)
+//    TextView milliSecs;
     @Bind(R.id.secs)
     TextView secs;
     @Bind(R.id.contact_image)
     ImageView contactImage;
     @Bind(R.id.hours)
     TextView hours;
+
+    @Bind(R.id.milliSecs)
+    TextView milliSecs;
+
+    @Bind(R.id.years)
+    TextView years;
+
+    @Bind(R.id.months)
+    TextView months;
 
     public UserMomentMomentDetailsFragment() {
     }
@@ -161,6 +170,10 @@ public class UserMomentMomentDetailsFragment extends BaseFragment implements Use
         Date momDate = userMomentModel.getMomentDateTime();
         long momDateMillSec = System.currentTimeMillis() - momDate.getTime();
 
+        milliSecs.setText(momDateMillSec+" ms");
+        years.setText((momDateMillSec / ( 24 * 60 * 60 * 1000)/365) + " years");
+
+        months.setText((int)(((float)momDateMillSec / ( 24 * 60 * 60 * 1000)/365)*12) + " months");
 
         weeks.setText((momDateMillSec / (7 * 24 * 60 * 60 * 1000)) + " weeks");
 

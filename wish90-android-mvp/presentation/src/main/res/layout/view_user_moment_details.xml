@@ -62,14 +62,15 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text=""
-                android:id="@+id/banner"
+                android:id="@+id/milliSecs"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#000000"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 android:layout_below="@id/moment_date_time"
                 android:background="#d6ffe1"
                 android:textAlignment="center" />
+
         </RelativeLayout>
 
 
@@ -80,14 +81,7 @@
             android:layout_below="@id/viewB"
             android:background="#eeffbe">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text=""
-                android:id="@+id/milliSecs"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -136,6 +130,24 @@
                 android:text=""
                 android:id="@+id/weeks"
                 android:layout_below="@+id/days"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text=""
+                android:id="@+id/months"
+                android:layout_below="@+id/weeks"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text=""
+                android:id="@+id/years"
+                android:layout_below="@+id/months"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
         </RelativeLayout>
