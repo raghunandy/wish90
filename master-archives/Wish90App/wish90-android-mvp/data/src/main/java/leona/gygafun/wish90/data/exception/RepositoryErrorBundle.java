@@ -1,10 +1,11 @@
 /**
  * Wish90
  */
+ //Created by: rkrasniqi
+ 
 package leona.gygafun.wish90.data.exception;
 
 import leona.gygafun.wish90.domain.exception.ErrorBundle;
-
 /**
  * Wrapper around Exceptions used to manage errors in the repository.
  */
@@ -18,7 +19,7 @@ public class RepositoryErrorBundle implements ErrorBundle {
 
     @Override
     public Exception getException() {
-        return exception;
+        return this.exception;
     }
 
     @Override
