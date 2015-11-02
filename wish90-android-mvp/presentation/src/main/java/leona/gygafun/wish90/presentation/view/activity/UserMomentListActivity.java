@@ -7,8 +7,13 @@ package leona.gygafun.wish90.presentation.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Window;
+import android.widget.RelativeLayout;
+
+import butterknife.Bind;
+import butterknife.BindDrawable;
 import leona.gygafun.wish90.presentation.R;
 import leona.gygafun.wish90.presentation.di.HasComponent;
 import leona.gygafun.wish90.presentation.di.components.DaggerUserComponent;
@@ -25,14 +30,17 @@ public class UserMomentListActivity extends BaseActivity implements HasComponent
   public static Intent getCallingIntent(Context context) {
     return new Intent(context, UserMomentListActivity.class);
   }
-
+    @BindDrawable(R.drawable.bg2)
+    Drawable bg2;
+    @Bind(R.id.moment_list_layout)
+    RelativeLayout momentListLayout;
   private UserComponent userComponent;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-    setContentView(R.layout.activity_user_moment_list);
-
+      requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+      setContentView(R.layout.activity_user_moment_list);
+      momentListLayout.setBackground(bg2);
     this.initializeInjector();
   }
 
