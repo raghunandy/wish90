@@ -2,14 +2,12 @@
 
 Iteration 3: 
 
-
-
 Steps To Configure Project:
 
 1) This project needs JDK 1.7 and 1.8. Install JDK 1.7 and JDK 1.8 and onfigure system environment variables. <br>
-JAVA_HOME=[JDK installetion Directory 1.7]<br>
-JAVA7_HOME=[JDK installetion Directory 1.7]<br>
-JAVA8_HOME=[JDK installetion Directory 1.8]<br>
+JAVA_HOME=[JDK installation Directory 1.7]<br>
+JAVA7_HOME=[JDK installation Directory 1.7]<br>
+JAVA8_HOME=[JDK installation Directory 1.8]<br>
 <p>
 
 2) There are 2 basic pre-requisites for the project to run on your phone:
