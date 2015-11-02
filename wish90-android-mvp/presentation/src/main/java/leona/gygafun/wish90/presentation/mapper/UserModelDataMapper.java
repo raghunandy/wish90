@@ -83,7 +83,7 @@ public class UserModelDataMapper {
     if (userMoment == null) {
       throw new IllegalArgumentException("Cannot transform a null value");
     }
-    UserMomentModel userMomentModel = new UserMomentModel(userMoment.getMomentID());
+    UserMomentModel userMomentModel = new UserMomentModel();
     userMomentModel.setMomentID(userMoment.getMomentID());
     userMomentModel.setUserID(userMoment.getUserID());
     userMomentModel.setMommentType(userMoment.getMommentType());

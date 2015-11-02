@@ -4,27 +4,29 @@ package leona.gygafun.wish90.presentation.di.modules;
 
 import leona.gygafun.wish90.domain.executor.PostExecutionThread;
 import leona.gygafun.wish90.domain.executor.ThreadExecutor;
-import leona.gygafun.wish90.domain.interactor.GetUserDetails;
+
 import leona.gygafun.wish90.domain.interactor.GetUserMomentList;
 import leona.gygafun.wish90.domain.interactor.UseCase;
 import leona.gygafun.wish90.domain.repository.UserRepository;
 import leona.gygafun.wish90.presentation.di.PerActivity;
 import dagger.Module;
 import dagger.Provides;
+import leona.gygafun.wish90.presentation.model.UserMomentModel;
+
 import javax.inject.Named;
 
 /**
  * Dagger module that provides user related collaborators.
  */
 @Module
-public class UserModule {
+public class UserMomentModule {
 
-  private int userId = -1;
+  private UserMomentModel userMomentModel = new UserMomentModel();
 
-  public UserModule() {}
+  public UserMomentModule() {}
 
-  public UserModule(int userId) {
-    this.userId = userId;
+  public UserMomentModule(UserMomentModel userMomentModel) {
+    this.userMomentModel = userMomentModel;
   }
 
   @Provides @PerActivity @Named("userMomentList") UseCase provideGetUserListUseCase(
@@ -32,9 +34,4 @@ public class UserModule {
     return getUserMomentList;
   }
 
-  @Provides @PerActivity @Named("userDetails") UseCase provideGetUserDetailsUseCase(
-      UserRepository userRepository, ThreadExecutor threadExecutor,
-      PostExecutionThread postExecutionThread) {
-    return new GetUserDetails(userId, userRepository, threadExecutor, postExecutionThread);
-  }
 }

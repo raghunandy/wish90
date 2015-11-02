@@ -14,24 +14,24 @@ import leona.gygafun.wish90.presentation.R;
 import leona.gygafun.wish90.presentation.di.HasComponent;
 import leona.gygafun.wish90.presentation.di.components.DaggerUserComponent;
 import leona.gygafun.wish90.presentation.di.components.UserComponent;
-import leona.gygafun.wish90.presentation.di.modules.UserModule;
+import leona.gygafun.wish90.presentation.di.modules.UserMomentModule;
 import leona.gygafun.wish90.presentation.model.UserMomentModel;
-import leona.gygafun.wish90.presentation.view.fragment.UserMomentDetailsFragment;
+import leona.gygafun.wish90.presentation.view.fragment.UserMomentMomentDetailsFragment;
 
 /**
  * Activity that shows details of a certain user.
  */
 public class UserMomentDetailsActivity extends BaseActivity implements HasComponent<UserComponent> {
 
-  private static final String INTENT_EXTRA_PARAM_USER_ID = "org.android10.INTENT_PARAM_USER_ID";
+  private static final String INTENT_EXTRA_PARAM_USER_MOMENT_OBJECT = "org.android10.INTENT_PARAM_USER_MOMENT_OBJECT";
   private static final String INSTANCE_STATE_PARAM_USER_ID = "org.android10.STATE_PARAM_USER_ID";
 
-  private int userId;
+  private UserMomentModel userMomentModel;
   private UserComponent userComponent;
 
   public static Intent getCallingIntent(Context context, UserMomentModel userMomentModel) {
     Intent callingIntent = new Intent(context, UserMomentDetailsActivity.class);
-    callingIntent.putExtra(INTENT_EXTRA_PARAM_USER_ID, userMomentModel);
+    callingIntent.putExtra(INTENT_EXTRA_PARAM_USER_MOMENT_OBJECT, userMomentModel);
 
     return callingIntent;
   }
@@ -47,7 +47,7 @@ public class UserMomentDetailsActivity extends BaseActivity implements HasCompon
 
   @Override protected void onSaveInstanceState(Bundle outState) {
     if (outState != null) {
-      outState.putInt(INSTANCE_STATE_PARAM_USER_ID, this.userId);
+      outState.putSerializable(INSTANCE_STATE_PARAM_USER_ID, this.userMomentModel);
     }
     super.onSaveInstanceState(outState);
   }
@@ -57,10 +57,10 @@ public class UserMomentDetailsActivity extends BaseActivity implements HasCompon
    */
   private void initializeActivity(Bundle savedInstanceState) {
     if (savedInstanceState == null) {
-      this.userId = getIntent().getIntExtra(INTENT_EXTRA_PARAM_USER_ID, -1);
-      addFragment(R.id.fl_fragment, UserMomentDetailsFragment.newInstance(this.userId));
+      this.userMomentModel = (UserMomentModel)getIntent().getSerializableExtra(INTENT_EXTRA_PARAM_USER_MOMENT_OBJECT);
+      addFragment(R.id.fl_fragment, UserMomentMomentDetailsFragment.newInstance(this.userMomentModel));
     } else {
-      this.userId = savedInstanceState.getInt(INSTANCE_STATE_PARAM_USER_ID);
+      this.userMomentModel = (UserMomentModel) savedInstanceState.getSerializable(INSTANCE_STATE_PARAM_USER_ID);
     }
   }
 
@@ -68,7 +68,6 @@ public class UserMomentDetailsActivity extends BaseActivity implements HasCompon
     this.userComponent = DaggerUserComponent.builder()
         .applicationComponent(getApplicationComponent())
         .activityModule(getActivityModule())
-        .userModule(new UserModule(this.userId))
         .build();
   }
 

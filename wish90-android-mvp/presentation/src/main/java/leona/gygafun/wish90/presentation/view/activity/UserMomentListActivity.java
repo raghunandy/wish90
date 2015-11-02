@@ -49,7 +49,7 @@ public class UserMomentListActivity extends BaseActivity implements HasComponent
 
 
   @Override public void onUserClicked(UserMomentModel userModel) {
-    this.navigator.navigateToUserMomentDetails(this, userModel.getUserID());
+    this.navigator.navigateToUserMomentDetails(this, userModel);
   }
 
 }

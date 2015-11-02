@@ -33,7 +33,7 @@ public class UserMomentModel implements Serializable{
 
     private ContactModel refContact ;
 
-    public UserMomentModel(int userMoment) {
+    public UserMomentModel() {
     }
 
     public int getMomentID() {

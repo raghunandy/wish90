@@ -56,7 +56,8 @@ public class UserMomentsAdapter extends RecyclerView.Adapter<UserMomentsAdapter.
 
   @Override public void onBindViewHolder(UserMomentViewHolder holder, final int position) {
     final UserMomentModel userMomentModel = this.userMomentCollection.get(position);
-    holder.contactName.setText(userMomentModel.getRefContact().getContactName());
+    String cName=TextUtil.makeStringCamelCase(userMomentModel.getRefContact().getContactName());
+    holder.contactName.setText(cName);
     String mDate= TextUtil.makeSimpleDatString(userMomentModel.getMomentDateTime());
     holder.momentDateTime.setText(mDate);
         holder.itemView.setOnClickListener(new View.OnClickListener() {

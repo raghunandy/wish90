@@ -15,11 +15,11 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.verifyZeroInteractions;
 
-public class GetUserDetailsTest {
+public class GetUserMomentDetailsTest {
 
   private static final int FAKE_USER_ID = 123;
 
-  private leona.gygafun.wish90.domain.interactor.GetUserDetails getUserDetails;
+  private GetUserMomentDetails getUserDetails;
 
   @Mock private UserRepository mockUserRepository;
   @Mock private ThreadExecutor mockThreadExecutor;
@@ -28,7 +28,7 @@ public class GetUserDetailsTest {
   @Before
   public void setUp() {
     MockitoAnnotations.initMocks(this);
-    getUserDetails = new leona.gygafun.wish90.domain.interactor.GetUserDetails(FAKE_USER_ID, mockUserRepository,
+    getUserDetails = new GetUserMomentDetails(FAKE_USER_ID, mockUserRepository,
         mockThreadExecutor, mockPostExecutionThread);
   }
 

@@ -18,39 +18,34 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import leona.gygafun.wish90.presentation.R;
 import leona.gygafun.wish90.presentation.di.components.UserComponent;
+import leona.gygafun.wish90.presentation.model.UserMomentModel;
 import leona.gygafun.wish90.presentation.presenter.UserMomentDetailsPresenter;
-import leona.gygafun.wish90.presentation.view.UserDetailsView;
+import leona.gygafun.wish90.presentation.util.TextUtil;
+import leona.gygafun.wish90.presentation.view.UserMomentDetailsView;
 import leona.gygafun.wish90.presentation.view.component.AutoLoadImageView;
 import javax.inject.Inject;
 
 /**
  * Fragment that shows details of a certain user.
  */
-public class UserMomentDetailsFragment extends BaseFragment implements UserDetailsView {
+public class UserMomentMomentDetailsFragment extends BaseFragment implements UserMomentDetailsView {
 
-  private static final String ARGUMENT_KEY_USER_ID = "org.android10.ARGUMENT_USER_ID";
+  private static final String ARGUMENT_KEY_USER_MOMENT = "org.android10.ARGUMENT_USER_MOMENT";
 
-  private int userId;
+  private UserMomentModel userMomentModel;
 
   @Inject
   UserMomentDetailsPresenter userMomentDetailsPresenter;
 
-  @Bind(R.id.iv_cover) AutoLoadImageView iv_cover;
-  @Bind(R.id.tv_fullname) TextView tv_fullname;
-  @Bind(R.id.tv_email) TextView tv_email;
-  @Bind(R.id.tv_followers) TextView tv_followers;
-  @Bind(R.id.tv_description) TextView tv_description;
-  @Bind(R.id.rl_progress) RelativeLayout rl_progress;
-  @Bind(R.id.rl_retry) RelativeLayout rl_retry;
-  @Bind(R.id.bt_retry) Button bt_retry;
+  @Bind(R.id.contact_name) TextView contactName;
 
-  public UserMomentDetailsFragment() { super(); }
+  public UserMomentMomentDetailsFragment() {  }
 
-  public static UserMomentDetailsFragment newInstance(int userId) {
-    UserMomentDetailsFragment userMomentDetailsFragment = new UserMomentDetailsFragment();
+  public static UserMomentMomentDetailsFragment newInstance(UserMomentModel userMomentModel) {
+    UserMomentMomentDetailsFragment userMomentDetailsFragment = new UserMomentMomentDetailsFragment();
 
     Bundle argumentsBundle = new Bundle();
-    argumentsBundle.putInt(ARGUMENT_KEY_USER_ID, userId);
+    argumentsBundle.putSerializable(ARGUMENT_KEY_USER_MOMENT, userMomentModel);
     userMomentDetailsFragment.setArguments(argumentsBundle);
 
     return userMomentDetailsFragment;
@@ -93,36 +88,34 @@ public class UserMomentDetailsFragment extends BaseFragment implements UserDetai
   private void initialize() {
     this.getComponent(UserComponent.class).inject(this);
     this.userMomentDetailsPresenter.setView(this);
-    this.userId = getArguments().getInt(ARGUMENT_KEY_USER_ID);
-    this.userMomentDetailsPresenter.initialize(this.userId);
+    this.userMomentModel = (UserMomentModel)getArguments().getSerializable(ARGUMENT_KEY_USER_MOMENT);
+    this.userMomentDetailsPresenter.initialize(this.userMomentModel);
   }
-/*
-  @Override public void renderUser(UserModel user) {
-    if (user != null) {
-      this.iv_cover.setImageUrl(user.getCoverUrl());
-      this.tv_fullname.setText(user.getFullName());
-      this.tv_email.setText(user.getEmail());
-      this.tv_followers.setText(String.valueOf(user.getFollowers()));
-      this.tv_description.setText(user.getDescription());
+
+  @Override public void renderUser(UserMomentModel userMomentModel) {
+    if (userMomentModel != null) {
+      contactName.setText(TextUtil.makeStringCamelCase(userMomentModel.getRefContact().getContactName()));
     }
   }
-*/
-  @Override public void showLoading() {
-    this.rl_progress.setVisibility(View.VISIBLE);
-    this.getActivity().setProgressBarIndeterminateVisibility(true);
+
+  @Override
+  public void showLoading() {
+
   }
 
-  @Override public void hideLoading() {
-    this.rl_progress.setVisibility(View.GONE);
-    this.getActivity().setProgressBarIndeterminateVisibility(false);
+  @Override
+  public void hideLoading() {
+
   }
 
-  @Override public void showRetry() {
-    this.rl_retry.setVisibility(View.VISIBLE);
+  @Override
+  public void showRetry() {
+
   }
 
-  @Override public void hideRetry() {
-    this.rl_retry.setVisibility(View.GONE);
+  @Override
+  public void hideRetry() {
+
   }
 
   @Override public void showError(String message) {
@@ -138,12 +131,15 @@ public class UserMomentDetailsFragment extends BaseFragment implements UserDetai
    */
   private void loadUserDetails() {
     if (this.userMomentDetailsPresenter != null) {
-      this.userMomentDetailsPresenter.initialize(this.userId);
+      this.userMomentDetailsPresenter.initialize(this.userMomentModel);
     }
   }
 
-  @OnClick(R.id.bt_retry)
-  void onButtonRetryClick() {
-    UserMomentDetailsFragment.this.loadUserDetails();
-  }
+
+
+
+//  @OnClick(R.id.bt_retry)
+//  void onButtonRetryClick() {
+//    UserMomentMomentDetailsFragment.this.loadUserDetails();
+//  }
 }

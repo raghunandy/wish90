@@ -4,10 +4,11 @@ package leona.gygafun.wish90.test.presenter;
 
 import android.content.Context;
 import android.test.AndroidTestCase;
-import leona.gygafun.wish90.domain.interactor.GetUserDetails;
+
 import leona.gygafun.wish90.presentation.mapper.UserModelDataMapper;
+import leona.gygafun.wish90.presentation.model.UserMomentModel;
 import leona.gygafun.wish90.presentation.presenter.UserMomentDetailsPresenter;
-import leona.gygafun.wish90.presentation.view.UserDetailsView;
+import leona.gygafun.wish90.presentation.view.UserMomentDetailsView;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import rx.Subscriber;
@@ -18,34 +19,32 @@ import static org.mockito.Mockito.verify;
 
 public class UserMomentDetailsPresenterTest extends AndroidTestCase {
 
-  private static final int FAKE_USER_ID = 123;
+  private static final UserMomentModel FAKE_USER_MOMENT = new UserMomentModel();
 
   private UserMomentDetailsPresenter userMomentDetailsPresenter;
 
   @Mock
   private Context mockContext;
   @Mock
-  private UserDetailsView mockUserDetailsView;
-  @Mock
-  private GetUserDetails mockGetUserDetails;
+  private UserMomentDetailsView mockUserMomentDetailsView;
+
   @Mock
   private UserModelDataMapper mockUserModelDataMapper;
 
   @Override protected void setUp() throws Exception {
     super.setUp();
     MockitoAnnotations.initMocks(this);
-    userMomentDetailsPresenter = new UserMomentDetailsPresenter(mockGetUserDetails,
-        mockUserModelDataMapper);
-    userMomentDetailsPresenter.setView(mockUserDetailsView);
+    userMomentDetailsPresenter = new UserMomentDetailsPresenter();
+    userMomentDetailsPresenter.setView(mockUserMomentDetailsView);
   }
 
   public void testUserDetailsPresenterInitialize() {
-    given(mockUserDetailsView.getContext()).willReturn(mockContext);
+    given(mockUserMomentDetailsView.getContext()).willReturn(mockContext);
 
-    userMomentDetailsPresenter.initialize(FAKE_USER_ID);
+    userMomentDetailsPresenter.initialize(FAKE_USER_MOMENT);
 
-    verify(mockUserDetailsView).hideRetry();
-    verify(mockUserDetailsView).showLoading();
-    verify(mockGetUserDetails).execute(any(Subscriber.class));
+    verify(mockUserMomentDetailsView).hideRetry();
+    verify(mockUserMomentDetailsView).showLoading();
+    //verify(mockGetUserDetails).execute(any(Subscriber.class));
   }
 }
