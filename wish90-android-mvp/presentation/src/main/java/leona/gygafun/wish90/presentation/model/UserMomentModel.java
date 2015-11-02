@@ -6,6 +6,7 @@ package leona.gygafun.wish90.presentation.model;
  */
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
 /**
  * Class that represents a User in the domain layer.
  */
-public class UserMomentModel{
+public class UserMomentModel implements Serializable{
 
     private int momentID ;
     private int userID ;

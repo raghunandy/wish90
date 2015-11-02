@@ -1,9 +1,11 @@
 package leona.gygafun.wish90.presentation.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Deepti on 10/30/2015.
  */
-public class ContactModel {
+public class ContactModel implements Serializable{
     private long contactNumber;
     private String contactName;
     private String contactImage;

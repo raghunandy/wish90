@@ -4,6 +4,8 @@ package leona.gygafun.wish90.presentation.navigation;
 
 import android.content.Context;
 import android.content.Intent;
+
+import leona.gygafun.wish90.presentation.model.UserMomentModel;
 import leona.gygafun.wish90.presentation.view.activity.UserMomentDetailsActivity;
 import leona.gygafun.wish90.presentation.view.activity.UserMomentListActivity;
 import javax.inject.Inject;
@@ -37,9 +39,9 @@ public class Navigator {
    *
    * @param context A Context needed to open the destiny activity.
    */
-  public void navigateToUserDetails(Context context, int userId) {
+  public void navigateToUserMomentDetails(Context context,UserMomentModel userMomentModel) {
     if (context != null) {
-      Intent intentToLaunch = UserMomentDetailsActivity.getCallingIntent(context, userId);
+      Intent intentToLaunch = UserMomentDetailsActivity.getCallingIntent(context, userMomentModel);
       context.startActivity(intentToLaunch);
     }
   }

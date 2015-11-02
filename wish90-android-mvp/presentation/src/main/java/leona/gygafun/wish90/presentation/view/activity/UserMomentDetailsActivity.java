@@ -15,6 +15,7 @@ import leona.gygafun.wish90.presentation.di.HasComponent;
 import leona.gygafun.wish90.presentation.di.components.DaggerUserComponent;
 import leona.gygafun.wish90.presentation.di.components.UserComponent;
 import leona.gygafun.wish90.presentation.di.modules.UserModule;
+import leona.gygafun.wish90.presentation.model.UserMomentModel;
 import leona.gygafun.wish90.presentation.view.fragment.UserMomentDetailsFragment;
 
 /**
@@ -28,9 +29,9 @@ public class UserMomentDetailsActivity extends BaseActivity implements HasCompon
   private int userId;
   private UserComponent userComponent;
 
-  public static Intent getCallingIntent(Context context, int userId) {
+  public static Intent getCallingIntent(Context context, UserMomentModel userMomentModel) {
     Intent callingIntent = new Intent(context, UserMomentDetailsActivity.class);
-    callingIntent.putExtra(INTENT_EXTRA_PARAM_USER_ID, userId);
+    callingIntent.putExtra(INTENT_EXTRA_PARAM_USER_ID, userMomentModel);
 
     return callingIntent;
   }
