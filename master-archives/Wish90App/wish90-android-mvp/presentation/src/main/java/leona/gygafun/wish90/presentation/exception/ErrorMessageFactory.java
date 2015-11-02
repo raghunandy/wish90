@@ -1,4 +1,6 @@
-/* Wish90 */
+/* Wish90 
+* rkrasniqi
+*/
 package leona.gygafun.wish90.presentation.exception;
 
 import android.content.Context;
@@ -27,7 +29,7 @@ public class ErrorMessageFactory {
 
     if (exception instanceof NetworkConnectionException) {
       message = context.getString(R.string.exception_message_no_connection);
-    } else if (exception instanceof UserNotFoundException) {
+    } else if (this.exception instanceof UserNotFoundException) {
       message = context.getString(R.string.exception_message_user_not_found);
     }
 

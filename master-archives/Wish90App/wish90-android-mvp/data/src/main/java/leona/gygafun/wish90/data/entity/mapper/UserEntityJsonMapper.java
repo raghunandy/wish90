@@ -1,6 +1,8 @@
 /**
  * Wish90
  */
+ //Created by: rkrasniqi
+ 
 package leona.gygafun.wish90.data.entity.mapper;
 
 import leona.gygafun.wish90.data.entity.UserEntity;

@@ -1,6 +1,8 @@
 /**
  * Wish 90
+ * Created by rkrasniqi on 10/6/15.
  */
+ 
 package leona.gygafun.wish90.data.repository;
 
 import leona.gygafun.wish90.data.entity.UserEntity;
@@ -17,11 +19,6 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import rx.Observable;
-
-/**
- * Created by rkrasniqi on 10/6/15.
- */
-
 
 /**
  * {@link UserRepository} for retrieving user data.

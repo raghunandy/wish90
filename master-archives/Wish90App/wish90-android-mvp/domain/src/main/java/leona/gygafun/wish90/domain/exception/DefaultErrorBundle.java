@@ -1,4 +1,6 @@
-/* Wish90 */
+/* Wish90 
+* updated by: rkrasniqi
+*/
 package leona.gygafun.wish90.domain.exception;
 
 /**
@@ -16,11 +18,11 @@ public class DefaultErrorBundle implements ErrorBundle {
 
   @Override
   public Exception getException() {
-    return exception;
+    return this.exception;
   }
 
   @Override
   public String getErrorMessage() {
-    return (exception != null) ? this.exception.getMessage() : DEFAULT_ERROR_MSG;
+    return (this.exception != null) ? this.exception.getMessage() : DEFAULT_ERROR_MSG;
   }
 }
