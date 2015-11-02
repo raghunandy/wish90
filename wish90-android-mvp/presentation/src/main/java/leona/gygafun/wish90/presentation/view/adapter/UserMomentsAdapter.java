@@ -6,12 +6,15 @@
 package leona.gygafun.wish90.presentation.view.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.Bind;
+import butterknife.BindDrawable;
 import butterknife.ButterKnife;
 import leona.gygafun.wish90.presentation.R;
 import leona.gygafun.wish90.presentation.model.UserModel;
@@ -33,6 +36,8 @@ public class UserMomentsAdapter extends RecyclerView.Adapter<UserMomentsAdapter.
 
   private List<UserMomentModel> userMomentCollection;
   private final LayoutInflater layoutInflater;
+
+  //@BindDrawable(R.drawable.contact_default_image)
 
   private OnItemClickListener onItemClickListener;
 
@@ -56,9 +61,25 @@ public class UserMomentsAdapter extends RecyclerView.Adapter<UserMomentsAdapter.
 
   @Override public void onBindViewHolder(UserMomentViewHolder holder, final int position) {
     final UserMomentModel userMomentModel = this.userMomentCollection.get(position);
+    Date momDate=userMomentModel.getMomentDateTime();
+    long momDateMillSec=System.currentTimeMillis()-momDate.getTime();
     String cName=TextUtil.makeStringCamelCase(userMomentModel.getRefContact().getContactName());
     holder.contactName.setText(cName);
     String mDate= TextUtil.makeSimpleDatString(userMomentModel.getMomentDateTime());
+
+    holder.weeks.setText((momDateMillSec/(7*24*60*60*1000))+" weeks");
+
+    holder.days.setText((momDateMillSec/(24*60*60*1000))+" days");
+    holder.hours.setText((momDateMillSec/(60*60*1000))+" hours");
+    holder.min.setText((momDateMillSec / (  60 * 1000)) + " minutes");
+
+    if ((userMomentModel.getRefContact().getContactImage())!=null) {
+      holder.contactImage.setImageURI(Uri.parse(userMomentModel.getRefContact().getContactImage()));
+    }
+    else{
+      holder.contactImage.setImageResource(R.drawable.contact_default_image);
+    }
+
     holder.momentDateTime.setText(mDate);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
           @Override public void onClick(View v) {
@@ -93,7 +114,12 @@ public class UserMomentsAdapter extends RecyclerView.Adapter<UserMomentsAdapter.
     @Bind(R.id.contact_name) TextView contactName;
     //
     @Bind(R.id.moment_date_time) TextView momentDateTime;
-
+    @Bind(R.id.contact_image)
+    ImageView contactImage;
+    @Bind(R.id.weeks) TextView weeks;
+    @Bind(R.id.days) TextView days;
+    @Bind(R.id.hours) TextView hours;
+    @Bind(R.id.min) TextView min;
     public UserMomentViewHolder(View itemView) {
       super(itemView);
       ButterKnife.bind(this, itemView);

@@ -5,8 +5,11 @@
  */
 package leona.gygafun.wish90.presentation.view.fragment;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import butterknife.Bind;
+import butterknife.BindDrawable;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import leona.gygafun.wish90.presentation.R;
@@ -103,11 +107,18 @@ public class UserMomentListFragment extends BaseFragment implements UserMomentLi
     ButterKnife.unbind(this);
   }
 
+  @BindDrawable(R.drawable.bg2)
+  Drawable bg2;
+
+  @Bind(R.id.mm_list_layout)
+  RelativeLayout mmListLayout;
+
   private void initialize() {
     this.getComponent(UserComponent.class).inject(this);
     this.userMomentListPresenter.setView(this);
   }
 
+  @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
   private void setupUI() {
     this.usersLayoutManager = new UserMomentsLayoutManager(getActivity());
     this.user_moments.setLayoutManager(usersLayoutManager);
@@ -115,6 +126,7 @@ public class UserMomentListFragment extends BaseFragment implements UserMomentLi
     this.usersAdapter = new UserMomentsAdapter(getActivity(), new ArrayList<UserMomentModel>());
     this.usersAdapter.setOnItemClickListener(onItemClickListener);
     this.user_moments.setAdapter(usersAdapter);
+
   }
 
   @Override public void showLoading() {
@@ -135,16 +147,19 @@ public class UserMomentListFragment extends BaseFragment implements UserMomentLi
     this.rl_retry.setVisibility(View.GONE);
   }
 
+  @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
   @Override public void renderUserList(Collection<UserMomentModel> userModelCollection) {
     if (userModelCollection != null) {
         this.usersAdapter.setUserMomentCollection(userModelCollection);
     }
+
   }
 
   @Override public void viewUser(UserMomentModel userModel) {
     if (this.userListListener != null) {
       this.userListListener.onUserClicked(userModel);
     }
+
   }
 
   @Override public void showError(String message) {
