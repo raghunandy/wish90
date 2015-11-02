@@ -1,4 +1,7 @@
-/* Wish90 */
+/* Wish90 
+ * Created by rkrasniqi on 10/6/15.
+ */
+ 
 package leona.gygafun.wish90.domain.repository;
 
 import leona.gygafun.wish90.domain.User;
