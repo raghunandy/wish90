@@ -21,7 +21,7 @@ import javax.inject.Named;
  * layer.
  */
 @PerActivity
-public class UserDetailsPresenter implements Presenter {
+public class UserMomentDetailsPresenter implements Presenter {
 
   /** id used to retrieve user details */
   private int userId;
@@ -32,8 +32,8 @@ public class UserDetailsPresenter implements Presenter {
   private final UserModelDataMapper userModelDataMapper;
 
   @Inject
-  public UserDetailsPresenter(@Named("userDetails") UseCase getUserDetailsUseCase,
-      UserModelDataMapper userModelDataMapper) {
+  public UserMomentDetailsPresenter(@Named("userDetails") UseCase getUserDetailsUseCase,
+                                    UserModelDataMapper userModelDataMapper) {
     this.getUserDetailsUseCase = getUserDetailsUseCase;
     this.userModelDataMapper = userModelDataMapper;
   }
@@ -101,17 +101,17 @@ public class UserDetailsPresenter implements Presenter {
   private final class UserDetailsSubscriber extends DefaultSubscriber<User> {
 
     @Override public void onCompleted() {
-      UserDetailsPresenter.this.hideViewLoading();
+      UserMomentDetailsPresenter.this.hideViewLoading();
     }
 
     @Override public void onError(Throwable e) {
-      UserDetailsPresenter.this.hideViewLoading();
-      UserDetailsPresenter.this.showErrorMessage(new DefaultErrorBundle((Exception) e));
-      UserDetailsPresenter.this.showViewRetry();
+      UserMomentDetailsPresenter.this.hideViewLoading();
+      UserMomentDetailsPresenter.this.showErrorMessage(new DefaultErrorBundle((Exception) e));
+      UserMomentDetailsPresenter.this.showViewRetry();
     }
 
     @Override public void onNext(User user) {
-      UserDetailsPresenter.this.showUserDetailsInView(user);
+      UserMomentDetailsPresenter.this.showUserDetailsInView(user);
     }
   }
 }

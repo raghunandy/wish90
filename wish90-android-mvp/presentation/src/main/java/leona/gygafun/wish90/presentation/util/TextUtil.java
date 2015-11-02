@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class TextUtil {
 
-    private  static final SimpleDateFormat sdf=new SimpleDateFormat("MMM-dd-yyyy");
+    private  static final SimpleDateFormat sdf=new SimpleDateFormat("MMM dd yyyy");
     public static String makeSimpleDatString(Date date){
         String ds=sdf.format(date);
         return ds;

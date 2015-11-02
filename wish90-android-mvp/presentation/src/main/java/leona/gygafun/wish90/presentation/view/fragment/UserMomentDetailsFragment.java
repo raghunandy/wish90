@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import leona.gygafun.wish90.presentation.R;
 import leona.gygafun.wish90.presentation.di.components.UserComponent;
-import leona.gygafun.wish90.presentation.presenter.UserDetailsPresenter;
+import leona.gygafun.wish90.presentation.presenter.UserMomentDetailsPresenter;
 import leona.gygafun.wish90.presentation.view.UserDetailsView;
 import leona.gygafun.wish90.presentation.view.component.AutoLoadImageView;
 import javax.inject.Inject;
@@ -32,7 +32,8 @@ public class UserMomentDetailsFragment extends BaseFragment implements UserDetai
 
   private int userId;
 
-  @Inject UserDetailsPresenter userDetailsPresenter;
+  @Inject
+  UserMomentDetailsPresenter userMomentDetailsPresenter;
 
   @Bind(R.id.iv_cover) AutoLoadImageView iv_cover;
   @Bind(R.id.tv_fullname) TextView tv_fullname;
@@ -71,12 +72,12 @@ public class UserMomentDetailsFragment extends BaseFragment implements UserDetai
 
   @Override public void onResume() {
     super.onResume();
-    this.userDetailsPresenter.resume();
+    this.userMomentDetailsPresenter.resume();
   }
 
   @Override public void onPause() {
     super.onPause();
-    this.userDetailsPresenter.pause();
+    this.userMomentDetailsPresenter.pause();
   }
 
   @Override public void onDestroyView() {
@@ -86,14 +87,14 @@ public class UserMomentDetailsFragment extends BaseFragment implements UserDetai
 
   @Override public void onDestroy() {
     super.onDestroy();
-    this.userDetailsPresenter.destroy();
+    this.userMomentDetailsPresenter.destroy();
   }
 
   private void initialize() {
     this.getComponent(UserComponent.class).inject(this);
-    this.userDetailsPresenter.setView(this);
+    this.userMomentDetailsPresenter.setView(this);
     this.userId = getArguments().getInt(ARGUMENT_KEY_USER_ID);
-    this.userDetailsPresenter.initialize(this.userId);
+    this.userMomentDetailsPresenter.initialize(this.userId);
   }
 /*
   @Override public void renderUser(UserModel user) {
@@ -136,8 +137,8 @@ public class UserMomentDetailsFragment extends BaseFragment implements UserDetai
    * Loads all users.
    */
   private void loadUserDetails() {
-    if (this.userDetailsPresenter != null) {
-      this.userDetailsPresenter.initialize(this.userId);
+    if (this.userMomentDetailsPresenter != null) {
+      this.userMomentDetailsPresenter.initialize(this.userId);
     }
   }
 

@@ -6,7 +6,7 @@ import android.content.Context;
 import android.test.AndroidTestCase;
 import leona.gygafun.wish90.domain.interactor.GetUserDetails;
 import leona.gygafun.wish90.presentation.mapper.UserModelDataMapper;
-import leona.gygafun.wish90.presentation.presenter.UserDetailsPresenter;
+import leona.gygafun.wish90.presentation.presenter.UserMomentDetailsPresenter;
 import leona.gygafun.wish90.presentation.view.UserDetailsView;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -16,11 +16,11 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
 
-public class UserDetailsPresenterTest extends AndroidTestCase {
+public class UserMomentDetailsPresenterTest extends AndroidTestCase {
 
   private static final int FAKE_USER_ID = 123;
 
-  private UserDetailsPresenter userDetailsPresenter;
+  private UserMomentDetailsPresenter userMomentDetailsPresenter;
 
   @Mock
   private Context mockContext;
@@ -34,15 +34,15 @@ public class UserDetailsPresenterTest extends AndroidTestCase {
   @Override protected void setUp() throws Exception {
     super.setUp();
     MockitoAnnotations.initMocks(this);
-    userDetailsPresenter = new UserDetailsPresenter(mockGetUserDetails,
+    userMomentDetailsPresenter = new UserMomentDetailsPresenter(mockGetUserDetails,
         mockUserModelDataMapper);
-    userDetailsPresenter.setView(mockUserDetailsView);
+    userMomentDetailsPresenter.setView(mockUserDetailsView);
   }
 
   public void testUserDetailsPresenterInitialize() {
     given(mockUserDetailsView.getContext()).willReturn(mockContext);
 
-    userDetailsPresenter.initialize(FAKE_USER_ID);
+    userMomentDetailsPresenter.initialize(FAKE_USER_ID);
 
     verify(mockUserDetailsView).hideRetry();
     verify(mockUserDetailsView).showLoading();
