@@ -13,6 +13,7 @@ JAVA8_HOME=[JDK installation Directory 1.8]<br>
 2) There are 2 basic pre-requisites for the project to run on your phone:
 + Your phone should have contacts with Birthdays (either manually added birthdays or synced through some app like Facebook)
 + Wish90 should be granted permissions to access your phone contacts
++ The minimum SDK of the device should be 17
 
 Team Member Contributions:
 + Raghu:
