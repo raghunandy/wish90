@@ -11,7 +11,7 @@
       android:layout_height="@dimen/iv_cover_height"
       android:background="@android:color/darker_gray"
       />
-
+    
   <TextView
       android:id="@+id/contact_name"
       style="@style/AppTheme.TextViewHeader"
