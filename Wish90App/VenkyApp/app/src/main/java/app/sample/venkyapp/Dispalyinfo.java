@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -114,40 +115,56 @@ public class Dispalyinfo extends AppCompatActivity {
 
             //convert millisecond values to required values
 
+
+
             //milli seconds
             long milliSecs =  (updatedTime);
+            DecimalFormat formatterMilli = new DecimalFormat("  #,### ms");
+            String formattedMilli = formatterMilli.format(milliSecs);
 
-            timerValueMilli.setText( String.format("   " + milliSecs + " ms"));
+            timerValueMilli.setText(formattedMilli);
+
+
 
 
             //seconds
             long secs =  (updatedTime/1000);
+            DecimalFormat formatterSecs = new DecimalFormat("  #,### sec");
+            String formattedSecs = formatterSecs.format(secs);
 
-            timerValueSec.setText( String.format("   " + secs + " secs"));
+            timerValueSec.setText( formattedSecs);
 
 
             //minutes
             long mins =  (secs/60);
+            DecimalFormat formatterMins = new DecimalFormat("  #,### mins");
+            String formattedMins = formatterMins.format(mins);
 
-            timerValueMin.setText( String.format("   " + mins + " mins"));
+            timerValueMin.setText(formattedMins);
 
 
             //hours
             long hours =  (mins/60);
+            DecimalFormat formatterHours = new DecimalFormat("  #,### hrs");
+            String formattedHours = formatterHours.format(hours);
 
-            timerValueHour.setText( String.format("   " + hours + " hrs"));
+            timerValueHour.setText( formattedHours);
 
 
             //days
             long days =  (hours/24);
+            DecimalFormat formatterDays = new DecimalFormat("  #,### days");
+            String formattedDays = formatterDays.format(days);
 
-            timerValueDays.setText( String.format("   " + days + " days"));
+            timerValueDays.setText(formattedDays);
 
 
             //weeks
             long weeks =  (days/7);
+            DecimalFormat formatterWeeks = new DecimalFormat("  #,### weeks");
+            String formattedWeeks = formatterWeeks.format(weeks);
 
-            timerValueWeeks.setText( String.format("   " + weeks + " wks"));
+            timerValueWeeks.setText( formattedWeeks);
 
 
             customHandler.postDelayed(this, 0);
