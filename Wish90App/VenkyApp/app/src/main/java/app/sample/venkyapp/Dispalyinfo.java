@@ -1,6 +1,7 @@
 package app.sample.venkyapp;
 
 
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -64,20 +65,26 @@ public class Dispalyinfo extends AppCompatActivity {
         }
 
 
-
+        Typeface font = Typeface.createFromAsset(getAssets(), "DS-DIGII.TTF");
 
         //timer
         timerValueMilli = (TextView) findViewById(R.id.timerValueMilli);
+        timerValueMilli.setTypeface(font);
         //customHandler.postDelayed(updateTimerThread, 0);
         timerValueSec = (TextView) findViewById(R.id.timerValueSec);
+        timerValueSec.setTypeface(font);
         //customHandler.postDelayed(updateTimerThread, 0);
         timerValueMin = (TextView) findViewById(R.id.timerValueMin);
+        timerValueMin.setTypeface(font);
         //customHandler.postDelayed(updateTimerThread, 0);
         timerValueHour = (TextView) findViewById(R.id.timerValueHour);
+        timerValueHour.setTypeface(font);
         //customHandler.postDelayed(updateTimerThread, 0);
         timerValueDays = (TextView) findViewById(R.id.timerValueDays);
+        timerValueDays.setTypeface(font);
         //customHandler.postDelayed(updateTimerThread, 0);
         timerValueWeeks = (TextView) findViewById(R.id.timerValueWeeks);
+        timerValueWeeks.setTypeface(font);
 
 
         //startTime = SystemClock.uptimeMillis();
