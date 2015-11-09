@@ -24,6 +24,7 @@ import leona.gygafun.wish90.presentation.di.components.UserComponent;
 import leona.gygafun.wish90.presentation.model.UserMomentModel;
 import leona.gygafun.wish90.presentation.view.fragment.UserMomentListFragment;
 
+
 /**
  * Activity that shows a list of Users.
  */

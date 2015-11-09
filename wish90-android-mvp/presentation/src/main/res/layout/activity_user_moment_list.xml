@@ -26,6 +26,8 @@
         android:cropToPadding="false"
         android:contextClickable="false" />
 
+
+
   <fragment
       android:name="leona.gygafun.wish90.presentation.view.fragment.UserMomentListFragment"
       android:id="@+id/fragmentUserList"

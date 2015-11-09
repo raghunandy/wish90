@@ -5,14 +5,25 @@
  */
 package leona.gygafun.wish90.presentation.view.adapter;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.net.Uri;
+import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toolbar;
+
 import butterknife.Bind;
 import butterknife.BindDrawable;
 import butterknife.ButterKnife;
@@ -21,6 +32,7 @@ import leona.gygafun.wish90.presentation.model.UserModel;
 import leona.gygafun.wish90.presentation.model.UserMomentModel;
 import leona.gygafun.wish90.presentation.util.TextUtil;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -36,6 +48,7 @@ public class UserMomentsAdapter extends RecyclerView.Adapter<UserMomentsAdapter.
 
   private List<UserMomentModel> userMomentCollection;
   private final LayoutInflater layoutInflater;
+  private Context context;
 
   //@BindDrawable(R.drawable.contact_default_image)
 
@@ -43,6 +56,7 @@ public class UserMomentsAdapter extends RecyclerView.Adapter<UserMomentsAdapter.
 
   public UserMomentsAdapter(Context context, Collection<UserMomentModel> usersCollection) {
     this.validateUsersCollection(usersCollection);
+    this.context=context;
     this.layoutInflater =
         (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     this.userMomentCollection = (List<UserMomentModel>) usersCollection;
@@ -59,6 +73,7 @@ public class UserMomentsAdapter extends RecyclerView.Adapter<UserMomentsAdapter.
     return userMomentViewHolder;
   }
 
+  @TargetApi(Build.VERSION_CODES.LOLLIPOP)
   @Override public void onBindViewHolder(UserMomentViewHolder holder, final int position) {
     final UserMomentModel userMomentModel = this.userMomentCollection.get(position);
     Date momDate=userMomentModel.getMomentDateTime();
@@ -79,8 +94,28 @@ public class UserMomentsAdapter extends RecyclerView.Adapter<UserMomentsAdapter.
     else{
       holder.contactImage.setImageResource(R.drawable.contact_default_image);
     }
-
+  holder.imageButton.setImageResource(R.drawable.ic_card_options);
     holder.momentDateTime.setText(mDate);
+    final PopupMenu popup=new PopupMenu(this.context,holder.imageButton);
+    MenuInflater menuInflater=popup.getMenuInflater();
+    menuInflater.inflate(R.menu.main, popup.getMenu());
+    holder.imageButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        popup.show();
+      }
+    });
+   // popup.show();
+
+    /*List<String> list = new ArrayList<String>();
+    list.add("");
+    list.add("Wish Now!");
+    list.add("Alert Me");
+    list.add("Schedule a Wish");
+
+    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(context,android.R.layout.simple_spinner_item, list);
+    dataAdapter.setDropDownViewResource(R.layout.row_moment);
+    holder.options.setAdapter(dataAdapter);*/
         holder.itemView.setOnClickListener(new View.OnClickListener() {
           @Override public void onClick(View v) {
         if (UserMomentsAdapter.this.onItemClickListener != null) {
@@ -110,16 +145,21 @@ public class UserMomentsAdapter extends RecyclerView.Adapter<UserMomentsAdapter.
     }
   }
 
+
   static class UserMomentViewHolder extends RecyclerView.ViewHolder {
     @Bind(R.id.contact_name) TextView contactName;
-    //
+
     @Bind(R.id.moment_date_time) TextView momentDateTime;
-    @Bind(R.id.contact_image)
-    ImageView contactImage;
+    @Bind(R.id.contact_image) ImageView contactImage;
     @Bind(R.id.weeks) TextView weeks;
     @Bind(R.id.days) TextView days;
     @Bind(R.id.hours) TextView hours;
     @Bind(R.id.min) TextView min;
+    @Bind(R.id.imageButton)
+    ImageButton imageButton;
+    //@Bind(R.id.optionsSpinner)    Spinner options;
+
+
     public UserMomentViewHolder(View itemView) {
       super(itemView);
       ButterKnife.bind(this, itemView);

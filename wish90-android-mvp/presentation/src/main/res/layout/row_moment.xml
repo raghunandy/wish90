@@ -101,6 +101,17 @@
                 android:layout_toRightOf="@+id/contact_image"
                 android:layout_below="@+id/hours"/>
 
+            <ImageButton
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton"
+                android:background="@drawable/ic_card_options"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:onClick="showPopup"/>
+
+
+
 
         </RelativeLayout>
 
