@@ -15,10 +15,12 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 /**
  * Class used to transform from Strings representing json to valid objects.
  */
+@Singleton
 public class UserEntityJsonMapper {
 
     private final Gson gson;
