@@ -11,30 +11,14 @@ import java.util.Date;
 
 public class UserEntity {
 
-
     private int userID = 0;
-
-
     private String username = null;
-
-
     private String password = null;
-
-
     private String userEmailAddress = null;
-
-
     private String oAuthToken = null;
-
-
     private Date currentSignInDate;
-
-
     private Date lastSignInDate;
-
-
     private int userAccessCount = 0;
-
 
     public UserEntity(int userID, String username) {
         this.userID=userID;
@@ -92,15 +76,12 @@ public class UserEntity {
     public Date getLastSignInDate() {
         return lastSignInDate;
     }
-
     public void setLastSignInDate(Date lastSignInDate) {
         this.lastSignInDate = lastSignInDate;
     }
-
     public int getUserAccessCount() {
         return userAccessCount;
     }
-
     public void setUserAccessCount(int userAccessCount) {
         this.userAccessCount = userAccessCount;
     }

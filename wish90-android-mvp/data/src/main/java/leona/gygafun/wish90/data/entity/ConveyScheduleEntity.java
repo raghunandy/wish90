@@ -11,19 +11,10 @@ public class ConveyScheduleEntity {
 
 
     private int scheduleID;
-
-
     private int momentID;
-
-
     private String scheduleInstrument;
-
-
     private String template;
-
-
     private String deliverInstrument;
-
 
     public ConveyScheduleEntity() {}
 
@@ -35,19 +26,15 @@ public class ConveyScheduleEntity {
     public void setScheduleID(int scheduleID) {
         this.scheduleID = scheduleID;
     }
-
     public int getMomentID() {
         return momentID;
     }
-
     public void setMomentID(int momentID) {
         this.momentID = momentID;
     }
-
     public String getScheduleInstrument() {
         return scheduleInstrument;
     }
-
     public void setScheduleInstrument(String scheduleInstrument) {
         this.scheduleInstrument = scheduleInstrument;
     }
@@ -55,11 +42,9 @@ public class ConveyScheduleEntity {
     public String getTemplate() {
         return template;
     }
-
     public void setTemplate(String template) {
         this.template = template;
     }
-
     public String getDeliverInstrument() {
         return deliverInstrument;
     }
