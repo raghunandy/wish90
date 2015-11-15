@@ -4,6 +4,7 @@ package leona.gygafun.wish90.data.repository.datasource;
 import android.content.Context;
 
 import leona.gygafun.wish90.data.cache.UserCache;
+import leona.gygafun.wish90.data.cache.UserMomentCache;
 import leona.gygafun.wish90.data.entity.mapper.UserEntityJsonMapper;
 import leona.gygafun.wish90.data.MomentApi;
 import leona.gygafun.wish90.data.external.MomentMobileApiImpl;
@@ -19,14 +20,16 @@ public class UserDataStoreFactory {
 
     private final Context context;
     private final UserCache userCache;
+    private final UserMomentCache userMomentCache;
 
     @Inject
-    public UserDataStoreFactory(Context context, UserCache userCache) {
+    public UserDataStoreFactory(Context context, UserCache userCache,UserMomentCache userMomentCache) {
         if (context == null || userCache == null) {
             throw new IllegalArgumentException("Constructor parameters cannot be null!!!");
         }
         this.context = context.getApplicationContext();
         this.userCache = userCache;
+        this.userMomentCache=userMomentCache;
     }
 
     /**
@@ -36,7 +39,7 @@ public class UserDataStoreFactory {
         UserDataStore userDataStore;
 
         if (!this.userCache.isExpired() && this.userCache.isCached(userId)) {
-            userDataStore = new DiskUserDataStore(this.userCache);
+            userDataStore = new DiskUserDataStore(this.userMomentCache);
         } else {
             userDataStore = createCloudDataStore();
         }
@@ -52,5 +55,9 @@ public class UserDataStoreFactory {
         MomentApi momentApi = new MomentMobileApiImpl(this.context, userEntityJsonMapper);
 
         return new CloudUserDataStore(momentApi, this.userCache);
+    }
+
+    public UserDataStore createCacheDataStore() {
+        return new DiskUserDataStore(this.userMomentCache);
     }
 }

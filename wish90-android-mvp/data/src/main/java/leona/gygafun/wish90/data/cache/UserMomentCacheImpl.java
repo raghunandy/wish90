@@ -31,10 +31,8 @@ public class UserMomentCacheImpl extends DefaultFileCacheImpl implements UserMom
     private static final String DEFAULT_FILE_NAME = "user_";
     private static final long EXPIRATION_TIME = 60 * 10 * 1000;
     private static final String CACHE_SUFFIX = "usermoment";
-
     @Inject
     private final UserEntityJsonMapper userEntityJsonMapper;
-
     @Inject
     public UserMomentCacheImpl(Context context, JsonSerializer userCacheSerializer,
                                FileManager fileManager, ThreadExecutor executor,UserEntityJsonMapper userEntityJsonMapper) {
@@ -51,7 +49,6 @@ public class UserMomentCacheImpl extends DefaultFileCacheImpl implements UserMom
             public void call(Subscriber<? super List<UserMomentEntity>> subscriber) {
                 File userEntityFile = UserMomentCacheImpl.this.buildFile(CACHE_SUFFIX);
                 String fileContent = UserMomentCacheImpl.this.fileManager.readFileContent(userEntityFile);
-
 
                 if (fileContent != null) {
                     subscriber.onNext(userEntityJsonMapper.transformUserMomentEntityCollection(

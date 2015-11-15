@@ -36,4 +36,5 @@ public interface UserDataStore {
      */
 
     Observable<UserMomentEntity> userMomentEntityDetails(final int momentID);
+    void save(final UserMomentEntity userMomentEntity);
 }

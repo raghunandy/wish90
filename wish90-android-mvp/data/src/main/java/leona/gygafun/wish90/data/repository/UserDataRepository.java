@@ -52,8 +52,17 @@ public class UserDataRepository implements UserRepository {
     public Observable<List<UserMoment>> userMoments() {
         //we always get all users from the cloud
         final UserDataStore userDataStore = this.userDataStoreFactory.createCloudDataStore();
-        return userDataStore.userMomentEntityList()
+        final UserDataStore momentDataCacheStore = this.userDataStoreFactory.createCacheDataStore();
+
+        Observable<List<UserMoment>> userMomentListObservables= userDataStore.userMomentEntityList()
                 .map(userEntities -> this.userEntityDataMapper.transformMoment(userEntities));
+        Observable<List<UserMoment>> umsFromCache= momentDataCacheStore.userMomentEntityList()
+                .map(userEntities -> this.userEntityDataMapper.transformMoment(userEntities));
+
+
+        userMomentListObservables.concatWith(umsFromCache);
+        return userMomentListObservables;
+
     }
 
     @Override

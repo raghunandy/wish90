@@ -2,6 +2,7 @@
 package leona.gygafun.wish90.data.repository.datasource;
 
 import leona.gygafun.wish90.data.cache.UserCache;
+import leona.gygafun.wish90.data.cache.UserMomentCache;
 import leona.gygafun.wish90.data.entity.UserEntity;
 import leona.gygafun.wish90.data.entity.UserMomentEntity;
 
@@ -14,35 +15,45 @@ import rx.Observable;
  */
 public class DiskUserDataStore implements UserDataStore {
 
-    private final UserCache userCache;
+    private final UserMomentCache userMomentCache;
 
     /**
      * Construct a {@link UserDataStore} based file system data store.
      *
-     * @param userCache A {@link UserCache} to cache data retrieved from the api.
+     * @param userMomentCache A {@link userMomentCache} to cache data retrieved from the api.
      */
-    public DiskUserDataStore(UserCache userCache) {
-        this.userCache = userCache;
+    public DiskUserDataStore(UserMomentCache userMomentCache) {
+        this.userMomentCache = userMomentCache;
     }
 
+    /**
+     *  implement simple cache for storing/retrieving collections of users.
+     * @return
+     */
     @Override
     public Observable<List<UserEntity>> userEntityList() {
-        //TODO: implement simple cache for storing/retrieving collections of users.
-        throw new UnsupportedOperationException("Operation is not available!!!");
+        return null;
+
     }
 
     @Override
     public Observable<UserEntity> userEntityDetails(final int user_id) {
-        return this.userCache.get(user_id);
+      return null;
+      //  return this.userMomentCache.get(user_id);
     }
 
     @Override
     public Observable<List<UserMomentEntity>> userMomentEntityList() {
-        return null;
+        return userMomentCache.getAll();
     }
 
     @Override
     public Observable<UserMomentEntity> userMomentEntityDetails(int momentID) {
         return null;
+    }
+
+    @Override
+    public void save(UserMomentEntity userMomentEntity) {
+        userMomentCache.put(userMomentEntity);
     }
 }

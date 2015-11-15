@@ -34,7 +34,7 @@ public class GetUserMomentListTest {
   public void testGetUserListUseCaseObservableHappyCase() {
     getUserMomentList.buildUseCaseObservable();
 
-    verify(mockUserRepository).users();
+//    verify(mockUserRepository).users();
     verifyNoMoreInteractions(mockUserRepository);
     verifyZeroInteractions(mockThreadExecutor);
     verifyZeroInteractions(mockPostExecutionThread);
