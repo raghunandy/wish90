@@ -63,6 +63,6 @@ public class CloudUserDataStore implements UserDataStore {
 
     @Override
     public void save(UserMomentEntity userMomentEntity) {
-        ../
+//        ../
     }
 }
