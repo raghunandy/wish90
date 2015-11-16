@@ -53,7 +53,8 @@ public class DiskUserDataStore implements UserDataStore {
     }
 
     @Override
-    public void save(UserMomentEntity userMomentEntity) {
+    public Observable<UserMomentEntity> save(UserMomentEntity userMomentEntity) {
         userMomentCache.put(userMomentEntity);
+        return null;
     }
 }

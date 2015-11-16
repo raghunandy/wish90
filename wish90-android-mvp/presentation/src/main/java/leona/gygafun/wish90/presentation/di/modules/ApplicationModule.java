@@ -5,6 +5,8 @@ package leona.gygafun.wish90.presentation.di.modules;
 import android.content.Context;
 import leona.gygafun.wish90.data.cache.UserCache;
 import leona.gygafun.wish90.data.cache.UserCacheImpl;
+import leona.gygafun.wish90.data.cache.UserMomentCache;
+import leona.gygafun.wish90.data.cache.UserMomentCacheImpl;
 import leona.gygafun.wish90.data.executor.JobExecutor;
 import leona.gygafun.wish90.data.repository.UserDataRepository;
 import leona.gygafun.wish90.domain.executor.PostExecutionThread;
@@ -50,5 +52,9 @@ public class ApplicationModule {
 
   @Provides @Singleton UserRepository provideUserRepository(UserDataRepository userDataRepository) {
     return userDataRepository;
+  }
+
+  @Provides @Singleton UserMomentCache provideUserMomentCache(UserMomentCacheImpl userMomentCache) {
+    return userMomentCache;
   }
 }

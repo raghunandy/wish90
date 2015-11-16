@@ -3,6 +3,8 @@
 package leona.gygafun.wish90.presentation.di.components;
 
 import android.content.Context;
+
+import leona.gygafun.wish90.data.cache.UserMomentCache;
 import leona.gygafun.wish90.domain.executor.PostExecutionThread;
 import leona.gygafun.wish90.domain.executor.ThreadExecutor;
 import leona.gygafun.wish90.domain.repository.UserRepository;
@@ -24,4 +26,6 @@ public interface ApplicationComponent {
   ThreadExecutor threadExecutor();
   PostExecutionThread postExecutionThread();
   UserRepository userRepository();
+  UserMomentCache userMomentCache();
+
 }
