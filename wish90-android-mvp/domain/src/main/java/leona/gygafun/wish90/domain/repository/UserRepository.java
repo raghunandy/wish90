@@ -35,5 +35,7 @@ public interface UserRepository {
   Observable<UserMoment> userMoment(int userId);
 
 
+  Observable<UserMoment> saveUserMoment(UserMoment userMoment);
+
 
 }

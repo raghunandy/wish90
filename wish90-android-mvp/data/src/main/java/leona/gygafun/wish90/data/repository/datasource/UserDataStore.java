@@ -6,6 +6,7 @@ import leona.gygafun.wish90.data.entity.UserEntity;
 import java.util.List;
 
 import leona.gygafun.wish90.data.entity.UserMomentEntity;
+import leona.gygafun.wish90.domain.UserMoment;
 import rx.Observable;
 
 /**
@@ -36,5 +37,5 @@ public interface UserDataStore {
      */
 
     Observable<UserMomentEntity> userMomentEntityDetails(final int momentID);
-    void save(final UserMomentEntity userMomentEntity);
+    Observable<UserMomentEntity> save(final UserMomentEntity userMomentEntity);
 }

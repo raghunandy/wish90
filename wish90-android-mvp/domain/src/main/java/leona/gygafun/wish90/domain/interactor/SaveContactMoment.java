@@ -20,39 +20,24 @@ import rx.Observable;
 
 public class SaveContactMoment extends UseCase {
 
+
+    private final UserRepository userRepository;
+
     private final UserMoment userMoment;
-
-
     @Inject
-    public SaveContactMoment(UserMoment userMoment, ThreadExecutor threadExecutor,
+    public SaveContactMoment( UserMoment userMoment,UserRepository userRepository,ThreadExecutor threadExecutor,
                              PostExecutionThread postExecutionThread) {
         super(threadExecutor, postExecutionThread);
-        this.userMoment = userMoment;
+        this.userMoment=userMoment;
+        this.userRepository=userRepository;
 
-        final String birthdayMoment = "BIRTHDAY";
-        final String celebrationMoment = "CELEBRATION";
-        final String anniversaryMoment = "ANNIVERSARY";
-
-        for(String str: userMoment.getMommentType()) {
-            if(str.trim().contains(birthdayMoment)){
-                userMoment.setRefContact(userMoment.getRefContact());
-                userMoment.setMomentDateTime(userMoment.getMomentDateTime());
-                userMoment.setCustomized(userMoment.isCustomized());
-            }
-            else if (str.trim().contains(celebrationMoment)) {
-                userMoment.setRefContact(userMoment.getRefContact());
-                userMoment.setMomentDateTime(userMoment.getMomentDateTime());
-                userMoment.setCustomized(userMoment.isCustomized());
-            }
-            else if (str.trim().contains(anniversaryMoment))
-                userMoment.setRefContact(userMoment.getRefContact());
-                userMoment.setMomentDateTime(userMoment.getMomentDateTime());
-                userMoment.setCustomized(userMoment.isCustomized());
-        }
     }
 
+
+
     @Override public Observable buildUseCaseObservable() {
-        return null;
+        return this.userRepository.saveUserMoment(this.userMoment);
+
 
     }
 }

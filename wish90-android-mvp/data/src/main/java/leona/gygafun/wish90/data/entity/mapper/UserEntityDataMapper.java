@@ -150,4 +150,14 @@ public class UserEntityDataMapper {
 
         return conveyScheduleList;
     }
+
+    /**
+     *
+     * @param userMoment
+     * @return
+     */
+
+    public UserMomentEntity transformToEntity(UserMoment userMoment) {
+        return null;
+    }
 }

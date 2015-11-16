@@ -79,4 +79,14 @@ public class UserDataRepository implements UserRepository {
 
     }
 
+    @SuppressWarnings("Convert2MethodRef")
+    @Override
+    public  Observable<UserMoment> saveUserMoment(UserMoment userMoment) {
+        final UserDataStore userDataStore = this.userDataStoreFactory.createCacheDataStore();
+        userDataStore.save(this.userEntityDataMapper.transformToEntity(userMoment));
+        //TODO
+        return null;
+
+    }
+
 }
