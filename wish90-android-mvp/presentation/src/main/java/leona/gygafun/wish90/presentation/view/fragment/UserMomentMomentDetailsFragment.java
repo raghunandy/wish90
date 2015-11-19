@@ -5,6 +5,7 @@
 package leona.gygafun.wish90.presentation.view.fragment;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -45,6 +46,9 @@ public class UserMomentMomentDetailsFragment extends BaseFragment implements Use
     private UserMomentModel userMomentModel;
 
     private boolean stopCounterThread = false;
+    
+
+
     @Inject
     UserMomentDetailsPresenter userMomentDetailsPresenter;
 
