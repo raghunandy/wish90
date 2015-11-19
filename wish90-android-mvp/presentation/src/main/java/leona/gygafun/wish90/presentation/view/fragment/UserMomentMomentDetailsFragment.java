@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -170,17 +171,33 @@ public class UserMomentMomentDetailsFragment extends BaseFragment implements Use
         Date momDate = userMomentModel.getMomentDateTime();
         long momDateMillSec = System.currentTimeMillis() - momDate.getTime();
 
-        milliSecs.setText(momDateMillSec+" ms");
-        years.setText((momDateMillSec / ( 24 * 60 * 60 * 1000)/365) + " years");
 
-        months.setText((int)(((float)momDateMillSec / ( 24 * 60 * 60 * 1000)/365)*12) + " months");
+        DecimalFormat formatter = new DecimalFormat("  #,###");
 
-        weeks.setText((momDateMillSec / (7 * 24 * 60 * 60 * 1000)) + " weeks");
+        String formattedMilli = formatter.format(momDateMillSec);
+        milliSecs.setText(formattedMilli + " ms");
 
-        days.setText((momDateMillSec / (24 * 60 * 60 * 1000)) + " days");
-        hours.setText((momDateMillSec / (60 * 60 * 1000)) + " hours");
-        mins.setText((momDateMillSec / (60 * 1000)) + " minutes");
-        secs.setText((momDateMillSec / ( 1000)) + " seconds");
+
+        String formattedYears = formatter.format((momDateMillSec / ( 24 * 60 * 60 * 1000)/365));
+        years.setText(formattedYears + " years");
+
+        String formattedMonths = formatter.format((int)(((float)momDateMillSec / ( 24 * 60 * 60 * 1000)/365)*12));
+        months.setText(formattedMonths + " months");
+
+        String formattedWeeks = formatter.format((momDateMillSec / (7 * 24 * 60 * 60 * 1000)));
+        weeks.setText(formattedWeeks + " weeks");
+
+        String formattedDays = formatter.format((momDateMillSec / (24 * 60 * 60 * 1000)));
+        days.setText(formattedDays + " days");
+
+        String formattedHours = formatter.format((momDateMillSec / (60 * 60 * 1000)));
+        hours.setText(formattedHours + " hours");
+
+        String formattedMins = formatter.format((momDateMillSec / (60 * 1000)));
+        mins.setText(formattedMins + " minutes");
+
+        String formattedSecs = formatter.format((momDateMillSec / ( 1000)));
+        secs.setText(formattedSecs + " seconds");
 
 
     }
