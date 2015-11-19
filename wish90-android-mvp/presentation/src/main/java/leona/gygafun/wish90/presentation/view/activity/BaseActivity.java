@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
 import leona.gygafun.wish90.presentation.AndroidApplication;
+import leona.gygafun.wish90.presentation.R;
 import leona.gygafun.wish90.presentation.di.components.ApplicationComponent;
 import leona.gygafun.wish90.presentation.di.modules.ActivityModule;
 import leona.gygafun.wish90.presentation.navigation.Navigator;
@@ -52,4 +55,6 @@ public abstract class BaseActivity extends Activity {
   protected ActivityModule getActivityModule() {
     return new ActivityModule(this);
   }
+
+
 }

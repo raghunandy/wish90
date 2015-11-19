@@ -12,11 +12,14 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.view.View;
 import android.view.Window;
 import android.widget.RelativeLayout;
 
 import butterknife.Bind;
 import butterknife.BindDrawable;
+import butterknife.OnClick;
 import leona.gygafun.wish90.presentation.R;
 import leona.gygafun.wish90.presentation.di.HasComponent;
 import leona.gygafun.wish90.presentation.di.components.DaggerUserComponent;
@@ -44,6 +47,7 @@ public class UserMomentListActivity extends BaseActivity implements HasComponent
       setContentView(R.layout.activity_user_moment_list);
     this.initializeInjector();
 
+
   }
 
   private void initializeInjector() {
@@ -61,5 +65,6 @@ public class UserMomentListActivity extends BaseActivity implements HasComponent
   @Override public void onUserClicked(UserMomentModel userModel) {
     this.navigator.navigateToUserMomentDetails(this, userModel);
   }
+
 
 }

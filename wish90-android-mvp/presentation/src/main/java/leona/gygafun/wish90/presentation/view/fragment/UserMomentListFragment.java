@@ -8,9 +8,11 @@ package leona.gygafun.wish90.presentation.view.fragment;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +29,7 @@ import leona.gygafun.wish90.presentation.di.components.UserComponent;
 import leona.gygafun.wish90.presentation.model.UserMomentModel;
 import leona.gygafun.wish90.presentation.presenter.UserMomentListPresenter;
 import leona.gygafun.wish90.presentation.view.UserMomentListView;
+import leona.gygafun.wish90.presentation.view.activity.NewMomentActivity;
 import leona.gygafun.wish90.presentation.view.adapter.UserMomentsAdapter;
 import leona.gygafun.wish90.presentation.view.adapter.UserMomentsLayoutManager;
 
@@ -56,6 +59,8 @@ public class UserMomentListFragment extends BaseFragment implements UserMomentLi
   @Bind(R.id.rl_progress) RelativeLayout rl_progress;
   @Bind(R.id.rl_retry) RelativeLayout rl_retry;
   @Bind(R.id.bt_retry) Button bt_retry;
+  @Bind(R.id.fab)
+  FloatingActionButton newMoment;
 
   private UserMomentsAdapter usersAdapter;
   private UserMomentsLayoutManager usersLayoutManager;
@@ -189,4 +194,12 @@ public class UserMomentListFragment extends BaseFragment implements UserMomentLi
             }
         }
       };
+
+  @OnClick(R.id.fab)  public void fabOnClickListener(){
+    Intent intent;
+    intent = new Intent(newMoment.getContext(), NewMomentActivity.class);
+    newMoment.getContext().startActivity(intent);
+  }
+
+
 }

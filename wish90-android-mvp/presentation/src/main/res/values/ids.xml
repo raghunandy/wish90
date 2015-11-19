@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="textView1" type="id">contactName</item>
+    <item name="linearLayout1" type="id">linearLayout1</item>
+    <item name="editText1" type="id">contactName</item>
+    <item name="linearLayout4" type="id">linearLayout4</item>
+    <item name="editText4" type="id">momentDate</item>
+    <item name="linearLayout5" type="id">linearLayout5</item>
+    <item name="editText5" type="id">momentName</item>
+    <item name="button2" type="id">btnSave</item>
+    <item name="button1" type="id">btnCancel</item>
+    <item name="imageButton1" type="id">calendarImageButton</item>
+</resources>
