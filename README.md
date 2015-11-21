@@ -36,7 +36,7 @@ Team Member Contributions:
   * Settings module
   * Add Notifications option
 + Venky:
-  * Floating action button functionality
+  * New moment module
 + Deepti:
   * Options on each card
   * Integration of Venky’s module
