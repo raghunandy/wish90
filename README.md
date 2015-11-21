@@ -20,7 +20,7 @@ JAVA8_HOME=[JDK installation Directory 1.8]<br>
 + In the main project, the drop down with each contact will just display options (Wish Now!, Alert Me!, etc.), no functions have been added for those options
 + Clicking on the '+' button goes to another page to add new moments but no functionality has been added to actually save moments, it is just a page transition
 + lib/starnumber-lib is a Java project to check special numbers like 12345, 98765, 11111, etc. It needs to be integrated with the Main project
-+ iteration4-irene/Sampleproject is an independent project that gives a button to turn on/off notifications
++ iteration4-irene/Sampleproject is an independent project that allows you to change preferences for the app
 
 Team Member Contributions:
 + Raghu:
