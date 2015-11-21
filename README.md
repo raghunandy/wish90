@@ -15,29 +15,31 @@ JAVA8_HOME=[JDK installation Directory 1.8]<br>
 + Wish90 should be granted permissions to access your phone contacts
 + The minimum SDK of the device should be 17
 
+3) Notes:
++ To run the main project- Clone and open wish90-android-mvp in AndroidStudio
++ In the main project, the drop down with each contact will just display options (Wish Now!, Alert Me!, etc.), no functions have been added for those options
++ Clicking on the '+' button goes to another page to add new moments but no functionality has been added to actually save moments, it is just a page transition
++ lib/starnumber-lib is a Java project to check special numbers like 12345, 98765, 11111, etc. It needs to be integrated with the Main project
++ iteration4-irene/Sampleproject is an independent project that gives a button to turn on/off notifications
+
 Team Member Contributions:
 + Raghu:
-  * App skeleton
   * Integration of modules
   * Mentoring the team
-  * Package Placeholders
 + Siva:
-  * Dynamic display of Age
+  * Age Display UI improvements
+  * Star number algorithm
 + Rrezarta:
   * App skeleton
-  * Database Design
-  * Database development
+  * Database development improvements
 + Irene:
-  * UI Design
-  * Contact Image Fetch
+  * Settings module
+  * Add Notifications option
 + Venky:
-  * Contact Birthday Fetch
-  * Contact Image Fetch
-  * Card layout
+  * Floating action button functionality
 + Deepti:
-  * App Skeleton Adjustments
-  * Integration of Contacts module with App skeleton
-  * Package Placeholders
+  * Options on each card
+  * Integration of Venky’s module
 
 References:
 + [Architecting Android The Clean Way](http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/)
