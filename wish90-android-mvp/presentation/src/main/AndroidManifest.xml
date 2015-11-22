@@ -33,6 +33,8 @@
         </activity>
         <activity android:name=".view.activity.NewMomentActivity" >
         </activity>
+        <activity android:name=".view.activity.ManageWish" >
+        </activity>
     </application>
 
 </manifest>

@@ -16,4 +16,12 @@
       layout="@layout/view_retry"
       />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wish"
+        android:id="@+id/btnWish"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

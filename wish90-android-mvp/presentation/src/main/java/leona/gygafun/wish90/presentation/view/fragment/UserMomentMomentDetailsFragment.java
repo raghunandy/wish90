@@ -4,8 +4,9 @@
  */
 package leona.gygafun.wish90.presentation.view.fragment;
 
+import android.app.Activity;
 import android.content.Context;
-import android.graphics.Typeface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,12 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import butterknife.Bind;
@@ -31,20 +29,20 @@ import leona.gygafun.wish90.presentation.model.UserMomentModel;
 import leona.gygafun.wish90.presentation.presenter.UserMomentDetailsPresenter;
 import leona.gygafun.wish90.presentation.util.TextUtil;
 import leona.gygafun.wish90.presentation.view.UserMomentDetailsView;
-import leona.gygafun.wish90.presentation.view.component.AutoLoadImageView;
+import leona.gygafun.wish90.presentation.view.activity.ManageWish;
 
 import javax.inject.Inject;
 
 /**
  * Fragment that shows details of a certain user.
  */
+
 public class UserMomentMomentDetailsFragment extends BaseFragment implements UserMomentDetailsView {
 
     private static final String ARGUMENT_KEY_USER_MOMENT = "org.android10.ARGUMENT_USER_MOMENT";
     private static final int COUNTER_THREAD_DELAY = 1;
 
     private UserMomentModel userMomentModel;
-
     private boolean stopCounterThread = false;
     
 
@@ -80,6 +78,8 @@ public class UserMomentMomentDetailsFragment extends BaseFragment implements Use
     @Bind(R.id.months)
     TextView months;
 
+    @Bind(R.id.btnWish) Button wishButton;
+
     public UserMomentMomentDetailsFragment() {
     }
 
@@ -101,6 +101,13 @@ public class UserMomentMomentDetailsFragment extends BaseFragment implements Use
         ButterKnife.bind(this, fragmentView);
 
         return fragmentView;
+    }
+
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
     }
 
     @Override
@@ -246,7 +253,6 @@ public class UserMomentMomentDetailsFragment extends BaseFragment implements Use
 
     }
 
-
 //  @OnClick(R.id.bt_retry)
 //  void onButtonRetryClick() {
 //    UserMomentMomentDetailsFragment.this.loadUserDetails();
@@ -257,6 +263,16 @@ public class UserMomentMomentDetailsFragment extends BaseFragment implements Use
     public void onDetach() {
         super.onDetach();
         stopCounterThread = true;
+    }
+
+    @OnClick (R.id.btnWish) void wishButtonOnClickListener(){
+
+        Intent intent;
+        intent = new Intent(UserMomentMomentDetailsFragment.this.getActivity(), ManageWish.class);
+        Bundle bundle=new Bundle();
+        bundle.putString("contactName", contactName.getText().toString());
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
 }

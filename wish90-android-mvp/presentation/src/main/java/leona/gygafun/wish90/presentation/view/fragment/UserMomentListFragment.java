@@ -198,6 +198,7 @@ public class UserMomentListFragment extends BaseFragment implements UserMomentLi
   @OnClick(R.id.fab)  public void fabOnClickListener(){
     Intent intent;
     intent = new Intent(newMoment.getContext(), NewMomentActivity.class);
+
     newMoment.getContext().startActivity(intent);
   }
 
