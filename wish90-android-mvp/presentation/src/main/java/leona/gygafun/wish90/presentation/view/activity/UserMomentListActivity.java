@@ -42,8 +42,9 @@ public class UserMomentListActivity extends BaseActivity implements HasComponent
 
   @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
   @Override protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
+
       requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+      super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_user_moment_list);
     this.initializeInjector();
 

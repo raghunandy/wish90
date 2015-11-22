@@ -29,9 +29,8 @@
             android:name=".view.activity.UserMomentDetailsActivity"
             android:label="@string/activity_title_user_details" >
         </activity>
-        <activity android:name=".view.activity.BaseActivity$activity_new_moment" >
-        </activity>
-        <activity android:name=".view.activity.NewMomentActivity" >
+        <activity android:windowSoftInputMode="adjustPan"  android:name=".view.activity.NewMomentActivity"
+            android:label="Add new moment">
         </activity>
         <activity android:name=".view.activity.ManageWish" >
         </activity>

@@ -9,6 +9,8 @@
     android:orientation="vertical"
     tools:context=".MainActivity"
     android:background="@drawable/bg2"
+    android:adjustViewBounds="true"
+    android:scaleType="fitCenter"
     >
 
   <TextView

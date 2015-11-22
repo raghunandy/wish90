@@ -1,21 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout  android:layout_width="fill_parent" android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:background="#ff6fc825" android:layout_width="fill_parent" android:layout_height="40.0dip">
-        <TextView android:textSize="20.0dip" android:textColor="#ffffffff" android:id="@id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="New Moment" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/linearLayout1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="50.0dip" android:layout_marginRight="50.0dip" android:layout_alignParentLeft="true">
-        <EditText android:id="@id/editText1"  android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Enter Your Name" android:ems="10" android:inputType="text">
-            <requestFocus />
-        </EditText>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainContent" android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="#ffffff"
+    android:windowSoftInputMode="adjustPan">
+
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.inthecheesefactory.thecheeselibrary.widget.AdjustableImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/celebrationbg"/>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <AutoCompleteTextView
+            android:id="@+id/momentType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="65dp"
+            android:ems="10" />
+
+        <!--<EditText-->
+            <!--android:layout_width="308dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/editText"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:hint="Moment Title"-->
+            <!--android:text="Moment Type" />-->
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText2"
+            android:layout_gravity="center_horizontal" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText3" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:id="@+id/cancelButton" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save"
+                android:id="@+id/saveButton" />
+        </LinearLayout>
+
     </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/linearLayout4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="40.0dip" android:layout_marginRight="50.0dip" android:layout_below="@id/linearLayout1" android:layout_alignParentLeft="true">
-        <EditText android:id="@id/editText4"  android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Please Select  Date" android:ems="10" android:editable="false" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/linearLayout5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="40.0dip" android:layout_marginRight="50.0dip" android:layout_below="@id/linearLayout4" android:layout_alignParentLeft="true">
-        <EditText android:id="@id/editText5"  android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Enter Type of Moment" android:ems="10" android:inputType="number" />
-    </LinearLayout>
-    <Button android:textSize="20.0sp" android:textColor="#ffffffff" android:id="@id/button2" android:background="@drawable/greenbg" android:layout_width="80.0dip" android:layout_height="40.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="5.0dip" android:text="Save" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-    <Button android:textSize="20.0sp" android:textColor="#ffffffff" android:id="@id/button1" android:background="@drawable/orangebg" android:layout_width="80.0dip" android:layout_height="40.0dip" android:layout_marginLeft="10.0dip" android:layout_marginBottom="5.0dip" android:text="Cancel" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
-    <ImageButton android:id="@id/imageButton1" android:background="@drawable/calendar" android:layout_width="40.0dip" android:layout_height="wrap_content" android:layout_marginRight="14.0dip" android:cropToPadding="true" android:layout_above="@id/linearLayout5" android:layout_alignRight="@id/button2" />
-</RelativeLayout>
+
+</LinearLayout>

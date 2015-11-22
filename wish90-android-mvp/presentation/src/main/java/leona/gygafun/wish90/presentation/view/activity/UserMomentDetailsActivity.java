@@ -37,8 +37,9 @@ public class UserMomentDetailsActivity extends BaseActivity implements HasCompon
   }
 
   @Override protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
     requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+    super.onCreate(savedInstanceState);
+
     setContentView(R.layout.activity_user_details);
 
     this.initializeActivity(savedInstanceState);
