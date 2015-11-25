@@ -270,7 +270,19 @@ public class UserMomentMomentDetailsFragment extends BaseFragment implements Use
         Intent intent;
         intent = new Intent(UserMomentMomentDetailsFragment.this.getActivity(), ManageWish.class);
         Bundle bundle=new Bundle();
+
         bundle.putString("contactName", contactName.getText().toString());
+        bundle.putString("seconds",secs.getText().toString());
+        bundle.putString("minutes", mins.getText().toString());
+        bundle.putString("hours", hours.getText().toString());
+        bundle.putString("days",days.getText().toString());
+        bundle.putString("weeks",weeks.getText().toString());
+        bundle.putString("months",months.getText().toString());
+        bundle.putString("years",years.getText().toString());
+
+
+
+
         intent.putExtras(bundle);
         startActivity(intent);
     }

@@ -8,21 +8,101 @@
     tools:context="leona.gygafun.wish90.presentation.view.activity.ManageWish">
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/linearLayout">
+        android:id="@+id/linearLayout"
+        android:weightSum="1"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true">
+
+
+
+        <ToggleButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_margin="5dp"
+
+            android:id="@+id/toggleButtonSeconds"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="#ffff00"
+            android:gravity="center_horizontal" />
+
+        <ToggleButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_margin="5dp"
+            android:id="@+id/toggleButtonMinutes"
+
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="#ffff00"
+            android:gravity="center_horizontal" />
+
+        <ToggleButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:id="@+id/toggleButtonHours"
+            android:layout_margin="5dp"
+
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="#ffff00"
+            android:gravity="center_horizontal" />
+
+        <ToggleButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:id="@+id/toggleButtonDays"
+            android:layout_margin="5dp"
+
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="#ffff00"
+            android:gravity="center_horizontal" />
+
+        <ToggleButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:id="@+id/toggleButtonWeeks"
+            android:layout_margin="5dp"
+
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="#ffff00"
+            android:gravity="center_horizontal" />
+
+        <ToggleButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:id="@+id/toggleButtonMonths"
+            android:layout_margin="5dp"
+
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="#ffff00"
+            android:gravity="center_horizontal" />
+
+        <ToggleButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:id="@+id/toggleButtonYears"
+            android:layout_margin="5dp"
+
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="#ffff00"
+            android:gravity="center_horizontal" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wish Now!"
+            android:id="@+id/button"
+            android:layout_gravity="center_horizontal" />
 
     </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:text="New Text"
-        android:id="@+id/textView2"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/linearLayout" />
 
 
 </RelativeLayout>

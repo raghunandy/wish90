@@ -32,7 +32,8 @@
         <activity android:windowSoftInputMode="adjustPan"  android:name=".view.activity.NewMomentActivity"
             android:label="Add new moment">
         </activity>
-        <activity android:name=".view.activity.ManageWish" >
+        <activity android:name=".view.activity.ManageWish"
+            android:label="@string/activity_title_manage_wish" >
         </activity>
     </application>
 

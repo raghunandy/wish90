@@ -82,4 +82,5 @@ dependencies {
   androidTestCompile presentationTestDependencies.dexmakerMockito
   androidTestCompile presentationTestDependencies.espresso
   androidTestCompile presentationTestDependencies.testingSupportLib
+  compile 'com.google.dexmaker:dexmaker:1.0'
 }

@@ -1,22 +1,30 @@
 package leona.gygafun.wish90.presentation.view.activity;
 
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.ToggleButton;
+
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnCheckedChanged;
+import butterknife.OnClick;
 import leona.gygafun.wish90.presentation.R;
 import leona.gygafun.wish90.presentation.di.components.DaggerUserComponent;
 import leona.gygafun.wish90.presentation.di.components.UserComponent;
-import leona.gygafun.wish90.presentation.model.UserMomentModel;
-import leona.gygafun.wish90.presentation.view.fragment.UserMomentMomentDetailsFragment;
 
-public class ManageWish extends BaseActivity {
+public class ManageWish extends BaseActivity implements View.OnClickListener{
 
-    @Bind(R.id.textView2)
-    TextView contactName2;
+
+    @Bind({R.id.toggleButtonSeconds,R.id.toggleButtonMinutes,R.id.toggleButtonHours,
+            R.id.toggleButtonDays,R.id.toggleButtonWeeks,R.id.toggleButtonMonths,R.id.toggleButtonYears})
+    List<ToggleButton> toggleButtons;
+
     private UserComponent userComponent;
 
     @Override
@@ -26,8 +34,45 @@ public class ManageWish extends BaseActivity {
         Bundle extras=getIntent().getExtras();
         ButterKnife.bind(this);
         this.initializeInjector();
-        contactName2.setText("Wish "+extras.getString("contactName"));
+        this.setTitle("Wish " + extras.getString("contactName"));
+        setToggleButton(toggleButtons.get(0), extras.getString("seconds"));
+        setToggleButton(toggleButtons.get(1),extras.getString("minutes"));
+        setToggleButton(toggleButtons.get(2),extras.getString("hours"));
+        setToggleButton(toggleButtons.get(3),extras.getString("days"));
+        setToggleButton(toggleButtons.get(4), extras.getString("weeks"));
+        setToggleButton(toggleButtons.get(5), extras.getString("months"));
+        setToggleButton(toggleButtons.get(6), extras.getString("years"));
+        toggleButtons.get(0).setOnClickListener(this);
+        toggleButtons.get(1).setOnClickListener(this);
+        toggleButtons.get(2).setOnClickListener(this);
+        toggleButtons.get(3).setOnClickListener(this);
+        toggleButtons.get(4).setOnClickListener(this);
+        toggleButtons.get(5).setOnClickListener(this);
+        toggleButtons.get(6).setOnClickListener(this);
 
+    }
+    final ButterKnife.Action<ToggleButton> CHANGE_COLOR = new ButterKnife.Action<ToggleButton>() {
+
+        @Override
+        public void apply(ToggleButton toggleButton, int index) {
+            if(toggleButton.isChecked()) {
+                toggleButton.setBackgroundColor(Color.parseColor("#ADD8E6"));
+                toggleButton.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+            }else {
+                toggleButton.setBackgroundColor(Color.YELLOW);
+                toggleButton.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+            }
+        }
+    };
+
+    public void onClick(View v){
+        ButterKnife.apply(toggleButtons,CHANGE_COLOR);
+    }
+
+    private void setToggleButton(ToggleButton toggleButton, String string) {
+        toggleButton.setText(string);
+        toggleButton.setTextOff(string);
+        toggleButton.setTextOn(string);
     }
 
     private void initializeInjector() {
