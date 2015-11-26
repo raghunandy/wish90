@@ -1,9 +1,11 @@
 package leona.gygafun.wish90.presentation.view.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -24,7 +26,8 @@ public class ManageWish extends BaseActivity implements View.OnClickListener{
     @Bind({R.id.toggleButtonSeconds,R.id.toggleButtonMinutes,R.id.toggleButtonHours,
             R.id.toggleButtonDays,R.id.toggleButtonWeeks,R.id.toggleButtonMonths,R.id.toggleButtonYears})
     List<ToggleButton> toggleButtons;
-
+    @Bind(R.id.btnWishNow)
+    Button wishNow;
     private UserComponent userComponent;
 
     @Override
@@ -74,7 +77,11 @@ public class ManageWish extends BaseActivity implements View.OnClickListener{
         toggleButton.setTextOff(string);
         toggleButton.setTextOn(string);
     }
-
+    @OnClick(R.id.btnWishNow) void wishNowOnClickListener(){
+        Intent intent = new Intent(this, ConveyWishActivity.class);
+        intent.putExtra("contactName", this.getTitle());
+        startActivity(intent);
+    }
     private void initializeInjector() {
         this.userComponent = DaggerUserComponent.builder()
                 .applicationComponent(getApplicationComponent())

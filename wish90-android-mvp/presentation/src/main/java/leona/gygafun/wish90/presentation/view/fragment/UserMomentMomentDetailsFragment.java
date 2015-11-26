@@ -280,9 +280,6 @@ public class UserMomentMomentDetailsFragment extends BaseFragment implements Use
         bundle.putString("months",months.getText().toString());
         bundle.putString("years",years.getText().toString());
 
-
-
-
         intent.putExtras(bundle);
         startActivity(intent);
     }

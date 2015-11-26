@@ -35,6 +35,9 @@
         <activity android:name=".view.activity.ManageWish"
             android:label="@string/activity_title_manage_wish" >
         </activity>
+        <activity android:name=".view.activity.ConveyWishActivity"
+            android:label="@string/activity_title_convey_wish" >
+        </activity>
     </application>
 
 </manifest>

@@ -8,6 +8,7 @@
   <string name="activity_title_user_list">Birthday List</string>
   <string name="activity_title_user_details">User Details</string>
  <string name="activity_title_manage_wish">Manage Wish</string>
+ <string name="activity_title_convey_wish">Convey Wish</string>
 
   <string name="btn_text_load_data">Load Sample Birthdays</string>
   <string name="btn_text_retry">Retry</string>
