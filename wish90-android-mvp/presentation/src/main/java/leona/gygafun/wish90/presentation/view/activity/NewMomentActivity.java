@@ -8,9 +8,11 @@ import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import leona.gygafun.wish90.domain.repository.UserMomentFields.*;
 import leona.gygafun.wish90.presentation.R;
 import leona.gygafun.wish90.presentation.di.components.DaggerUserComponent;
+import leona.gygafun.wish90.presentation.model.UserMomentModel;
 
 
 public class NewMomentActivity extends BaseActivity {
@@ -32,6 +34,13 @@ public class NewMomentActivity extends BaseActivity {
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,list);
         momentType.setAdapter(adapter);
+
+
+    }
+
+    @OnClick(R.id.momentType)
+    private void onSaveMoment(){
+
 
 
     }
