@@ -29,12 +29,12 @@ public class ManageWish extends BaseActivity implements View.OnClickListener{
     @Bind(R.id.btnWishNow)
     Button wishNow;
     private UserComponent userComponent;
-
+    Bundle extras;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_wish);
-        Bundle extras=getIntent().getExtras();
+        extras=getIntent().getExtras();
         ButterKnife.bind(this);
         this.initializeInjector();
         this.setTitle("Wish " + extras.getString("contactName"));
@@ -79,7 +79,7 @@ public class ManageWish extends BaseActivity implements View.OnClickListener{
     }
     @OnClick(R.id.btnWishNow) void wishNowOnClickListener(){
         Intent intent = new Intent(this, ConveyWishActivity.class);
-        intent.putExtra("contactName", this.getTitle());
+        intent.putExtra("contactName", extras.getString("contactName"));
         startActivity(intent);
     }
     private void initializeInjector() {
