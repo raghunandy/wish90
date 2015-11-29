@@ -12,6 +12,7 @@ import butterknife.OnClick;
 import leona.gygafun.wish90.domain.repository.UserMomentFields.*;
 import leona.gygafun.wish90.presentation.R;
 import leona.gygafun.wish90.presentation.di.components.DaggerUserComponent;
+import leona.gygafun.wish90.presentation.di.components.UserComponent;
 import leona.gygafun.wish90.presentation.model.UserMomentModel;
 
 
@@ -19,6 +20,7 @@ public class NewMomentActivity extends BaseActivity {
 
     @Bind(R.id.momentType)
     AutoCompleteTextView  momentType;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +40,9 @@ public class NewMomentActivity extends BaseActivity {
 
     }
 
+
     @OnClick(R.id.momentType)
-    private void onSaveMoment(){
+    public void onSaveMoment(){
 
 
 
