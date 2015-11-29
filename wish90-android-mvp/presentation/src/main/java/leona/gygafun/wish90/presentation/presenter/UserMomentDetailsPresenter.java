@@ -5,12 +5,15 @@ package leona.gygafun.wish90.presentation.presenter;
 import android.support.annotation.NonNull;
 
 import leona.gygafun.wish90.domain.exception.ErrorBundle;
+import leona.gygafun.wish90.domain.interactor.SaveContactMoment;
+import leona.gygafun.wish90.domain.interactor.UseCase;
 import leona.gygafun.wish90.presentation.exception.ErrorMessageFactory;
 import leona.gygafun.wish90.presentation.di.PerActivity;
 import leona.gygafun.wish90.presentation.model.UserMomentModel;
 import leona.gygafun.wish90.presentation.view.UserMomentDetailsView;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  * {@link Presenter} that controls communication between views and models of the presentation
@@ -24,11 +27,22 @@ public class UserMomentDetailsPresenter implements Presenter {
 
   private UserMomentDetailsView viewDetailsView;
 
-  @Inject
-  public UserMomentDetailsPresenter() {
 
+
+
+
+  private SaveContactMoment saveContactMoment;
+
+
+  @Inject
+  public UserMomentDetailsPresenter(@Named("saveContactMoment") SaveContactMoment saveContactMoment) {
+    this.saveContactMoment=saveContactMoment;
   }
 
+  public void saveUserMoment(){
+    saveContactMoment.execute(null);
+
+  }
   public void setView(@NonNull UserMomentDetailsView view) {
     this.viewDetailsView = view;
   }
@@ -55,6 +69,7 @@ public class UserMomentDetailsPresenter implements Presenter {
   private void loadMomentDetails() {
     this.hideViewRetry();
     this.viewDetailsView.renderUser(userMomentModel);
+
 //    this.showViewLoading();
 
   }

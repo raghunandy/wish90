@@ -18,4 +18,5 @@ import dagger.Component;
 public interface UserComponent extends ActivityComponent {
   void inject(UserMomentListFragment userListFragment);
   void inject(UserMomentMomentDetailsFragment userMomentDetailsFragment);
+
 }

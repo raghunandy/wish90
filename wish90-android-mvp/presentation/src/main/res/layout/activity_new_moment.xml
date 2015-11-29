@@ -16,7 +16,8 @@
 
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:weightSum="1">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -31,7 +32,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/celebrationbg"/>
+                    android:src="@drawable/celebrationbghalfbg"/>
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -43,15 +44,6 @@
 
         </ScrollView>
 
-        <AutoCompleteTextView
-            android:id="@+id/momentType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="65dp"
-            android:ems="10" />
-
         <!--<EditText-->
             <!--android:layout_width="308dp"-->
             <!--android:layout_height="wrap_content"-->
@@ -60,16 +52,32 @@
             <!--android:hint="Moment Title"-->
             <!--android:text="Moment Type" />-->
 
-        <EditText
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText2"
-            android:layout_gravity="center_horizontal" />
+            android:layout_weight="0.29">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText3" />
+            <AutoCompleteTextView
+                android:id="@+id/momentType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="65dp"
+                android:ems="10" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/refContactInput"
+                android:layout_gravity="center_horizontal" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/momentDateTime" />
+        </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -87,7 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Save"
-                android:id="@+id/saveButton" />
+                android:id="@+id/saveNewMoment" />
         </LinearLayout>
 
     </LinearLayout>
