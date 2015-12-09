@@ -6,7 +6,6 @@ import leona.gygafun.wish90.domain.executor.PostExecutionThread;
 import leona.gygafun.wish90.domain.executor.ThreadExecutor;
 
 import leona.gygafun.wish90.domain.interactor.GetUserMomentList;
-import leona.gygafun.wish90.domain.interactor.SaveContactMoment;
 import leona.gygafun.wish90.domain.interactor.UseCase;
 import leona.gygafun.wish90.domain.repository.UserRepository;
 import leona.gygafun.wish90.presentation.di.PerActivity;
@@ -30,15 +29,9 @@ public class UserMomentModule {
     this.userMomentModel = userMomentModel;
   }
 
-
   @Provides @PerActivity @Named("userMomentList") UseCase provideGetUserListUseCase(
       GetUserMomentList getUserMomentList) {
     return getUserMomentList;
   }
 
-
-    @Provides @PerActivity @Named("saveContactMoment") UseCase provideSaveContactMomentUseCase(
-            SaveContactMoment getSaveContactMoment) {
-        return getSaveContactMoment;
-    }
 }

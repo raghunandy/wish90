@@ -44,12 +44,11 @@ public class UserMomentMomentDetailsFragment extends BaseFragment implements Use
 
     private UserMomentModel userMomentModel;
     private boolean stopCounterThread = false;
-
-
+    
 
 
     @Inject
-    private UserMomentDetailsPresenter userMomentDetailsPresenter;
+    UserMomentDetailsPresenter userMomentDetailsPresenter;
 
     @Bind(R.id.contact_name)
     TextView contactName;
@@ -150,6 +149,7 @@ public class UserMomentMomentDetailsFragment extends BaseFragment implements Use
 
     @Override
     public void renderUser(UserMomentModel userMomentModel) {
+
 
         if (userMomentModel != null) {
             contactName.setText(TextUtil.makeStringCamelCase(userMomentModel.getRefContact().getContactName()));

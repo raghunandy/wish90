@@ -25,7 +25,7 @@ public class SaveContactMoment extends UseCase {
 
     private final UserMoment userMoment;
     @Inject
-    public SaveContactMoment(UserMoment userMoment,UserRepository userRepository,ThreadExecutor threadExecutor,
+    public SaveContactMoment( UserMoment userMoment,UserRepository userRepository,ThreadExecutor threadExecutor,
                              PostExecutionThread postExecutionThread) {
         super(threadExecutor, postExecutionThread);
         this.userMoment=userMoment;
